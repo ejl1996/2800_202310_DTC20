@@ -103,6 +103,17 @@ app.get('/email', (req, res) => {
     res.render('email');
 });
 
+app.get('/mmse', (req, res) => {
+    //Do wherever you want here like fetching data and show from the previous form.
+    res.render('mmse');
+});
+
+app.get('/signup', (req, res) => {
+    //Do wherever you want here like fetching data and show from the previous form.
+    res.render('signup');
+});
+
+
 app.get('/logoutuser', (req, res) => {
     req.session.destroy();
     res.redirect('/');
