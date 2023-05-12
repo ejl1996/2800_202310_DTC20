@@ -94,8 +94,41 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    //Do wherever you want here like fetching data and show from the previous form.
     res.render('login');
+});
+
+// post for signup
+app.post('/signup', async (req, res) => {
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // validate the input style for username, email and password using Joi
+    const schema = Joi.object({
+        username: Joi.string().alphanum().max(20).required(),
+        email: Joi.string().max(20).required(),
+        password: Joi.string().max(20).required(),
+    });
+
+    // validate the input
+    const validationResult = schema.validate({ username, email, password });
+    if (validationResult.error != null) {
+        console.log(validationResult.error);
+        res.redirect('/signup');
+        return;
+    }
+
+    //password ecryption 
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    //insert user into database 
+    await userCollection.insertOne({
+        username: username,
+        email: email,
+        password: hashedPassword,
+    });
+
+    res.redirect('mmse');
 });
 
 app.get('/email', (req, res) => {
@@ -123,9 +156,17 @@ app.get('/home', (req, res) => {
     res.render('home');
 });
 
+app.get('/logout', (req, res) => {
+    res.render('logout');
+});
+
 app.get('/logoutuser', (req, res) => {
     req.session.destroy();
     res.redirect('/');
+});
+
+app.get("*", (req, res) => {
+    res.status(404).render("404.ejs");
 });
 
 app.listen(port, () => {
