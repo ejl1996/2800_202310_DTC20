@@ -6,7 +6,7 @@
         <div class="text-center">
             <!-- perform the sign up app.post method so that the user's information can be stored in the database -->
             <form class="form-signup" action="/signup" method="post" onsubmit="return validation();">
-                <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+                <h1 class="h3 mb-3 font-weight-normal" style="color:  #778251">Sign Up</h1>
                 <!-- users are required to enter their username, email address, password, and phone number to sign up for an account. -->
                 <input name="username" type="text" placeholder="Username">
                 <br>
@@ -15,7 +15,10 @@
                 <input name="password" type="password" placeholder="Password">
                 <br>
                 <input name="number" type="number" placeholder="Phone number">
-                <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">Submit</button>
+                <br>
+                <br>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" style="font-size: 25px; background-color:
+                                    #778251;"><a href="/" style="font-size: 20px; color:white;">Submit</a></button>
             </form>
         </div>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
