@@ -113,6 +113,15 @@ app.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+app.get('/thankyou', (req, res) => {
+    //Do wherever you want here like fetching data and show from the previous form.
+    res.render('thankyou');
+});
+
+app.get('/home', (req, res) => {
+    //Do wherever you want here like fetching data and show from the previous form.
+    res.render('home');
+});
 
 app.get('/logoutuser', (req, res) => {
     req.session.destroy();

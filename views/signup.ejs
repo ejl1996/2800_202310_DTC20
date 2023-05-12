@@ -1,71 +1,73 @@
-<%- include("templates/header", {headerMessage: "Sign Up" }) %>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- This block of code is modified from COMP 2537 Assignment 2 by Shuyi Liu, with size and color adaptation made. The Error message part is written with assistance of chatGPT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-
+        KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-image: url('login.jpg');
+            background-position: center;
+            height: 100vh;
+        }
+    </style>
+</head>
 
-    <div class="signupsetting">
-        <div class="text-center">
-            <form class="form-signup" action="/signup" method="post" onsubmit="return validateForm();">
-                <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
-                <input name="username" type="text" placeholder="Username">
-                <br>
-                <input name="email" type="email" placeholder="Email address">
-                <br>
-                <input name="password" type="password" placeholder="Password">
-                <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">Submit</button>
-            </form>
-        </div>
+<body>
+    <!--This code was on https://mdbootstrap.com/docs/standard/extended/login/ with adjustments and modifications made by Emma Lee -->
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class=" row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg text-white" style="border-radius: 1rem; background-color: #778251;">
+                        <div class="card-body p-5 text-center">
 
-        <!-- Modified bootstrap modal, which is used to show the error message. -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Error</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="errorMessage"></p>
+                            <div class="mb-md-5 mt-md-4 pb-5">
+
+                                <h1 class="fw-bold mb-2 text-uppercase">Sign Up</h1>
+                                <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Please enter your
+                                    information to get started!</p>
+                                <br>
+                                <br>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" placeholder="Username"
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="typePasswordX" style="font-size: 25px;"></label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="email" id="typeEmailX" placeholder="Email address"
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="typeEmailX" style="font-size: 25px;"></label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" placeholder="Password"
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="typePasswordX" style="font-size: 25px;"></label>
+                                </div>
+                                <br>
+                                <br>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                    style="font-size: 25px;"><a href="/login"
+                                        style="font-size: 20px; color:white;">Submit</a></button>
+
+                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                    <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                    <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+</body>
 
-        <!-- Using array to store the missing fields, and then join them with a comma and space to form a string.  -->
-        <script>
-            function validateForm() {
-                var username = document.getElementsByName("username")[0].value;
-                var email = document.getElementsByName("email")[0].value;
-                var password = document.getElementsByName("password")[0].value;
-
-                var missingFields = [];
-
-                if (!username) {
-                    missingFields.push("Username");
-                }
-                if (!email) {
-                    missingFields.push("Email");
-                }
-                if (!password) {
-                    missingFields.push("Password");
-                }
-
-                // if user miss any of the fields, the error message will show up.
-                if (missingFields.length > 0) {
-                    $("#errorMessage").html("Please provide " + missingFields.join(", ") + ".");
-                    $("#myModal").modal("show");
-                    return false;
-                }
-
-                return true;
-            }
-        </script>
-
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    </div>
-    </body>
-
-    </html>
+</html>
