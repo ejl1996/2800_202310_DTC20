@@ -132,28 +132,27 @@ app.post('/signup', async (req, res) => {
 });
 
 app.get('/email', (req, res) => {
-    //Do wherever you want here like fetching data and show from the previous form.
     res.render('email');
 });
 
 app.get('/mmse', (req, res) => {
-    //Do wherever you want here like fetching data and show from the previous form.
     res.render('mmse');
 });
 
 app.get('/signup', (req, res) => {
-    //Do wherever you want here like fetching data and show from the previous form.
     res.render('signup');
 });
 
 app.get('/thankyou', (req, res) => {
-    //Do wherever you want here like fetching data and show from the previous form.
     res.render('thankyou');
 });
 
 app.get('/home', (req, res) => {
-    //Do wherever you want here like fetching data and show from the previous form.
     res.render('home');
+});
+
+app.get('/profile', (req, res) => {
+    res.render('profile');
 });
 
 app.get('/logout', (req, res) => {
