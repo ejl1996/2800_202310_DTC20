@@ -47,7 +47,6 @@ var mongoStore = MongoStore.create({
     }
 })
 
-
 //handles cookies. Ex. req.session.cookies. **would have to parse cookies ourselves otherwise.  
 app.use(session({
     secret: node_session_secret,
