@@ -139,6 +139,10 @@ app.get('/mmse', (req, res) => {
     res.render('mmse');
 });
 
+app.get('/mmse2', (req, res) => {
+    res.render('mmse2');
+});
+
 app.get('/signup', (req, res) => {
     res.render('signup');
 });
@@ -146,6 +150,11 @@ app.get('/signup', (req, res) => {
 app.get('/thankyou', (req, res) => {
     res.render('thankyou');
 });
+
+app.get('/questions', (req, res) => {
+    res.render('questions');
+});
+
 
 app.get('/home', (req, res) => {
     res.render('home');
