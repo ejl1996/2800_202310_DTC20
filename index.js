@@ -155,6 +155,10 @@ app.get('/profile', (req, res) => {
     res.render('profile');
 });
 
+app.get('/questions', (req, res) => {
+    res.render('questions');
+});
+
 app.get('/logout', (req, res) => {
     res.render('logout');
 });
