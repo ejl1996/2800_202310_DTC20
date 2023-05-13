@@ -56,9 +56,6 @@ app.use(session({
 }
 ));
 
-
-
-
 //AUTHENTICATION
 function isValidSession(req) {
     if (req.session.authenticated) {
