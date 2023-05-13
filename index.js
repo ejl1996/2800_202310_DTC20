@@ -57,6 +57,8 @@ app.use(session({
 ));
 
 
+
+
 //AUTHENTICATION
 function isValidSession(req) {
     if (req.session.authenticated) {
@@ -76,6 +78,44 @@ function sessionValidation(req, res, next) {
         res.redirect("login.ejs");
     }
 }
+
+app.post('/login', async (req, res) => {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    const schema = Joi.string().max(20).required();
+    const validationResult = schema.validate(username);
+    if (validationResult.error != null) {
+        console.log(validationResult.error);
+        res.redirect("/login");
+        return;
+    }
+
+    const result = await userCollection.find({ username: username }).project({ username: 1, password: 1, _id: 1 }).toArray();
+
+    console.log(result);
+    if (result.length != 1) {
+        res.send("User Not Found" + "<br>" + '<a href="/login">Try again</a>');
+        //console.log("user not found");
+        //res.redirect("/login");
+        return;
+    }
+    else if (await bcrypt.compare(password, result[0].password)) {
+        console.log("correct password");
+        req.session.authenticated = true;
+        req.session.username = username;
+        req.session.cookie.maxAge = expireTime;
+
+        res.redirect('/home');
+        return;
+    }
+    else {
+        res.send("Incorrect Password" + "<br>" + '<a href="/login">Try again</a>');
+        //console.log("incorrect password");
+        //res.redirect("/login");
+        return;
+    }
+});
 
 app.use('/loggedin', sessionValidation);
 app.get('/loggedin', (req, res) => {
