@@ -173,6 +173,11 @@ app.get('/logoutuser', (req, res) => {
     res.redirect('/');
 });
 
+app.get('/submitthanks', (req, res) => {
+    req.session.destroy();
+    res.redirect('/submitthanks');
+});
+
 app.get("*", (req, res) => {
     res.status(404).render("404.ejs");
 });

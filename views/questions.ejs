@@ -50,80 +50,80 @@
             <div class="container question-container bg-light p-5 rounded">
                 <h1 class="text-center mb-4">Screening questionnaire </h1>
                 <!-- app.post to store info in database-->
-                <form class="form-riskfactorquestion" action="/riskfactorquestions" method="post">
-                    <div class="form-group mb-3">
-                        <label for="age">1. How old are you?</label>
-                        <select class="form-control" id="age" name="age">
-                            <option value="lessThan65">Less than 65</option>
-                            <option value="65-69">65 - 69</option>
-                            <option value="70-75">70 - 75</option>
-                            <option value="76-80">76 - 80</option>
-                            <option value="81-85">81 - 85</option>
-                            <option value="Over85">Over 85</option>
-                        </select>
+                <div class="form-group mb-3">
+                    <label for="age">1. How old are you?</label>
+                    <select class="form-control" id="age" name="age">
+                        <option value="lessThan65">Less than 65</option>
+                        <option value="65-69">65 - 69</option>
+                        <option value="70-75">70 - 75</option>
+                        <option value="76-80">76 - 80</option>
+                        <option value="81-85">81 - 85</option>
+                        <option value="Over85">Over 85</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="education">2. What is the highest level of education you've completed?</label>
+                    <select class="form-control" id="educationLevel" name="educationLevel">
+                        <option value="lessThanSecondary">Less than or equivalent to secondary (high) school
+                            diploma
+                        </option>
+                        <option value="secondary">Postsecondary degree (i.e. diploma or bachelor's)</option>
+                        <option value="postSecondary">Graduate degree (i.e. master's)</option>
+                        <option value="graduate">Doctorate degree or higher (i.e. PhD)</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label>3. Do you have diabetes?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="diabetes" id="diabetesYes" value="yes">
+                        <label class="form-check-label" for="diabetesYes">
+                            Yes
+                        </label>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="education">2. What is the highest level of education you've completed?</label>
-                        <select class="form-control" id="educationLevel" name="educationLevel">
-                            <option value="lessThanSecondary">Less than or equivalent to secondary (high) school diploma
-                            </option>
-                            <option value="secondary">Postsecondary degree (i.e. diploma or bachelor's)</option>
-                            <option value="postSecondary">Graduate degree (i.e. master's)</option>
-                            <option value="graduate">Doctorate degree or higher (i.e. PhD)</option>
-                        </select>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="diabetes" id="diabetesNo" value="no">
+                        <label class="form-check-label" for="diabetesNo">
+                            No
+                        </label>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>3. Do you have diabetes?</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="diabetes" id="diabetesYes" value="yes">
-                            <label class="form-check-label" for="diabetesYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="diabetes" id="diabetesNo" value="no">
-                            <label class="form-check-label" for="diabetesNo">
-                                No
-                            </label>
-                        </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label>4. Are you a smoker or have you previously been a smoker?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="smoke" id="smokeYes" value="yes">
+                        <label class="form-check-label" for="smokeYes">
+                            Yes
+                        </label>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>4. Are you a smoker or have you previously been a smoker?</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="smoke" id="smokeYes" value="yes">
-                            <label class="form-check-label" for="smokeYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="smoke" id="smokeNo" value="no">
-                            <label class="form-check-label" for="smokeNo">
-                                No
-                            </label>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="smoke" id="smokeNo" value="no">
+                        <label class="form-check-label" for="smokeNo">
+                            No
+                        </label>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>5. Do you currently have or have you had history of depression?</label>
-                        <!-- asks the user if they have depression -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="depression" id="depression-yes"
-                                value="yes">
-                            <label class="form-check-label" for="depression-yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="depression" id="depression-no"
-                                value="no">
-                            <label class="form-check-label" for="depression-no">
-                                No
-                            </label>
-                        </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label>5. Do you currently have or have you had history of depression?</label>
+                    <!-- asks the user if they have depression -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="depression" id="depression-yes" value="yes">
+                        <label class="form-check-label" for="depression-yes">
+                            Yes
+                        </label>
                     </div>
-                    <!-- submit the form -->
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-lg btn-light btn-startrisksurvey fw-bold">Submit</button>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="depression" id="depression-no" value="no">
+                        <label class="form-check-label" for="depression-no">
+                            No
+                        </label>
                     </div>
+                </div>
+                <!-- submit the form -->
+                <div class="buttondiv">
+                    <button class="btn btn-outline-lisght btn-lg px-5" type="logout" style="font-size: 25px; background-color:
+                                            #778251;"><a href="/"
+                            style="font-size: 20px; color:white;">Submit</a></button>
+                </div>
                 </form>
             </div>
         </div>
