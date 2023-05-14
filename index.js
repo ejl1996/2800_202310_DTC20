@@ -16,6 +16,7 @@ const port = process.env.PORT || 4000;
 const app = express();
 
 const Joi = require("joi");
+const expireTime = 60 * 60 * 1000;
 
 /* secret information section */
 const mongodb_host = process.env.MONGODB_HOST;
@@ -76,6 +77,7 @@ function sessionValidation(req, res, next) {
     }
 }
 
+
 app.post('/login', async (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
@@ -91,6 +93,7 @@ app.post('/login', async (req, res) => {
     const result = await userCollection.find({ username: username }).project({ username: 1, password: 1, _id: 1 }).toArray();
 
     console.log(result);
+    console.log("CHECKPOINT");
     if (result.length != 1) {
         res.send("User Not Found" + "<br>" + '<a href="/login">Try again</a>');
         //console.log("user not found");
@@ -138,16 +141,18 @@ app.post('/signup', async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
+    const number = req.body.number;
 
     // validate the input style for username, email and password using Joi
     const schema = Joi.object({
         username: Joi.string().alphanum().max(20).required(),
         email: Joi.string().max(20).required(),
         password: Joi.string().max(20).required(),
+        number: Joi.string().alphanum().max(20).required(),
     });
 
     // validate the input
-    const validationResult = schema.validate({ username, email, password });
+    const validationResult = schema.validate({ username, email, password, number });
     if (validationResult.error != null) {
         console.log(validationResult.error);
         res.redirect('/signup');
@@ -162,10 +167,73 @@ app.post('/signup', async (req, res) => {
         username: username,
         email: email,
         password: hashedPassword,
+        number: number,
     });
 
-    res.redirect('mmse');
+    res.redirect('login');
 });
+
+//submit certain field of information only to the mongoDB
+app.post('/submitUser', async (req, res) => {
+    var name = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    if (password == "" || name == "") {
+        res.redirect("/login");
+        return;
+    }
+
+    const schema = Joi.object(
+        {
+            name: Joi.string().regex(/^[a-zA-Z ]+$/).max(20).required(),
+            email: Joi.string().email().max(50).required(),
+            password: Joi.string().max(20).required()
+        }
+    );
+
+    const validationResult = schema.validate({ name, email, password });
+
+    if (validationResult.error != null) {
+        console.log("Validation error: ", validationResult.error.details[0].message);
+        res.redirect("/signUp?invalid=true");
+        return;
+    }
+
+    var hashedPassword = await bcrypt.hashSync(password, saltRounds);
+
+    await userCollection.insertOne({ name: name, email: email, password: hashedPassword });
+
+    req.session.authenticated = true;
+    req.session.email = email;
+    req.session.cookie.maxAge = expireTime;
+    req.session.name = name;
+
+    res.redirect('/home');
+});
+
+app.get('/fetchProfile', sessionValidation, async (req, res) => {
+    try {
+        const user = await userCollection.findOne({ username: req.session.username }, { projection: { name: 1, username: 1, email: 1, number: 1 } });
+        res.json({ user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.get('/profile', sessionValidation, async (req, res) => {
+    try {
+        const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
+        res.render('profile', { user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error...!' });
+    }
+});
+
+//code obtained with help from ChatGPT
+
 
 app.get('/email', (req, res) => {
     res.render('email');
@@ -196,10 +264,6 @@ app.get('/home', (req, res) => {
     res.render('home');
 });
 
-app.get('/profile', (req, res) => {
-    res.render('profile');
-});
-
 app.get('/questions', (req, res) => {
     res.render('questions');
 });
@@ -218,11 +282,6 @@ app.get('/submitthanks', (req, res) => {
     res.redirect('/submitthanks');
 });
 
-app.get("*", (req, res) => {
-    res.status(404).render("404.ejs");
-});
-
 app.listen(port, () => {
     console.log("Node application listening on port " + port);
 });
-
