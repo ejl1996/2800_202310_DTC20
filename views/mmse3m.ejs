@@ -43,34 +43,33 @@
     <body>
 
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
-        <!---MMME Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf -->
+        <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse3m" method="post">
-            <p class="fw-bold">5. What is the name of this image?</p>
-            <img src="pencil.gif" alt="pencil">
+            <p class="fw-bold">5. Place the following from smallest to largest: house, pin, computer, Jupiter </p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
                 <label class="form-check-label" for="radioExample1">
-                    Pen
+                    house, pin, computer, Jupiter
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
                 <label class="form-check-label" for="radioExample2">
-                    Pencil
+                    pin, house, computer, Jupiter
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
                 <label class="form-check-label" for="radioExample3">
-                    Rainbow
+                    pin, computer, house, Jupiter
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
                 <label class="form-check-label" for="radioExample4">
-                    Notepad
+                    Jupiter, house, computer, pin
                 </label>
             </div>
             <div class="buttondiv">
