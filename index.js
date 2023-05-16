@@ -214,33 +214,31 @@ app.post('/submitUser', async (req, res) => {
 
 app.post('/updatepassword', async (req, res) => {
     try {
-        await user.connect();
-        const database = user.db('test'); // Replace with your database name
-        console.log(database)
-        const collection = database.collection('users'); // Replace with your collection name
-        console.log(collection)
+        console.log("Updating password...");
 
-        const filter = { user: req.body.username };
-        console.log(filter)
+        const filter = { username: req.body.username };
+        console.log("Filter:", filter);
+
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
         const update = {
-            $set: { password: req.body.password }, // Replace 'password' with the field that represents the password in your user document
+            $set: { password: hashedPassword },
         };
-        console.log(update)
+        console.log("Update:", update);
 
-        const result = await collection.updateOne(filter, update);
-        console.log(result)
+        const result = await userCollection.updateOne(filter, update);
+        console.log("Update Result:", result);
 
         if (result.modifiedCount === 1) {
+            console.log('Successfully updated password.');
             res.status(200).json({ message: 'Password updated successfully' });
         } else {
+            console.log('No document matched the filter.');
             res.status(404).json({ message: 'User not found' });
         }
     } catch (error) {
         console.error('Error updating password in MongoDB:', error);
         res.status(500).json({ message: 'Server error' });
-    } finally {
-        await user.close();
     }
 });
 
