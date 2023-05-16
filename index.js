@@ -236,6 +236,7 @@ app.post('/updatepassword', async (req, res) => {
         console.log("Filter:", filter);
 
         const user = await userCollection.findOne(filter);
+        //res.render('profile', { user });
         console.log("User:", user);
 
         if (!user) {
@@ -262,7 +263,7 @@ app.post('/updatepassword', async (req, res) => {
         }
     } catch (error) {
         console.error('Error updating password in MongoDB:', error);
-        res.status(500).json({ message: 'Server error' });
+        return res.status(500).json({ message: 'Server error' });
     }
 });
 
@@ -325,6 +326,16 @@ app.get('/profile', sessionValidation, async (req, res) => {
     }
 });
 
+app.get('/password', async (req, res) => {
+    try {
+        const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
+        res.render('password', { user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error...!' });
+    }
+});
+
 //code obtained with help from ChatGPT
 
 
@@ -357,7 +368,7 @@ app.get('/thankyou', (req, res) => {
 });
 
 app.get('/password', (req, res) => {
-    res.render('password');
+    res.render('password', { user });
 });
 
 app.get('/home', (req, res) => {
