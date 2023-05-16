@@ -264,6 +264,10 @@ app.get('/home', (req, res) => {
     res.render('home');
 });
 
+app.get('/profile', (req, res) => {
+    res.render('profile');
+});
+
 app.get('/questions', (req, res) => {
     res.render('questions');
 });
