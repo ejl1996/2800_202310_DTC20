@@ -3,6 +3,17 @@
     <head>
         <title>Profile</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 1000,
+                    'GRAD' 0,
+                    'opsz' 48
+            }
+        </style>s
     </head>
 
     <body>
@@ -16,7 +27,10 @@
                                 <div class="mb-md-5 mt-md-4 pb-5">
                                     <h1>User Account</h1>
                                     <br>
-                                    <br>
+                                    <span class="material-symbols-outlined"
+                                        style="display: block; width: 400px; height: 50px;">
+                                        account_circle
+                                    </span>
                                     <p>Username: <%= user.username %>
                                     </p>
                                     <p>Email: <%= user.email %>

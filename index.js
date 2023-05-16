@@ -247,6 +247,10 @@ app.get('/mmse2', (req, res) => {
     res.render('mmse2');
 });
 
+app.get('/revise', (req, res) => {
+    res.render('revise');
+});
+
 app.get('/signup', (req, res) => {
     res.render('signup');
 });
@@ -255,8 +259,8 @@ app.get('/thankyou', (req, res) => {
     res.render('thankyou');
 });
 
-app.get('/questions', (req, res) => {
-    res.render('questions');
+app.get('/password', (req, res) => {
+    res.render('password');
 });
 
 
