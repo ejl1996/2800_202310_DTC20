@@ -9,6 +9,7 @@ const express = require('express');
 const session = require('express-session');
 const ObjectId = require('mongodb').ObjectId;
 const MongoStore = require('connect-mongo');
+const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 const port = process.env.PORT || 4000;
@@ -25,12 +26,25 @@ const mongodb_password = process.env.MONGODB_PASSWORD;
 const mongodb_database = process.env.MONGODB_DATABASE;
 const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
 
+const mongoURL = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`;
+
 console.log(mongodb_password)
 console.log(mongodb_user)
 const node_session_secret = process.env.NODE_SESSION_SECRET;
 /* END secret section */
 
 var { database } = include('databaseConnection');
+
+MongoClient.connect(mongoURL, (err, client) => {
+    if (err) {
+        console.error('Error connecting to MongoDB:', err);
+        return;
+    }
+
+    const database = client.db(mongodb_database);
+    // Continue with your code that depends on the database connection
+});
+
 
 const userCollection = database.db(mongodb_database).collection('users');
 
@@ -215,13 +229,13 @@ app.post('/submitUser', async (req, res) => {
 app.post('/updatepassword', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
-        const collection = database.db(mongodb_database).collection('users'); // Use the correct database connection
-        console.log("Collection:", collection);
-
+        const userCollection = database.db(mongodb_database).collection('users'); // Use the correct database connection
+        console.log("Collection:", userCollection);
+        /////THIS LINE
         const filter = { username: req.body.username };
         console.log("Filter:", filter);
 
-        const user = await collection.findOne(filter);
+        const user = await userCollection.findOne(filter);
         console.log("User:", user);
 
         if (!user) {
@@ -236,7 +250,7 @@ app.post('/updatepassword', async (req, res) => {
         console.log("Update:", update);
 
         console.log("Updating document...");
-        const result = await collection.updateOne(filter, update);
+        const result = await userCollection.updateOne(filter, update);
         console.log("Update Result:", result);
 
         if (result.modifiedCount === 1) {
