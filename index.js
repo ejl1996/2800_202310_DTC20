@@ -183,7 +183,7 @@ app.post('/signup', async (req, res) => {
         password: hashedPassword,
         number: number,
     });
-
+    //const result = user.findOne
     res.redirect('login');
 });
 
