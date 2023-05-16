@@ -362,6 +362,10 @@ app.get('/number', (req, res) => {
     res.render('number');
 });
 
+app.get('/recommendations', (req, res) => {
+    res.render('recommendations');
+});
+
 app.get('/logout', (req, res) => {
     res.render('logout');
 });
