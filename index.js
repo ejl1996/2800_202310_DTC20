@@ -212,6 +212,71 @@ app.post('/submitUser', async (req, res) => {
     res.redirect('/home');
 });
 
+app.post('/foo', async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db('test'); // Replace with your database name
+        const collection = database.collection('users'); // Replace with your collection name
+
+        const filter = { user: req.body.username }; 
+
+        const update = {
+            $set: { password: req.body.password }, // Replace 'password' with the field that represents the password in your user document
+        };
+
+        const result = await collection.updateOne(filter, update);
+
+        if (result.modifiedCount === 1) {
+            res.status(200).json({ message: 'Password updated successfully' });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error updating password in MongoDB:', error);
+        res.status(500).json({ message: 'Server error' });
+    } finally {
+        await client.close();
+    }
+});
+
+app.post('/submitUser', async (req, res) => {
+    var name = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    if (password == "" || name == "") {
+        res.redirect("/login");
+        return;
+    }
+
+    const schema = Joi.object(
+        {
+            name: Joi.string().regex(/^[a-zA-Z ]+$/).max(20).required(),
+            email: Joi.string().email().max(50).required(),
+            password: Joi.string().max(20).required()
+        }
+    );
+
+    const validationResult = schema.validate({ name, email, password });
+
+    if (validationResult.error != null) {
+        console.log("Validation error: ", validationResult.error.details[0].message);
+        res.redirect("/signUp?invalid=true");
+        return;
+    }
+
+    var hashedPassword = await bcrypt.hashSync(password, saltRounds);
+
+    await userCollection.insertOne({ name: name, email: email, password: hashedPassword });
+
+    req.session.authenticated = true;
+    req.session.email = email;
+    req.session.cookie.maxAge = expireTime;
+    req.session.name = name;
+
+    res.redirect('/home');
+});
+
 app.get('/fetchProfile', sessionValidation, async (req, res) => {
     try {
         const user = await userCollection.findOne({ username: req.session.username }, { projection: { name: 1, username: 1, email: 1, number: 1 } });
@@ -263,7 +328,6 @@ app.get('/password', (req, res) => {
     res.render('password');
 });
 
-
 app.get('/home', (req, res) => {
     res.render('home');
 });
@@ -274,6 +338,10 @@ app.get('/profile', (req, res) => {
 
 app.get('/questions', (req, res) => {
     res.render('questions');
+});
+
+app.get('/number', (req, res) => {
+    res.render('number');
 });
 
 app.get('/logout', (req, res) => {
