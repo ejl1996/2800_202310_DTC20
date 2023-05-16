@@ -46,65 +46,64 @@
         <!---MMME Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf -->
         <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse2" method="post">
-            <p class="fw-bold">3. What is the name of this image?</p>
-            <img src="10155.jpg" alt="wristwatch">
+        <form class="bg-white px-4" action="/mmse" method="post">
+            <p class="fw-bold">1. Which of the following is NOT a school supply?</p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
                 <label class="form-check-label" for="radioExample1">
-                    Wristwatch
+                    Pencil
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
                 <label class="form-check-label" for="radioExample2">
-                    Airplane
+                    Notebook
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
                 <label class="form-check-label" for="radioExample3">
-                    Handle
+                    Backpack
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
                 <label class="form-check-label" for="radioExample4">
-                    Bracelet
+                    Chair
                 </label>
             </div>
             <p class="fw-bold">
-                4. Which of the following is not a weekday?
+                2. Which of the following statements seems out of place?
             </p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
                 <label class="form-check-label" for="radioExample1">
-                    Monday
+                    Mix dry ingredients.
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
                 <label class="form-check-label" for="radioExample2">
-                    Wednesday
+                    Spoon batter onto skillet or griddle.
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
                 <label class="form-check-label" for="radioExample3">
-                    Friday
+                    Serve immediately, or keep warm in oven.
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
                 <label class="form-check-label" for="radioExample4">
-                    Sunday
+                    Put on a rain jacket and boots.
                 </label>
             </div>
             <div class="buttondiv">
                 <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
                 #778251;"><a href="/mmse" style="font-size: 20px; color:white;">Previous</a></button>
                 <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                            #778251;"><a href="/mmse3" style="font-size: 20px; color:white;">Next</a></button>
+                            #778251;"><a href="/questions" style="font-size: 20px; color:white;">Next</a></button>
             </div>
         </form>
         </div>

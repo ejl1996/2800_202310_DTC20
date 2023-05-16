@@ -221,6 +221,14 @@ app.post('/updatepassword', async (req, res) => {
         const filter = { username: req.body.username };
         console.log("Filter:", filter);
 
+        const user = await collection.findOne(filter);
+        console.log("User:", user);
+
+        if (!user) {
+            console.log('No user found.');
+            return res.status(404).json({ message: 'User not found' });
+        }
+
         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds); // Use async bcrypt function
         const update = {
             $set: { password: hashedPassword },
@@ -316,6 +324,10 @@ app.get('/mmse', (req, res) => {
 
 app.get('/mmse2', (req, res) => {
     res.render('mmse2');
+});
+
+app.get('/mmse3', (req, res) => {
+    res.render('mmse3');
 });
 
 app.get('/revise', (req, res) => {
