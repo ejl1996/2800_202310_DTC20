@@ -212,19 +212,24 @@ app.post('/submitUser', async (req, res) => {
     res.redirect('/home');
 });
 
-app.post('/foo', async (req, res) => {
+app.post('/updatepassword', async (req, res) => {
     try {
-        await client.connect();
-        const database = client.db('test'); // Replace with your database name
+        await user.connect();
+        const database = user.db('test'); // Replace with your database name
+        console.log(database)
         const collection = database.collection('users'); // Replace with your collection name
+        console.log(collection)
 
-        const filter = { user: req.body.username }; 
+        const filter = { user: req.body.username };
+        console.log(filter)
 
         const update = {
             $set: { password: req.body.password }, // Replace 'password' with the field that represents the password in your user document
         };
+        console.log(update)
 
         const result = await collection.updateOne(filter, update);
+        console.log(result)
 
         if (result.modifiedCount === 1) {
             res.status(200).json({ message: 'Password updated successfully' });
@@ -235,7 +240,7 @@ app.post('/foo', async (req, res) => {
         console.error('Error updating password in MongoDB:', error);
         res.status(500).json({ message: 'Server error' });
     } finally {
-        await client.close();
+        await user.close();
     }
 });
 
