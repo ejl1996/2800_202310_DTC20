@@ -213,20 +213,22 @@ app.post('/submitUser', async (req, res) => {
 });
 
 app.post('/updatepassword', async (req, res) => {
+    console.log("Need this to show up or this route is not being hit.");
     try {
-        console.log("Updating password...");
+        const collection = database.db(mongodb_database).collection('users'); // Use the correct database connection
+        console.log("Collection:", collection);
 
         const filter = { username: req.body.username };
         console.log("Filter:", filter);
 
-        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds); // Use async bcrypt function
         const update = {
             $set: { password: hashedPassword },
         };
         console.log("Update:", update);
 
-        const result = await userCollection.updateOne(filter, update);
+        console.log("Updating document...");
+        const result = await collection.updateOne(filter, update);
         console.log("Update Result:", result);
 
         if (result.modifiedCount === 1) {
@@ -241,6 +243,7 @@ app.post('/updatepassword', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 app.post('/submitUser', async (req, res) => {
     var name = req.body.username;
