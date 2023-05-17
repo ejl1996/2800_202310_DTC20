@@ -16,6 +16,38 @@
                 background-position: center;
                 height: 100vh;
             }
+
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(1080deg);
+                }
+            }
+
+            .rotate-animation {
+                animation: rotate 3s ease-in-out;
+            }
+
+            @keyframes jump {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-20px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            .jump-animation {
+                animation: jump 0.5s ease-in-out infinite;
+            }
         </style>
     </head>
 
@@ -31,7 +63,47 @@
                                 <div class="mb-md-5 mt-md-4 pb-5">
                                     <form class="form-signup" action="/login" method="post">
 
-                                        <h1 class="fw-bold mb-2 text-uppercase">Login</h1>
+                                        <h1 class="fw-bold mb-2 text-uppercase" id="login">Login</h1>
+                                        <script>
+                                            // Get a reference to the login element
+                                            var accountElement = document.getElementById("login");
+
+                                            // Initialize a click counter
+                                            var clickCount = 0;
+
+                                            // Add event listener to the account element
+                                            accountElement.addEventListener("click", function () {
+                                                clickCount++;
+
+                                                // Check if the element has been clicked twice
+                                                if (clickCount === 2) {
+                                                    // Add a CSS class to trigger the jump animation
+                                                    accountElement.classList.add("jump-animation");
+
+                                                    // Generate a random color
+                                                    var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+                                                    // Change the text color to the random color
+                                                    accountElement.style.color = randomColor;
+
+                                                    // Change the font size to a bigger size
+                                                    accountElement.style.fontSize = "3em";
+
+                                                    // Change the font style
+                                                    accountElement.style.fontFamily = "Brush-script";
+
+                                                    // After a delay, remove the CSS class and reset the text color
+                                                    setTimeout(function () {
+                                                        accountElement.classList.remove("jump-animation");
+                                                        accountElement.style.color = "";
+                                                        accountElement.style.fontFamily = "";
+                                                    }, 3000); // Delay for 3 seconds
+
+                                                    // Reset the click count
+                                                    clickCount = 0;
+                                                }
+                                            });
+                                        </script>
                                         <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Please enter
                                             your login ID and password!</p>
                                         <br>
