@@ -53,6 +53,8 @@ app.set('view engine', 'ejs');
 //req.body need this to parse (app.post) ex. req.body.username
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.static('./public'));
+
 // initially was /session, now /test in mongoURL
 var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
@@ -268,43 +270,46 @@ app.post('/updatepassword', async (req, res) => {
 });
 
 
-app.post('/submitUser', async (req, res) => {
-    var name = req.body.username;
-    var email = req.body.email;
-    var password = req.body.password;
+app.post('/updatenumber', async (req, res) => {
+    console.log("Need this to show up or this route is not being hit.");
+    try {
+        const userCollection = database.db(mongodb_database).collection('users'); // Use the correct database connection
+        console.log("Collection:", userCollection);
+        /////THIS LINE
+        const filter = { username: req.body.username };
+        console.log("Filter:", filter);
 
-    if (password == "" || name == "") {
-        res.redirect("/login");
-        return;
-    }
+        const user = await userCollection.findOne(filter);
+        //res.render('profile', { user });
+        console.log("User:", user);
 
-    const schema = Joi.object(
-        {
-            name: Joi.string().regex(/^[a-zA-Z ]+$/).max(20).required(),
-            email: Joi.string().email().max(50).required(),
-            password: Joi.string().max(20).required()
+        if (!user) {
+            console.log('No user found.');
+            return res.status(404).json({ message: 'User not found' });
         }
-    );
+        const newNumber = req.body.number;
+        const update = {
+            $set: { number: req.body.number },
+        };
+        console.log("Update:", update);
 
-    const validationResult = schema.validate({ name, email, password });
+        console.log("Updating document...");
+        const result = await userCollection.updateOne(filter, update);
+        console.log("Update Result:", result);
 
-    if (validationResult.error != null) {
-        console.log("Validation error: ", validationResult.error.details[0].message);
-        res.redirect("/signUp?invalid=true");
-        return;
+        if (result.modifiedCount === 1) {
+            console.log('Successfully updated number.');
+            res.status(200).json({ message: 'Number updated successfully' });
+        } else {
+            console.log('No document matched the filter.');
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error updating number in MongoDB:', error);
+        return res.status(500).json({ message: 'Server error' });
     }
-
-    var hashedPassword = await bcrypt.hashSync(password, saltRounds);
-
-    await userCollection.insertOne({ name: name, email: email, password: hashedPassword });
-
-    req.session.authenticated = true;
-    req.session.email = email;
-    req.session.cookie.maxAge = expireTime;
-    req.session.name = name;
-
-    res.redirect('/home');
 });
+
 
 app.get('/fetchProfile', sessionValidation, async (req, res) => {
     try {
@@ -330,6 +335,16 @@ app.get('/password', async (req, res) => {
     try {
         const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
         res.render('password', { user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error...!' });
+    }
+});
+
+app.get('/number', async (req, res) => {
+    try {
+        const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
+        res.render('number', { user });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error...!' });
@@ -384,7 +399,7 @@ app.get('/questions', (req, res) => {
 });
 
 app.get('/number', (req, res) => {
-    res.render('number');
+    res.render('number', { user });
 });
 
 app.get('/recommendations', (req, res) => {
