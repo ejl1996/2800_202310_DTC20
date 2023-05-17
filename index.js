@@ -152,6 +152,79 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+//post for mmse 
+app.post('/mmse', (req, res) => {
+    // Extract the question data from the request body
+    const { year, country, image, weekday, ball, subject, ethnic, algebra, spelling, order, multiples, math, date, recipe, cost } = req.body;
+
+    // Scoring system
+    const scoringSystem = [
+        { question: 'year', correctAnswer: '2023', score: 1 },
+        { question: 'country', correctAnswer: 'Canada', score: 1 },
+        { question: 'image', correctAnswer: 'Wristwatch', score: 1 },
+        { question: 'weekday', correctAnswer: 'Sunday', score: 1 },
+        { question: 'ball', correctAnswer: 'Basketball', score: 1 },
+        { question: 'subject', correctAnswer: 'Bracelet', score: 1 },
+        { question: 'ethnic', correctAnswer: 'France', score: 1 },
+        { question: 'algebra', correctAnswer: '20', score: 1 },
+        { question: 'spelling', correctAnswer: 'zucchini', score: 1 },
+        { question: 'order', correctAnswer: 'pin, computer, house, Jupiter', score: 1 },
+        { question: 'multiples', correctAnswer: '15, 30, 55, 70', score: 1 },
+        { question: 'math', correctAnswer: '100', score: 1 },
+        { question: 'date', correctAnswer: 'There are 12 months in a year.', score: 1 },
+        { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 },
+        { question: 'cost', correctAnswer: '100 cents', score: 1 },
+    ];
+
+    // Calculate the score
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Create a new MongoDB client
+    const client = new MongoClient(mongoURL);
+
+    // Connect to the MongoDB server
+    client.connect((err) => {
+        if (err) {
+            console.error('Error connecting to MongoDB:', err);
+            res.sendStatus(500);
+            return;
+        }
+
+        // Get a reference to the database
+        const db = client.db(mongodb_database);
+
+        // Get a reference to the collection
+        const collection = db.collection('questions');
+
+        // Create a document with the question data and score
+        const document = { year, country, score };
+
+        // Insert the document into the collection
+        collection.insertOne(document, (err, result) => {
+            if (err) {
+                console.error('Error inserting document:', err);
+                res.sendStatus(500);
+                return;
+            }
+
+            console.log('Document inserted successfully:', result.insertedId);
+            res.sendStatus(200);
+        });
+
+        // Close the MongoDB client
+        client.close();
+    });
+});
+
+// ...
+
+
+
 // post for signup
 app.post('/signup', async (req, res) => {
     const username = req.body.username;
@@ -389,6 +462,10 @@ app.get('/mmse7', (req, res) => {
 
 app.get('/mmse8', (req, res) => {
     res.render('mmse8');
+});
+
+app.get('/score', (req, res) => {
+    res.render('score');
 });
 
 app.get('/revise', (req, res) => {
