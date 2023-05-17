@@ -202,7 +202,7 @@ app.post('/mmse', (req, res) => {
         const collection = db.collection('questions');
 
         // Create a document with the question data and score
-        const document = { year, country, score };
+        const document = { year, country, image, weekday, ball, subject, ethnic, algebra, spelling, order, multiples, math, date, recipe, cost };
 
         // Insert the document into the collection
         collection.insertOne(document, (err, result) => {
