@@ -53,38 +53,53 @@
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse3" method="post">
+        <form class="bg-white px-4" action="/mmse" method="post">
             <p class="fw-bold">5. What is the name of this image?</p>
-            <img src="pencil.gif" style="align: center" alt="pencil">
+            <img src="basketball.gif" style="align: center" alt="basketball ">
+            <br>
+            <br>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
                 <label class="form-check-label" for="radioExample1">
-                    Pen
-                </label>
-            </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    Pencil
+                    Volleyball
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
                 <label class="form-check-label" for="radioExample3">
-                    Rainbow
+                    Basketball
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
                 <label class="form-check-label" for="radioExample4">
-                    Notepad
+                    Dodgeball
+                </label>
+            </div>
+            <p class="fw-bold">6. Which of the following does not belong?:</p>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
+                <label class="form-check-label" for="radioExample1">
+                    Algebra
+                </label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
+                <label class="form-check-label" for="radioExample2">
+                    Philosophy
+                </label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
+                <label class="form-check-label" for="radioExample4">
+                    Bracelet
                 </label>
             </div>
             <div class="buttondiv">
                 <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                plum;"><a href="/mmse2" style="font-size: 20px; color:white;">Previous</a></button>
+                            plum;"><a href="/mmse2" style="font-size: 20px; color:white;">Previous</a></button>
                 <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                            plum;"><a href="/questions" style="font-size: 20px; color:white;">Next</a></button>
+                                        plum;"><a href="/mmse4" style="font-size: 20px; color:white;">Next</a></button>
             </div>
         </form>
         </div>

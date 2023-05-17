@@ -18,7 +18,6 @@
 
             .btn5 {
                 background-color: plum;
-                /* Green */
                 border: none;
                 color: white;
                 align: center;
@@ -46,69 +45,41 @@
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmsel" method="post">
-            <p class="fw-bold">1. Which choice do not contain multiples of each other?:
+        <form class="bg-white px-4" action="/mmse" method="post">
+            <p class="fw-bold">12. An apple is 40 cents, banana 60 cents, and grapefruit is 80 cents. How much is a
+                pear?
             </p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
                 <label class="form-check-label" for="radioExample1">
-                    7, 14, 21, 28
+                    90 cents
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
                 <label class="form-check-label" for="radioExample2">
-                    3, 6, 9, 12
+                    100 cents
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
                 <label class="form-check-label" for="radioExample3">
-                    12, 24, 36, 48
+                    120 cents
                 </label>
             </div>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
                 <label class="form-check-label" for="radioExample4">
-                    15, 30, 55, 70
-                </label>
-            </div>
-            <p class="fw-bold">
-                2. What is 5(5 + 5) x 2?
-            </p>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    50
-                </label>
-            </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    100
-                </label>
-            </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    150
-                </label>
-            </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    200
+                    140 cents
                 </label>
             </div>
             <div class="buttondiv">
                 <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                            plum;"><a href="/home"
-                        style="font-size: 20px; color:white;">Previous</a></button>
+                plum;"><a href="/mmse7" style="font-size: 20px; color:white;">Previous</a></button>
                 <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                            plum;"><a href="/mmse2l" style="font-size: 20px; color:white;">Next</a></button>
+                            plum;"><a href="/questions" style="font-size: 20px; color:white;">Next</a></button>
             </div>
         </form>
-        </div>
         </div>
     </body>
 

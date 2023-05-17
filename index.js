@@ -371,6 +371,26 @@ app.get('/mmse3', (req, res) => {
     res.render('mmse3');
 });
 
+app.get('/mmse4', (req, res) => {
+    res.render('mmse4');
+});
+
+app.get('/mmse5', (req, res) => {
+    res.render('mmse5');
+});
+
+app.get('/mmse6', (req, res) => {
+    res.render('mmse6');
+});
+
+app.get('/mmse7', (req, res) => {
+    res.render('mmse7');
+});
+
+app.get('/mmse8', (req, res) => {
+    res.render('mmse8');
+});
+
 app.get('/revise', (req, res) => {
     res.render('revise');
 });
