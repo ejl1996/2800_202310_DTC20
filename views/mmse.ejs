@@ -43,72 +43,55 @@
 
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
-        <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse" method="post">
-            <p class="fw-bold">1. What year is it?
-            </p>
+            <p class="fw-bold">1. What year is it?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    2022
-                </label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear1" value="2022">
+                <label class="form-check-label" for="radioYear1">2022</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    2023
-                </label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear2" value="2023">
+                <label class="form-check-label" for="radioYear2">2023</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    2024
-                </label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear3" value="2024">
+                <label class="form-check-label" for="radioYear3">2024</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    2025
-                </label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear4" value="2025">
+                <label class="form-check-label" for="radioYear4">2025</label>
             </div>
-            <p class="fw-bold">
-                2. Which of the following is a country in North America?
-            </p>
+
+            <p class="fw-bold">2. Which of the following is a country in North America?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    Austria
-                </label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry1" value="Austria">
+                <label class="form-check-label" for="radioCountry1">Austria</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    Canada
-                </label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry2" value="Canada">
+                <label class="form-check-label" for="radioCountry2">Canada</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    Italy
-                </label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry3" value="Italy">
+                <label class="form-check-label" for="radioCountry3">Italy</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    Austrlia
-                </label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry4" value="Australia">
+                <label class="form-check-label" for="radioCountry4">Australia</label>
             </div>
+
             <div class="buttondiv">
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                            plum;"><a href="/home"
-                        style="font-size: 20px; color:white;">Previous</a></button>
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                            plum;"><a href="/mmse2" style="font-size: 20px; color:white;">Next</a></button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/home" style="font-size: 20px; color:white;">Previous</a>
+                </button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse2" style="font-size: 20px; color:white;">Next</a>
+                </button>
             </div>
         </form>
-        </div>
-        </div>
     </body>
 
     </html>

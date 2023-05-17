@@ -213,16 +213,32 @@ app.post('/mmse', (req, res) => {
             }
 
             console.log('Document inserted successfully:', result.insertedId);
-            res.sendStatus(200);
-        });
+            // Determine the next page to redirect to based on the current sequence
+            const sequence = req.path.substr(5); // Extract the sequence number from the path
+            let nextPage;
+            if (sequence === '2') {
+                nextPage = 'mmse3';
+            } else if (sequence === '3') {
+                nextPage = 'mmse4';
+            } else if (sequence === '4') {
+                nextPage = 'mmse5';
+            } else if (sequence === '5') {
+                nextPage = 'mmse6';
+            } else if (sequence === '6') {
+                nextPage = 'mmse7';
+            } else if (sequence === '7') {
+                nextPage = 'mmse8';
+            } else {
+                nextPage = 'mmse'; // Default to the first sequence if the current sequence is not recognized
+            }
 
-        // Close the MongoDB client
-        client.close();
+            res.redirect(nextPage);
+
+            // Close the MongoDB client
+            client.close();
+        });
     });
 });
-
-// ...
-
 
 
 // post for signup

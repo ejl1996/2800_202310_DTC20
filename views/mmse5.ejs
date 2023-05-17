@@ -43,72 +43,60 @@
 
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
-        <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse" method="post">
-            <p class="fw-bold">
-                9. What is the correct spelling of this word: zuchini?
-            </p>
+            <p class="fw-bold">9. What is the correct spelling of this word: zuchini?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    It is already spelled correctly
-                </label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling1" value="correct">
+                <label class="form-check-label" for="radioSpelling1">It is already spelled correctly</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    zukini
-                </label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling2" value="zukini">
+                <label class="form-check-label" for="radioSpelling2">zukini</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    zucchhini
-                </label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling3" value="zucchhini">
+                <label class="form-check-label" for="radioSpelling3">zucchhini</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    zucchini
-                </label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling4" value="zucchini">
+                <label class="form-check-label" for="radioSpelling4">zucchini</label>
             </div>
+
             <p class="fw-bold">10. Place the following by size from smallest to largest: house, pin, computer, Jupiter
             </p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    house, pin, computer, Jupiter
-                </label>
+                <input class="form-check-input" type="radio" name="size" id="radioSize1"
+                    value="house, pin, computer, Jupiter">
+                <label class="form-check-label" for="radioSize1">house, pin, computer, Jupiter</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    pin, house, computer, Jupiter
-                </label>
+                <input class="form-check-input" type="radio" name="size" id="radioSize2"
+                    value="pin, house, computer, Jupiter">
+                <label class="form-check-label" for="radioSize2">pin, house, computer, Jupiter</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    pin, computer, house, Jupiter
-                </label>
+                <input class="form-check-input" type="radio" name="size" id="radioSize3"
+                    value="pin, computer, house, Jupiter">
+                <label class="form-check-label" for="radioSize3">pin, computer, house, Jupiter</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    Jupiter, house, computer, pin
-                </label>
+                <input class="form-check-input" type="radio" name="size" id="radioSize4"
+                    value="Jupiter, house, computer, pin">
+                <label class="form-check-label" for="radioSize4">Jupiter, house, computer, pin</label>
             </div>
+
             <div class="buttondiv">
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                        plum;"><a href="/mmse4"
-                        style="font-size: 20px; color:white;">Previous</a></button>
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                                    plum;"><a href="/mmse6"
-                        style="font-size: 20px; color:white;">Next</a></button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse4" style="font-size: 20px; color:white;">Previous</a>
+                </button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse6" style="font-size: 20px; color:white;">Next</a>
+                </button>
             </div>
         </form>
-        </div>
     </body>
 
     </html>

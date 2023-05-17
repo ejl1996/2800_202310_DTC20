@@ -44,72 +44,58 @@
 
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
-        <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse" method="post">
-            <p class="fw-bold">
-                7. Which of the following is not an ethnic group?
-            </p>
+            <p class="fw-bold">7. Which of the following is not an ethnic group?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    Canadian
-                </label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic1" value="Canadian">
+                <label class="form-check-label" for="radioEthnic1">Canadian</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    American
-                </label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic2" value="American">
+                <label class="form-check-label" for="radioEthnic2">American</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    Korean
-                </label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic3" value="Korean">
+                <label class="form-check-label" for="radioEthnic3">Korean</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    France
-                </label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic4" value="French">
+                <label class="form-check-label" for="radioEthnic4">French</label>
             </div>
+
             <br>
+
             <p class="fw-bold">8. What is (5 + 5) x 2?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
-                    10
-                </label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath1" value="10">
+                <label class="form-check-label" for="radioMath1">10</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
-                    20
-                </label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath2" value="20">
+                <label class="form-check-label" for="radioMath2">20</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
-                    30
-                </label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath3" value="30">
+                <label class="form-check-label" for="radioMath3">30</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
-                    40
-                </label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath4" value="40">
+                <label class="form-check-label" for="radioMath4">40</label>
             </div>
+
             <div class="buttondiv">
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                        plum;"><a href="/mmse3"
-                        style="font-size: 20px; color:white;">Previous</a></button>
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                                    plum;"><a href="/mmse5"
-                        style="font-size: 20px; color:white;">Next</a></button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse3" style="font-size: 20px; color:white;">Previous</a>
+                </button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse5" style="font-size: 20px; color:white;">Next</a>
+                </button>
             </div>
         </form>
-        </div>
+
     </body>
 
     </html>

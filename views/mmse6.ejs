@@ -43,72 +43,73 @@
 
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
-        <br>
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse" method="post">
-            <p class="fw-bold">11. Which choice does not contain multiples of each other?:
-            </p>
+            <p class="fw-bold">11. Which choice does not contain multiples of each other?:</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
+                <input class="form-check-input" type="radio" name="exampleForm11" id="radioExample11"
+                    value="7, 14, 21, 28">
+                <label class="form-check-label" for="radioExample11">
                     7, 14, 21, 28
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
+                <input class="form-check-input" type="radio" name="exampleForm11" id="radioExample12"
+                    value="3, 6, 9, 12">
+                <label class="form-check-label" for="radioExample12">
                     3, 6, 9, 12
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
+                <input class="form-check-input" type="radio" name="exampleForm11" id="radioExample13"
+                    value="12, 24, 36, 48">
+                <label class="form-check-label" for="radioExample13">
                     12, 24, 36, 48
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
+                <input class="form-check-input" type="radio" name="exampleForm11" id="radioExample14"
+                    value="15, 30, 55, 70">
+                <label class="form-check-label" for="radioExample14">
                     15, 30, 55, 70
                 </label>
             </div>
-            <p class="fw-bold">
-                12. What is 5(5 + 5) x 2?
-            </p>
+            <p class="fw-bold">12. What is 5(5 + 5) x 2?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-                <label class="form-check-label" for="radioExample1">
+                <input class="form-check-input" type="radio" name="exampleForm12" id="radioExample21" value="50">
+                <label class="form-check-label" for="radioExample21">
                     50
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-                <label class="form-check-label" for="radioExample2">
+                <input class="form-check-input" type="radio" name="exampleForm12" id="radioExample22" value="100">
+                <label class="form-check-label" for="radioExample22">
                     100
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-                <label class="form-check-label" for="radioExample3">
+                <input class="form-check-input" type="radio" name="exampleForm12" id="radioExample23" value="150">
+                <label class="form-check-label" for="radioExample23">
                     150
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" />
-                <label class="form-check-label" for="radioExample4">
+                <input class="form-check-input" type="radio" name="exampleForm12" id="radioExample24" value="200">
+                <label class="form-check-label" for="radioExample24">
                     200
                 </label>
             </div>
             <div class="buttondiv">
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                                            plum;"><a href="/mmse5"
-                        style="font-size: 20px; color:white;">Previous</a></button>
-                <button class="btn btn-outline-light btn-lg px-5" type="logout" style="font-size: 25px; background-color:
-                            plum;"><a href="/mmse7" style="font-size: 20px; color:white;">Next</a></button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse5" style="font-size: 20px; color:white;">Previous</a>
+                </button>
+                <button class="btn btn-outline-light btn-lg px-5" type="logout"
+                    style="font-size: 25px; background-color: plum;">
+                    <a href="/mmse7" style="font-size: 20px; color:white;">Next</a>
+                </button>
             </div>
         </form>
-        </div>
-        </div>
     </body>
 
     </html>
