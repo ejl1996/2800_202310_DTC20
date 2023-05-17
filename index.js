@@ -233,12 +233,11 @@ app.post('/updatepassword', async (req, res) => {
     try {
         const userCollection = database.db(mongodb_database).collection('users'); // Use the correct database connection
         console.log("Collection:", userCollection);
-        /////THIS LINE
+
         const filter = { username: req.body.username };
         console.log("Filter:", filter);
 
         const user = await userCollection.findOne(filter);
-        //res.render('profile', { user });
         console.log("User:", user);
 
         if (!user) {
@@ -258,7 +257,8 @@ app.post('/updatepassword', async (req, res) => {
 
         if (result.modifiedCount === 1) {
             console.log('Successfully updated password.');
-            res.status(200).json({ message: 'Password updated successfully' });
+            res.render("home.ejs");
+            //res.status(200).json({ message: 'Password updated successfully' });
         } else {
             console.log('No document matched the filter.');
             res.status(404).json({ message: 'User not found' });
@@ -273,7 +273,7 @@ app.post('/updatepassword', async (req, res) => {
 app.post('/updatenumber', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
-        const userCollection = database.db(mongodb_database).collection('users'); // Use the correct database connection
+        const userCollection = await database.db(mongodb_database).collection('users'); // Use the correct database connection
         console.log("Collection:", userCollection);
         /////THIS LINE
         const filter = { username: req.body.username };
@@ -299,7 +299,8 @@ app.post('/updatenumber', async (req, res) => {
 
         if (result.modifiedCount === 1) {
             console.log('Successfully updated number.');
-            res.status(200).json({ message: 'Number updated successfully' });
+            res.render("home.ejs");
+            //res.status(200).json({ message: 'Number updated successfully' });
         } else {
             console.log('No document matched the filter.');
             res.status(404).json({ message: 'User not found' });
@@ -341,15 +342,15 @@ app.get('/password', async (req, res) => {
     }
 });
 
-app.get('/number', async (req, res) => {
-    try {
-        const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
-        res.render('number', { user });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Error...!' });
-    }
-});
+// app.get('/number', async (req, res) => {
+//     try {
+//         const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
+//         res.render('number', { user });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: 'Error...!' });
+//     }
+// });
 
 //code obtained with help from ChatGPT
 
@@ -399,6 +400,7 @@ app.get('/questions', (req, res) => {
 });
 
 app.get('/number', (req, res) => {
+    const user = userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
     res.render('number', { user });
 });
 
