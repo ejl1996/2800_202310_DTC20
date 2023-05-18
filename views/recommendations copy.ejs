@@ -1,4 +1,4 @@
-<%- include("templates/header", {headerMessage: "Thank You" }) %>
+<%- include("templates/header", {headerMessage: "Results" }) %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -9,17 +9,41 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-
         KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <title>Document</title>
+        <title></title>
         <style>
-            body {
-                background-position: center;
-                height: 100vh;
+            .text-center mb-4 {
+                color: plum;
+            }
+
+            .buttondiv {
+                text-align: center;
+            }
+
+            .btn5 {
+                background-color: plum;
+                border: none;
+                color: white;
+                align: center;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+
+            .form-check-input {
+                border-color: plum;
+                border: 4px solid;
+            }
+
+            .pill {
+                width: 100%;
             }
         </style>
     </head>
 
     <body>
-        <!--This code was on https://mdbootstrap.com/docs/standard/extended/login/ with adjustments and modifications made by Emma Lee -->
+        <!-- Questions from PubMed, NCBI and Alzheimer's Association page. More details: https://docs.google.com/document/d/1OxY4iJ6J5bMsL8MlZ4JZrPZkv2_HqtU5h7j6wU8ggk8/edit?usp=sharing -->
         <section class="vh-100 gradient-custom">
             <div class="container py-5 h-100">
                 <div class=" row d-flex justify-content-center align-items-center h-100">
@@ -29,14 +53,18 @@
 
                                 <div class="mb-md-5 mt-md-4 pb-5">
 
-                                    <h1 class="fw-bold mb-2 stext-uppercase">Thank you for completing the questionnaire.
-                                    </h1>
+                                    <h1 class="fw-bold mb-2 text-uppercase">Results:</h1>
+                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">You are at risk
+                                        for dementia. </p>
+
                                     <br>
                                     <br>
-                                    <h1 class="fw-bold mb-2 stext-uppercase">Your Score is <%= totalScore %> out of 15.
-                                    </h1>
+                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
+                                        manage your dementia by the Alzheimer Society of Canada:</p>
+                                    <br>
                                     <p class="text-white-50 mb-5" style="color: black; font-size: 30px">
-                                    </p>
+                                        https://alzheimer.ca/en/help-support</p>
+
                                     <br>
                                     <br>
                                     <br>
@@ -44,8 +72,9 @@
                                     <br>
                                     <br>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                        style="font-size: 25px;"><a href="/questions"
-                                            style="font-size: 20px; color:white;">Screening Questions</a></button>
+                                        style="font-size: 25px;"><a href="/home"
+                                            style="font-size: 20px; color:white;">Go
+                                            Back Home</a></button>
                                 </div>
                             </div>
                         </div>
@@ -54,5 +83,4 @@
         </section>
     </body>
 
-    </html>
     <%- include("templates/footer") %>
