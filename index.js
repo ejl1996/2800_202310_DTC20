@@ -340,9 +340,9 @@ app.post('/signup', async (req, res) => {
     // validate the input style for username, email and password using Joi
     const schema = Joi.object({
         username: Joi.string().alphanum().max(20).required(),
-        email: Joi.string().max(20).required(),
-        password: Joi.string().max(20).required(),
-        number: Joi.string().alphanum().max(20).required(),
+        email: Joi.string().max(254).required(),
+        password: Joi.string().alphanum().max(20).required(),
+        number: Joi.number().integer().max(999999999999999).required(),
     });
 
     // validate the input
@@ -404,6 +404,10 @@ app.post('/submitUser', async (req, res) => {
     req.session.name = name;
 
     res.redirect('/home');
+});
+
+app.post('/revise', (req, res) => {
+    res.render('password');
 });
 
 app.post('/updatepassword', async (req, res) => {
@@ -519,8 +523,6 @@ app.get('/password', async (req, res) => {
         res.status(500).json({ message: 'Error...!' });
     }
 });
-
-
 
 app.get('/email', (req, res) => {
     res.render('email');

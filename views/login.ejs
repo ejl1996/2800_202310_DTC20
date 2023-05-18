@@ -51,16 +51,16 @@
     </head>
 
     <body>
-        <!--This code was on https://mdbootstrap.com/docs/standard/extended/login/ with adjustments and modifications made by Emma Lee -->
+        <!--This code was obtained from COMP 2537 Assignment 4 and ChatGPT with adjustments and modifications made by Emma Lee -->
         <section class="vh-100 gradient-custom">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
-                            <div class="card-body p-5 text-center">
+            <form class="form-signup" action="/login" method="post">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
+                                <div class="card-body p-5 text-center">
 
-                                <div class="mb-md-5 mt-md-4 pb-5">
-                                    <form class="form-signup" action="/login" method="post">
+                                    <div class="mb-md-5 mt-md-4 pb-5">
 
                                         <h1 class="fw-bold mb-2 text-uppercase" id="login">Login</h1>
 
@@ -75,10 +75,10 @@
                                             accountElement.addEventListener("click", function () {
                                                 clickCount++;
 
-                                                // Check if the element has been clicked twice
+                                                // Cause event only if clicked twice
                                                 if (clickCount === 2) {
 
-                                                    // Add a CSS class to trigger the jump animation
+                                                    // Add  CSS class to create jump animation
                                                     accountElement.classList.add("jump-animation");
 
                                                     // Generate a random color
@@ -88,25 +88,26 @@
                                                     accountElement.style.color = randomColor;
 
 
-                                                    // Change the font size to a bigger size
+                                                    // Change font size to 3em 
                                                     accountElement.style.fontSize = "3em";
 
                                                     // Change the font style
                                                     accountElement.style.fontFamily = "Brush-script";
 
-                                                    // After a delay, remove the CSS class and reset the text color
+                                                    // After 3 seconds of delay, remove the CSS class and reset the text color
                                                     setTimeout(function () {
                                                         accountElement.classList.remove("jump-animation");
                                                         accountElement.style.color = "";
                                                         accountElement.style.fontFamily = "";
-                                                    }, 3000); // Delay for 3 seconds
+                                                    }, 3000);
 
                                                     // Reset the click count
                                                     clickCount = 0;
                                                 }
                                             });
                                         </script>
-                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Please enter
+                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Please
+                                            enter
                                             your login ID and password!</p>
                                         <br>
                                         <br>
@@ -121,8 +122,13 @@
                                                 class="form-control form-control-lg" />
                                             <label class="form-label" for="password" style="font-size: 25px;"></label>
                                         </div>
-                                        <p class="small mb-5 pb-lg-2"><a href="/password"
-                                                style="font-size: 18px; color: white;">Forgot password?</a></p>
+                                        <form class="form-password" action="/revise" method="post">
+                                            <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                                style="font-size: 18px; padding: 0; border: none; background: none;">Forgot
+                                                your password?</button>
+                                        </form>
+                                        <br>
+                                        <br>
                                         <p class="small mb-5 pb-lg-2" ; style="font-size: 18px; color: white;">Don't
                                             have an account? <br><a href="/signup" class="text-white-50 fw-bold">Sign
                                                 Up</a>
@@ -130,13 +136,13 @@
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit"
                                             style="font-size: 25px;">Login</button>
                                         <br>
-                                    </form>
-                                </div>
+            </form>
+            </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
         </section>
 
