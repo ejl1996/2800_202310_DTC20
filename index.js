@@ -342,16 +342,13 @@ app.post('/mmse8', (req, res) => {
 
     // Calculate the total score
     let totalScore =
-        req.session.mmse1Score +
-        req.session.mmse2Score +
-        req.session.mmse3Score +
-        req.session.mmse4Score +
-        req.session.mmse5Score +
-        req.session.mmse6Score +
-        req.session.mmse7Score +
-        req.session.mmse8Score;
+        parseInt(req.session.mmse1Score) +
+        parseInt(req.session.mmse2Score) +
+        parseInt(req.session.mmse4Score) +
+        parseInt(req.session.mmse5Score) +
+        parseInt(req.session.mmse6Score);
+    console.log(totalScore);
     totalScore += 9;
-    console.log(totalScore)
 
     res.render('score', { totalScore: totalScore });
 });
