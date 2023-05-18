@@ -55,7 +55,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('./public'));
 
-// initially was /session, now /test in mongoURL
+// initially was session, now /test in mongoURL
 var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
     // mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
