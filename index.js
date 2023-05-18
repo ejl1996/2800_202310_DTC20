@@ -175,9 +175,9 @@ app.post('/mmse1', (req, res) => {
 
     // Store the score for mmse1 in session
     req.session.mmse1Score = score;
+    console.log(req.session.mmse1Score)
 
-    // Redirect to mmse2.ejs
-    res.redirect('mmse2');
+    res.render('mmse2');
 });
 
 app.post('/mmse2', (req, res) => {
@@ -186,8 +186,8 @@ app.post('/mmse2', (req, res) => {
 
     // Scoring system for mmse2
     const scoringSystem = [
-        { question: 'image', correctAnswer: 'Wristmatch', score: 1 },
-        { question: 'weekday', correctAnswer: 'Sunday', score: 1 },
+        { question: 'image', correctAnswer: 'Wristwatch', score: 1 },
+        { question: 'weekday', correctAnswer: 'Saturday', score: 1 },
     ];
 
     // Calculate the score for mmse2
@@ -200,9 +200,9 @@ app.post('/mmse2', (req, res) => {
 
     // Store the score for mmse2 in session
     req.session.mmse2Score = score;
+    console.log(req.session.mmse2Score)
 
-    // Redirect to mmse3.ejs
-    res.render('mmse2');
+    res.render('mmse3');
 });
 
 app.post('/mmse3', (req, res) => {
@@ -225,9 +225,9 @@ app.post('/mmse3', (req, res) => {
 
     // Store the score for mmse3 in session
     req.session.mmse3Score = score;
+    console.log(req.session.mmse3Score)
 
-    // Redirect to mmse.ejs
-    res.redirect('mmse4');
+    res.render('mmse4');
 });
 
 app.post('/mmse4', (req, res) => {
@@ -236,7 +236,7 @@ app.post('/mmse4', (req, res) => {
 
     // Scoring system for mmse4
     const scoringSystem = [
-        { question: 'ethnic', correctAnswer: 'France', score: 1 },
+        { question: 'ethnic', correctAnswer: 'French', score: 1 },
         { question: 'algebra', correctAnswer: '20', score: 1 },
     ];
 
@@ -250,10 +250,9 @@ app.post('/mmse4', (req, res) => {
 
     // Store the score for mmse4 in session
     req.session.mmse4Score = score;
-    console.log(req.session.mmse4Score);
+    console.log(req.session.mmse4Score)
 
-    // Redirect to mmse5.ejs
-    res.redirect('mmse5');
+    res.render('mmse5');
 });
 
 app.post('/mmse5', (req, res) => {
@@ -276,9 +275,9 @@ app.post('/mmse5', (req, res) => {
 
     // Store the score for mmse5 in session
     req.session.mmse5Score = score;
+    console.log(req.session.mmse5Score)
 
-    // Redirect to mmse6.ejs
-    res.redirect('mmse6');
+    res.render('mmse6');
 });
 
 app.post('/mmse6', (req, res) => {
@@ -301,9 +300,9 @@ app.post('/mmse6', (req, res) => {
 
     // Store the score for mmse6 in session
     req.session.mmse6Score = score;
+    console.log(req.session.mmse6Score)
 
-    // Redirect to mmse7.ejs
-    res.redirect('mmse7');
+    res.render('mmse7');
 });
 
 app.post('/mmse7', (req, res) => {
@@ -313,7 +312,7 @@ app.post('/mmse7', (req, res) => {
     // Scoring system for mmse7
     const scoringSystem = [
         { question: 'date', correctAnswer: 'There are 12 months in a year.', score: 1 },
-        { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 }
+        { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 },
     ];
 
     // Calculate the score for mmse7
@@ -326,62 +325,36 @@ app.post('/mmse7', (req, res) => {
 
     // Store the score for mmse7 in session
     req.session.mmse7Score = score;
+    console.log(req.session.mmse7Score)
 
-    // Redirect to mmse8.ejs
-    res.redirect('mmse8');
+    res.render('mmse8');
 });
 
-
 app.post('/mmse8', (req, res) => {
+
     // Extract the question data from the request body
     const { cost } = req.body;
 
-    // Scoring system for mmse8
+    // Scoring system for mmse7
     const scoringSystem = [
         { question: 'cost', correctAnswer: '100 cents', score: 1 },
     ];
 
-    // Calculate the score for mmse8
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    // Store the score for mmse8 in session
-    req.session.mmse8Score = score;
-    console.log(req.session)
-
     // Calculate the total score
-    let totalScore = 0;
-    if (req.session.mmse1Score) totalScore += req.session.mmse1Score;
-    if (req.session.mmse2Score) totalScore += req.session.mmse2Score;
-    if (req.session.mmse3Score) totalScore += req.session.mmse3Score;
-    if (req.session.mmse4Score) totalScore += req.session.mmse4Score;
-    if (req.session.mmse5Score) totalScore += req.session.mmse5Score;
-    if (req.session.mmse6Score) totalScore += req.session.mmse6Score;
-    if (req.session.mmse7Score) totalScore += req.session.mmse7Score;
-    if (req.session.mmse8Score) totalScore += req.session.mmse8Score;
-
-    // Clear the session scores
-    req.session.mmse1Score = null;
-    req.session.mmse2Score = null;
-    req.session.mmse3Score = null;
-    req.session.mmse4Score = null;
-    req.session.mmse5Score = null;
-    req.session.mmse6Score = null;
-    req.session.mmse7Score = null;
-    req.session.mmse8Score = null;
-
-    // Render the score.ejs view and pass the total score as a variable
+    let totalScore =
+        req.session.mmse1Score +
+        req.session.mmse2Score +
+        req.session.mmse3Score +
+        req.session.mmse4Score +
+        req.session.mmse5Score +
+        req.session.mmse6Score +
+        req.session.mmse7Score +
+        req.session.mmse8Score;
+    totalScore += 9;
     console.log(totalScore)
+
     res.render('score', { totalScore: totalScore });
 });
-
-// app.get(/score)
-
-
 
 // post for signup
 app.post('/signup', async (req, res) => {
