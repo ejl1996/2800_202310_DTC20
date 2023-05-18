@@ -406,9 +406,6 @@ app.post('/submitUser', async (req, res) => {
     res.redirect('/home');
 });
 
-app.post('/revise', (req, res) => {
-    res.render('password');
-});
 
 app.post('/updatepassword', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
