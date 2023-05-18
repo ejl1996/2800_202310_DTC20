@@ -70,8 +70,7 @@ app.use(session({
     store: mongoStore, //default is memory store 
     saveUninitialized: false,
     resave: true
-}
-));
+}));
 
 //AUTHENTICATION
 function isValidSession(req) {
