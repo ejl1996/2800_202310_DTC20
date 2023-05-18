@@ -323,9 +323,10 @@ app.post('/recommendation', (req, res) => {
     } else if (totalScore >= 11 && totalScore <= 12) {
         recommendation = "may be at risk";
     } else {
-        recommendation = "are not at risk"; // or any other recommendation for scores above 10
+        recommendation = "are not at risk";
     }
     console.log(recommendation)
+    req.session.recommendation = recommendation;
     res.render('recommendation', { recommendation: recommendation });
 });
 
@@ -576,7 +577,8 @@ app.get('/password', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.render('home');
+    const recommendation = req.session.recommendation;
+    res.render('home', { recommendation: recommendation });
 });
 
 app.get('/profile', (req, res) => {
@@ -592,8 +594,9 @@ app.get('/number', (req, res) => {
     res.render('number', { user });
 });
 
-app.get('/recommendations', (req, res) => {
-    res.render('recommendations');
+app.get('/recommendation', (req, res) => {
+    const recommendation = req.session.recommendation;
+    res.render('recommendation', { recommendation: recommendation });
 });
 
 app.get('/logout', (req, res) => {
