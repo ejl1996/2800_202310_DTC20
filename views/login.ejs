@@ -70,12 +70,22 @@
 
                                             // Initialize a click counter
                                             var clickCount = 0;
+                                            var clickTimer = null;
 
                                             // Add event listener to the account element
                                             accountElement.addEventListener("click", function () {
                                                 clickCount++;
 
-                                                if (clickCount === 4) {
+                                                // Start the timer
+                                                if (!clickTimer) {
+                                                    clickTimer = setTimeout(resetClickCount, 2000); // Reset click count after 2 seconds
+                                                }
+
+
+                                                if (clickCount === 3) {
+                                                    // Clear timer
+                                                    clearTimeout(clickTimer);
+                                                    clickTimer = null;
 
                                                     // Add  CSS class to create jump animation
                                                     accountElement.classList.add("jump-animation");
@@ -93,17 +103,24 @@
                                                     // Change the font style
                                                     accountElement.style.fontFamily = "Brush-script";
 
-                                                    // After 3 seconds of delay, remove the CSS class and reset the text color
+                                                    // After 20 seconds of delay, remove the CSS class and reset the text color
                                                     setTimeout(function () {
                                                         accountElement.classList.remove("jump-animation");
                                                         accountElement.style.color = "";
                                                         accountElement.style.fontFamily = "";
-                                                    }, 3000);
+                                                        accountElement.style.fontSize = "";
+                                                    }, 20000);
 
                                                     // Reset the click count
                                                     clickCount = 0;
                                                 }
                                             });
+
+                                            // Reset click count
+                                            function resetClickCount() {
+                                                clickCount = 0;
+                                                clickTimer = null;
+                                            }
                                         </script>
                                         <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Please
                                             enter
