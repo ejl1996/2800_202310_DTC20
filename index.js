@@ -31,7 +31,6 @@ const mongoURL = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_ho
 console.log(mongodb_password)
 console.log(mongodb_user)
 const node_session_secret = process.env.NODE_SESSION_SECRET;
-/* END secret section */
 
 var { database } = include('databaseConnection');
 
