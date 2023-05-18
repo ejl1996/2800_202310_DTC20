@@ -314,13 +314,14 @@ app.post('/mmse8', (req, res) => {
     res.render('score', { totalScore: totalScore });
 });
 
+//score reference points calculated from Kaggle: data_demented.js and data_nondemented.js
 app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
 
     let recommendation;
-    if (totalScore <= 10) {
+    if (totalScore <= 13) {
         recommendation = "are at risk";
-    } else if (totalScore >= 11 && totalScore <= 12) {
+    } else if (totalScore === 14) {
         recommendation = "may be at risk";
     } else {
         recommendation = "are not at risk";
@@ -518,6 +519,7 @@ app.get('/password', async (req, res) => {
         res.status(500).json({ message: 'Error...!' });
     }
 });
+
 
 
 app.get('/email', (req, res) => {
