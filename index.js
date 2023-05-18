@@ -152,31 +152,45 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-//post for mmse 
-app.post('/mmse', (req, res) => {
-    // Extract the question data from the request body
-    const { year, country, image, weekday, ball, subject, ethnic, algebra, spelling, order, multiples, math, date, recipe, cost } = req.body;
 
-    // Scoring system
+app.post('/mmse1', (req, res) => {
+    // Extract the question data from the request body
+    const { year, country } = req.body;
+
+    // Scoring system for mmse1
     const scoringSystem = [
         { question: 'year', correctAnswer: '2023', score: 1 },
         { question: 'country', correctAnswer: 'Canada', score: 1 },
-        { question: 'image', correctAnswer: 'Wristwatch', score: 1 },
-        { question: 'weekday', correctAnswer: 'Sunday', score: 1 },
-        { question: 'ball', correctAnswer: 'Basketball', score: 1 },
-        { question: 'subject', correctAnswer: 'Bracelet', score: 1 },
-        { question: 'ethnic', correctAnswer: 'France', score: 1 },
-        { question: 'algebra', correctAnswer: '20', score: 1 },
-        { question: 'spelling', correctAnswer: 'zucchini', score: 1 },
-        { question: 'order', correctAnswer: 'pin, computer, house, Jupiter', score: 1 },
-        { question: 'multiples', correctAnswer: '15, 30, 55, 70', score: 1 },
-        { question: 'math', correctAnswer: '100', score: 1 },
-        { question: 'date', correctAnswer: 'There are 12 months in a year.', score: 1 },
-        { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 },
-        { question: 'cost', correctAnswer: '100 cents', score: 1 },
     ];
 
-    // Calculate the score
+
+    // Calculate the score for mmse1
+    let score = 0;
+    scoringSystem.forEach(item => {
+
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse1 in session
+    req.session.mmse1Score = score;
+
+    // Redirect to mmse2.ejs
+    res.redirect('mmse2');
+});
+
+app.post('/mmse2', (req, res) => {
+    // Extract the question data from the request body
+    const { image, weekday } = req.body;
+
+    // Scoring system for mmse2
+    const scoringSystem = [
+        { question: 'image', correctAnswer: 'Wristmatch', score: 1 },
+        { question: 'weekday', correctAnswer: 'Sunday', score: 1 },
+    ];
+
+    // Calculate the score for mmse2
     let score = 0;
     scoringSystem.forEach(item => {
         if (req.body[item.question] === item.correctAnswer) {
@@ -184,61 +198,189 @@ app.post('/mmse', (req, res) => {
         }
     });
 
-    // Create a new MongoDB client
-    const client = new MongoClient(mongoURL);
+    // Store the score for mmse2 in session
+    req.session.mmse2Score = score;
 
-    // Connect to the MongoDB server
-    client.connect((err) => {
-        if (err) {
-            console.error('Error connecting to MongoDB:', err);
-            res.sendStatus(500);
-            return;
-        }
-
-        // Get a reference to the database
-        const db = client.db(mongodb_database);
-
-        // Get a reference to the collection
-        const collection = db.collection('questions');
-
-        // Create a document with the question data and score
-        const document = { year, country, image, weekday, ball, subject, ethnic, algebra, spelling, order, multiples, math, date, recipe, cost };
-
-        // Insert the document into the collection
-        collection.insertOne(document, (err, result) => {
-            if (err) {
-                console.error('Error inserting document:', err);
-                res.sendStatus(500);
-                return;
-            }
-
-            console.log('Document inserted successfully:', result.insertedId);
-            // Determine the next page to redirect to based on the current sequence
-            const sequence = req.path.substr(5); // Extract the sequence number from the path
-            let nextPage;
-            if (sequence === '2') {
-                nextPage = 'mmse3';
-            } else if (sequence === '3') {
-                nextPage = 'mmse4';
-            } else if (sequence === '4') {
-                nextPage = 'mmse5';
-            } else if (sequence === '5') {
-                nextPage = 'mmse6';
-            } else if (sequence === '6') {
-                nextPage = 'mmse7';
-            } else if (sequence === '7') {
-                nextPage = 'mmse8';
-            } else {
-                nextPage = 'mmse'; // Default to the first sequence if the current sequence is not recognized
-            }
-
-            res.redirect(nextPage);
-
-            // Close the MongoDB client
-            client.close();
-        });
-    });
+    // Redirect to mmse3.ejs
+    res.render('mmse2');
 });
+
+app.post('/mmse3', (req, res) => {
+    // Extract the question data from the request body
+    const { ball, subject } = req.body;
+
+    // Scoring system for mmse3
+    const scoringSystem = [
+        { question: 'ball', correctAnswer: 'Basketball', score: 1 },
+        { question: 'subject', correctAnswer: 'Bracelet', score: 1 },
+    ];
+
+    // Calculate the score for mmse3
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse3 in session
+    req.session.mmse3Score = score;
+
+    // Redirect to mmse.ejs
+    res.redirect('mmse4');
+});
+
+app.post('/mmse4', (req, res) => {
+    // Extract the question data from the request body
+    const { ethnic, algebra } = req.body;
+
+    // Scoring system for mmse4
+    const scoringSystem = [
+        { question: 'ethnic', correctAnswer: 'France', score: 1 },
+        { question: 'algebra', correctAnswer: '20', score: 1 },
+    ];
+
+    // Calculate the score for mmse4
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse4 in session
+    req.session.mmse4Score = score;
+    console.log(req.session.mmse4Score);
+
+    // Redirect to mmse5.ejs
+    res.redirect('mmse5');
+});
+
+app.post('/mmse5', (req, res) => {
+    // Extract the question data from the request body
+    const { spelling, order } = req.body;
+
+    // Scoring system for mmse5
+    const scoringSystem = [
+        { question: 'spelling', correctAnswer: 'zucchini', score: 1 },
+        { question: 'order', correctAnswer: 'pin, computer, house, Jupiter', score: 1 },
+    ];
+
+    // Calculate the score for mmse5
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse5 in session
+    req.session.mmse5Score = score;
+
+    // Redirect to mmse6.ejs
+    res.redirect('mmse6');
+});
+
+app.post('/mmse6', (req, res) => {
+    // Extract the question data from the request body
+    const { multiples, math } = req.body;
+
+    // Scoring system for mmse6
+    const scoringSystem = [
+        { question: 'multiples', correctAnswer: '15, 30, 55, 70', score: 1 },
+        { question: 'math', correctAnswer: '100', score: 1 },
+    ];
+
+    // Calculate the score for mmse6
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse6 in session
+    req.session.mmse6Score = score;
+
+    // Redirect to mmse7.ejs
+    res.redirect('mmse7');
+});
+
+app.post('/mmse7', (req, res) => {
+    // Extract the question data from the request body
+    const { date, recipe } = req.body;
+
+    // Scoring system for mmse7
+    const scoringSystem = [
+        { question: 'date', correctAnswer: 'There are 12 months in a year.', score: 1 },
+        { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 }
+    ];
+
+    // Calculate the score for mmse7
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse7 in session
+    req.session.mmse7Score = score;
+
+    // Redirect to mmse8.ejs
+    res.redirect('mmse8');
+});
+
+
+app.post('/mmse8', (req, res) => {
+    // Extract the question data from the request body
+    const { cost } = req.body;
+
+    // Scoring system for mmse8
+    const scoringSystem = [
+        { question: 'cost', correctAnswer: '100 cents', score: 1 },
+    ];
+
+    // Calculate the score for mmse8
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    // Store the score for mmse8 in session
+    req.session.mmse8Score = score;
+    console.log(req.session)
+
+    // Calculate the total score
+    let totalScore = 0;
+    if (req.session.mmse1Score) totalScore += req.session.mmse1Score;
+    if (req.session.mmse2Score) totalScore += req.session.mmse2Score;
+    if (req.session.mmse3Score) totalScore += req.session.mmse3Score;
+    if (req.session.mmse4Score) totalScore += req.session.mmse4Score;
+    if (req.session.mmse5Score) totalScore += req.session.mmse5Score;
+    if (req.session.mmse6Score) totalScore += req.session.mmse6Score;
+    if (req.session.mmse7Score) totalScore += req.session.mmse7Score;
+    if (req.session.mmse8Score) totalScore += req.session.mmse8Score;
+
+    // Clear the session scores
+    req.session.mmse1Score = null;
+    req.session.mmse2Score = null;
+    req.session.mmse3Score = null;
+    req.session.mmse4Score = null;
+    req.session.mmse5Score = null;
+    req.session.mmse6Score = null;
+    req.session.mmse7Score = null;
+    req.session.mmse8Score = null;
+
+    // Render the score.ejs view and pass the total score as a variable
+    console.log(totalScore)
+    res.render('score', { totalScore: totalScore });
+});
+
+// app.get(/score)
+
 
 
 // post for signup
@@ -431,25 +573,13 @@ app.get('/password', async (req, res) => {
     }
 });
 
-// app.get('/number', async (req, res) => {
-//     try {
-//         const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
-//         res.render('number', { user });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ message: 'Error...!' });
-//     }
-// });
-
-//code obtained with help from ChatGPT
-
 
 app.get('/email', (req, res) => {
     res.render('email');
 });
 
-app.get('/mmse', (req, res) => {
-    res.render('mmse');
+app.get('/mmse1', (req, res) => {
+    res.render('mmse1');
 });
 
 app.get('/mmse2', (req, res) => {

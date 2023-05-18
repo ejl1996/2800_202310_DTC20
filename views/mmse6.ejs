@@ -44,7 +44,7 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse" method="post">
+        <form class="bg-white px-4" action="/mmse7" method="post">
             <p class="fw-bold">11. Which choice does not contain multiples of each other?:</p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm11" id="radioExample11"
@@ -100,14 +100,8 @@
                 </label>
             </div>
             <div class="buttondiv">
-                <button class="btn btn-outline-light btn-lg px-5" type="logout"
-                    style="font-size: 25px; background-color: plum;">
-                    <a href="/mmse5" style="font-size: 20px; color:white;">Previous</a>
-                </button>
-                <button class="btn btn-outline-light btn-lg px-5" type="logout"
-                    style="font-size: 25px; background-color: plum;">
-                    <a href="/mmse7" style="font-size: 20px; color:white;">Next</a>
-                </button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                    style="font-size: 25px; background-color: plum;">Submit</button>
             </div>
         </form>
     </body>
