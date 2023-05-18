@@ -18,6 +18,7 @@
 
             .btn5 {
                 background-color: plum;
+                /* Green */
                 border: none;
                 color: white;
                 align: center;
@@ -51,34 +52,36 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse2" method="post">
-            <p class="fw-bold">3. What is the name of this image?</p>
-            <img src="10155.jpg" alt="wristwatch">
+        <form class="bg-white px-4" action="/mmse3" method="post">
+            <p class="fw-bold">5. What is the name of this image?</p>
+            <img src="basketball.gif" style="align: center" alt="basketball">
+            <br>
+            <br>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage1" value="Wristwatch">
-                <label class="form-check-label" for="radioImage1">Wristwatch</label>
+                <input class="form-check-input" type="radio" name="image" id="radioBall1" value="Volleyball">
+                <label class="form-check-label" for="radioBall1">Volleyball</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage2" value="Airplane">
-                <label class="form-check-label" for="radioImage2">Airplane</label>
+                <input class="form-check-input" type="radio" name="image" id="radioBall2" value="Basketball">
+                <label class="form-check-label" for="radioBall2">Basketball</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage3" value="Bracelet">
-                <label class="form-check-label" for="radioImage3">Bracelet</label>
+                <input class="form-check-input" type="radio" name="image" id="radioBall3" value="Dodgeball">
+                <label class="form-check-label" for="radioBall3">Dodgeball</label>
             </div>
 
-            <p class="fw-bold">4. Which of the following is not a weekday?</p>
+            <p class="fw-bold">6. Which of the following does not belong?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday1" value="Monday">
-                <label class="form-check-label" for="radioWeekday1">Monday</label>
+                <input class="form-check-input" type="radio" name="belong" id="radioBelong1" value="Algebra">
+                <label class="form-check-label" for="radioBelong1">Algebra</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday2" value="Friday">
-                <label class="form-check-label" for="radioWeekday2">Friday</label>
+                <input class="form-check-input" type="radio" name="belong" id="radioBelong2" value="Philosophy">
+                <label class="form-check-label" for="radioBelong2">Philosophy</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday3" value="Saturday">
-                <label class="form-check-label" for="radioWeekday3">Saturday</label>
+                <input class="form-check-input" type="radio" name="belong" id="radioBelong3" value="Bracelet">
+                <label class="form-check-label" for="radioBelong3">Bracelet</label>
             </div>
 
             <div class="buttondiv">

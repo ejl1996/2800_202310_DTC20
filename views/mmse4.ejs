@@ -18,6 +18,7 @@
 
             .btn5 {
                 background-color: plum;
+                /* Green */
                 border: none;
                 color: white;
                 align: center;
@@ -36,13 +37,6 @@
             .pill {
                 width: 100%;
             }
-
-            img {
-                border: 1px solid #ddd;
-                border-radius: 2px;
-                padding: 3px;
-                width: 100px;
-            }
         </style>
     </head>
 
@@ -51,34 +45,43 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse2" method="post">
-            <p class="fw-bold">3. What is the name of this image?</p>
-            <img src="10155.jpg" alt="wristwatch">
+        <form class="bg-white px-4" action="/mmse4" method="post">
+            <p class="fw-bold">7. Which of the following is not an ethnic group?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage1" value="Wristwatch">
-                <label class="form-check-label" for="radioImage1">Wristwatch</label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic1" value="Canadian">
+                <label class="form-check-label" for="radioEthnic1">Canadian</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage2" value="Airplane">
-                <label class="form-check-label" for="radioImage2">Airplane</label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic2" value="American">
+                <label class="form-check-label" for="radioEthnic2">American</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage3" value="Bracelet">
-                <label class="form-check-label" for="radioImage3">Bracelet</label>
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic3" value="Korean">
+                <label class="form-check-label" for="radioEthnic3">Korean</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic4" value="French">
+                <label class="form-check-label" for="radioEthnic4">French</label>
             </div>
 
-            <p class="fw-bold">4. Which of the following is not a weekday?</p>
+            <br>
+
+            <p class="fw-bold">8. What is (5 + 5) x 2?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday1" value="Monday">
-                <label class="form-check-label" for="radioWeekday1">Monday</label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath1" value="10">
+                <label class="form-check-label" for="radioMath1">10</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday2" value="Friday">
-                <label class="form-check-label" for="radioWeekday2">Friday</label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath2" value="20">
+                <label class="form-check-label" for="radioMath2">20</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday3" value="Saturday">
-                <label class="form-check-label" for="radioWeekday3">Saturday</label>
+                <input class="form-check-input" type="radio" name="math" id="radioMath3" value="30">
+                <label class="form-check-label" for="radioMath3">30</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="math" id="radioMath4" value="40">
+                <label class="form-check-label" for="radioMath4">40</label>
             </div>
 
             <div class="buttondiv">
@@ -86,6 +89,7 @@
                     style="font-size: 25px; background-color: plum;">Submit</button>
             </div>
         </form>
+
     </body>
 
     </html>

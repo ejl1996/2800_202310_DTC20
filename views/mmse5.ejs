@@ -36,13 +36,6 @@
             .pill {
                 width: 100%;
             }
-
-            img {
-                border: 1px solid #ddd;
-                border-radius: 2px;
-                padding: 3px;
-                width: 100px;
-            }
         </style>
     </head>
 
@@ -51,36 +44,47 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse2" method="post">
-            <p class="fw-bold">3. What is the name of this image?</p>
-            <img src="10155.jpg" alt="wristwatch">
+        <form class="bg-white px-4" action="/mmse5" method="post">
+            <p class="fw-bold">9. What is the correct spelling of this word: zuchini?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage1" value="Wristwatch">
-                <label class="form-check-label" for="radioImage1">Wristwatch</label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling1" value="correct">
+                <label class="form-check-label" for="radioSpelling1">It is already spelled correctly</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage2" value="Airplane">
-                <label class="form-check-label" for="radioImage2">Airplane</label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling2" value="zukini">
+                <label class="form-check-label" for="radioSpelling2">zukini</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage3" value="Bracelet">
-                <label class="form-check-label" for="radioImage3">Bracelet</label>
-            </div>
-
-            <p class="fw-bold">4. Which of the following is not a weekday?</p>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday1" value="Monday">
-                <label class="form-check-label" for="radioWeekday1">Monday</label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling3" value="zucchhini">
+                <label class="form-check-label" for="radioSpelling3">zucchhini</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday2" value="Friday">
-                <label class="form-check-label" for="radioWeekday2">Friday</label>
-            </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday3" value="Saturday">
-                <label class="form-check-label" for="radioWeekday3">Saturday</label>
+                <input class="form-check-input" type="radio" name="spelling" id="radioSpelling4" value="zucchini">
+                <label class="form-check-label" for="radioSpelling4">zucchini</label>
             </div>
 
+            <p class="fw-bold">10. Place the following by size from smallest to largest: house, pin, computer, Jupiter
+            </p>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="size" id="radioSize1"
+                    value="house, pin, computer, Jupiter">
+                <label class="form-check-label" for="radioSize1">house, pin, computer, Jupiter</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="size" id="radioSize2"
+                    value="pin, house, computer, Jupiter">
+                <label class="form-check-label" for="radioSize2">pin, house, computer, Jupiter</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="size" id="radioSize3"
+                    value="pin, computer, house, Jupiter">
+                <label class="form-check-label" for="radioSize3">pin, computer, house, Jupiter</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="size" id="radioSize4"
+                    value="Jupiter, house, computer, pin">
+                <label class="form-check-label" for="radioSize4">Jupiter, house, computer, pin</label>
+            </div>
             <div class="buttondiv">
                 <button class="btn btn-outline-light btn-lg px-5" type="submit"
                     style="font-size: 25px; background-color: plum;">Submit</button>

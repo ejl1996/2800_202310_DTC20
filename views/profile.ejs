@@ -1,8 +1,20 @@
-<%- include("templates/header", {headerMessage: "Welcome User" }) %>
+<%- include("templates/header", {headerMessage: "Welcome" }) %>
 
     <head>
         <title>Profile</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 1000,
+                    'GRAD' 0,
+                    'opsz' 48
+            }
+        </style>
+
     </head>
 
     <body>
@@ -10,12 +22,17 @@
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg text-white" style="border-radius: 1rem; background-color: #778251;">
+                        <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
                             <div class="card-body p-5 text-center">
 
                                 <div class="mb-md-5 mt-md-4 pb-5">
-                                    <h1>User Profile</h1>
+                                    <h1 id="account">User Account</h1>
                                     <br>
+                                    <div class="profile">
+                                        <span style="font-size: 2em; color: #f5f5f5;">
+                                            <i class="fa fa-user-circle"></i>
+                                        </span>
+                                    </div>
                                     <br>
                                     <p>Username: <%= user.username %>
                                     </p>
@@ -27,12 +44,14 @@
                                     <br>
                                     <br>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                        style="font-size: 25px; background-color: #778251;">
+                                        style="font-size: 25px; background-color: plum;">
                                         <a href="/home" style="color:black;">Home</a></button>
-                                    <button class=" btn btn-outline-light btn-lg px-5" type="submit"
-                                        style="font-size: 25px; background-color: #778251;">
-                                        <a href="/logout" style="color:black;">Logout</a></button>
+                                    <form class="log" action="/logoutuser" method="get">
+                                        <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                            style="font-size: 25px; background-color: plum;">
+                                            <a href="/logout" style="color:black;">Logout</a></button>
                                     </form>
+
                                 </div>
 
                             </div>

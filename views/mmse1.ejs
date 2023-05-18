@@ -36,13 +36,6 @@
             .pill {
                 width: 100%;
             }
-
-            img {
-                border: 1px solid #ddd;
-                border-radius: 2px;
-                padding: 3px;
-                width: 100px;
-            }
         </style>
     </head>
 
@@ -51,34 +44,41 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse2" method="post">
-            <p class="fw-bold">3. What is the name of this image?</p>
-            <img src="10155.jpg" alt="wristwatch">
+        <form class="bg-white px-4" action="/mmse1" method="post">
+            <p class="fw-bold">1. What year is it?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage1" value="Wristwatch">
-                <label class="form-check-label" for="radioImage1">Wristwatch</label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear1" value="2022">
+                <label class="form-check-label" for="radioYear1">2022</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage2" value="Airplane">
-                <label class="form-check-label" for="radioImage2">Airplane</label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear2" value="2023">
+                <label class="form-check-label" for="radioYear2">2023</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage3" value="Bracelet">
-                <label class="form-check-label" for="radioImage3">Bracelet</label>
+                <input class="form-check-input" type="radio" name="year" id="radioYear3" value="2024">
+                <label class="form-check-label" for="radioYear3">2024</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="year" id="radioYear4" value="2025">
+                <label class="form-check-label" for="radioYear4">2025</label>
             </div>
 
-            <p class="fw-bold">4. Which of the following is not a weekday?</p>
+            <p class="fw-bold">2. Which of the following is a country in North America?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday1" value="Monday">
-                <label class="form-check-label" for="radioWeekday1">Monday</label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry1" value="Austria">
+                <label class="form-check-label" for="radioCountry1">Austria</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday2" value="Friday">
-                <label class="form-check-label" for="radioWeekday2">Friday</label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry2" value="Canada">
+                <label class="form-check-label" for="radioCountry2">Canada</label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday3" value="Saturday">
-                <label class="form-check-label" for="radioWeekday3">Saturday</label>
+                <input class="form-check-input" type="radio" name="country" id="radioCountry3" value="Italy">
+                <label class="form-check-label" for="radioCountry3">Italy</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="country" id="radioCountry4" value="Australia">
+                <label class="form-check-label" for="radioCountry4">Australia</label>
             </div>
 
             <div class="buttondiv">

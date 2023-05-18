@@ -36,13 +36,6 @@
             .pill {
                 width: 100%;
             }
-
-            img {
-                border: 1px solid #ddd;
-                border-radius: 2px;
-                padding: 3px;
-                width: 100px;
-            }
         </style>
     </head>
 
@@ -51,41 +44,39 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse2" method="post">
-            <p class="fw-bold">3. What is the name of this image?</p>
-            <img src="10155.jpg" alt="wristwatch">
+        <form class="bg-white px-4" action="/mmse8" method="post">
+            <p class="fw-bold">15. An apple is 40 cents, banana 60 cents, and grapefruit is 80 cents. How much is a
+                pear?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage1" value="Wristwatch">
-                <label class="form-check-label" for="radioImage1">Wristwatch</label>
+                <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample25" value="90 cents">
+                <label class="form-check-label" for="radioExample25">
+                    90 cents
+                </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage2" value="Airplane">
-                <label class="form-check-label" for="radioImage2">Airplane</label>
+                <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample26" value="100 cents">
+                <label class="form-check-label" for="radioExample26">
+                    100 cents
+                </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="image" id="radioImage3" value="Bracelet">
-                <label class="form-check-label" for="radioImage3">Bracelet</label>
-            </div>
-
-            <p class="fw-bold">4. Which of the following is not a weekday?</p>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday1" value="Monday">
-                <label class="form-check-label" for="radioWeekday1">Monday</label>
+                <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample27" value="120 cents">
+                <label class="form-check-label" for="radioExample27">
+                    120 cents
+                </label>
             </div>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday2" value="Friday">
-                <label class="form-check-label" for="radioWeekday2">Friday</label>
+                <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample28" value="140 cents">
+                <label class="form-check-label" for="radioExample28">
+                    140 cents
+                </label>
             </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="weekday" id="radioWeekday3" value="Saturday">
-                <label class="form-check-label" for="radioWeekday3">Saturday</label>
-            </div>
-
             <div class="buttondiv">
                 <button class="btn btn-outline-light btn-lg px-5" type="submit"
                     style="font-size: 25px; background-color: plum;">Submit</button>
             </div>
         </form>
+
     </body>
 
     </html>
