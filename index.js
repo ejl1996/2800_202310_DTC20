@@ -314,6 +314,9 @@ app.post('/mmse8', (req, res) => {
 
 app.post('/recommendations', (req, res) => {
 
+    res.render('recommendations', { totalScore: totalScore });
+});
+
     const { cost } = req.body;
 
     const scoringSystem = [
