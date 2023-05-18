@@ -309,32 +309,24 @@ app.post('/mmse8', (req, res) => {
     console.log(totalScore);
     totalScore += 9;
 
+    req.session.totalScore = totalScore;
+
     res.render('score', { totalScore: totalScore });
 });
 
 app.post('/recommendations', (req, res) => {
+    const totalScore = req.session.totalScore; //total score from session 
 
-    res.render('recommendations', { totalScore: totalScore });
+    let recommendation;
+    if (totalScore <= 10) {
+        recommendation = "are at risk";
+    } else if (totalScore >= 11 && totalscore <= 12) {
+        recommendation = "may be at risk";
+    } else {
+        recommendation = "are not at risk"; // or any other recommendation for scores above 10
+    }
+    res.render('recommendations', { recommendation: recommendation });
 });
-
-    const { cost } = req.body;
-
-    const scoringSystem = [
-        { question: 'cost', correctAnswer: '100 cents', score: 1 },
-    ];
-
-    let totalScore =
-        parseInt(req.session.mmse1Score) +
-        parseInt(req.session.mmse2Score) +
-        parseInt(req.session.mmse4Score) +
-        parseInt(req.session.mmse5Score) +
-        parseInt(req.session.mmse6Score);
-    console.log(totalScore);
-    totalScore += 9;
-
-    res.render('score', { totalScore: totalScore });
-});
-
 
 app.post('/signup', async (req, res) => {
     const username = req.body.username;

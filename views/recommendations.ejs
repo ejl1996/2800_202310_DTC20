@@ -45,42 +45,43 @@
     <body>
         <!-- Questions from PubMed, NCBI and Alzheimer's Association page. More details: https://docs.google.com/document/d/1OxY4iJ6J5bMsL8MlZ4JZrPZkv2_HqtU5h7j6wU8ggk8/edit?usp=sharing -->
         <section class="vh-100 gradient-custom">
-            <div class="container py-5 h-100">
-                <div class=" row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
-                            <div class="card-body p-5 text-center">
+            <form class="bg-white px-4" action="/recommendations" method="post">
+                <div class="container py-5 h-100">
+                    <div class=" row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
+                                <div class="card-body p-5 text-center">
 
-                                <div class="mb-md-5 mt-md-4 pb-5">
+                                    <div class="mb-md-5 mt-md-4 pb-5">
 
-                                    <h1 class="fw-bold mb-2 text-uppercase">Results:</h1>
-                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">You are <%=
-                                            reommendation %>
-                                            for dementia. </p>
+                                        <h1 class="fw-bold mb-2 text-uppercase">Results:</h1>
+                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">You <%=
+                                                recommendation %>
+                                                for dementia. </p>
 
-                                    <br>
-                                    <br>
-                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
-                                        manage and prevent dementia by the Alzheimer Society of Canada:</p>
-                                    <br>
-                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">
-                                        https://alzheimer.ca/en/help-support</p>
+                                        <br>
+                                        <br>
+                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
+                                            manage and prevent dementia by the Alzheimer Society of Canada:</p>
+                                        <br>
+                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">
+                                            https://alzheimer.ca/en/help-support</p>
 
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                        style="font-size: 25px;"><a href="/home"
-                                            style="font-size: 20px; color:white;">Go
-                                            Back Home</a></button>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                            style="font-size: 25px;"><a href="/home"
+                                                style="font-size: 20px; color:white;">Go
+                                                Back Home</a></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
         </section>
     </body>
 

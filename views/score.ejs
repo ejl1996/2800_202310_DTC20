@@ -21,36 +21,38 @@
     <body>
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/login/ with adjustments and modifications made by Emma Lee -->
         <section class="vh-100 gradient-custom">
-            <div class="container py-5 h-100">
-                <div class=" row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
-                            <div class="card-body p-5 text-center">
+            <form class="bg-white px-4" action="/recommendations" method="post">
+                <div class="container py-5 h-100">
+                    <div class=" row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
+                                <div class="card-body p-5 text-center">
 
-                                <div class="mb-md-5 mt-md-4 pb-5">
+                                    <div class="mb-md-5 mt-md-4 pb-5">
 
-                                    <h1 class="fw-bold mb-2 stext-uppercase">Thank you for completing the questionnaire.
-                                    </h1>
-                                    <br>
-                                    <br>
-                                    <h1 class="fw-bold mb-2 stext-uppercase">Your Score is <%= totalScore %> out of 15.
-                                    </h1>
-                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">
-                                    </p>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                        style="font-size: 25px;"><a href="/questions"
-                                            style="font-size: 20px; color:white;">Screening Questions</a></button>
+                                        <h1 class="fw-bold mb-2 stext-uppercase">Thank you for completing the
+                                            questionnaire.
+                                        </h1>
+                                        <br>
+                                        <br>
+                                        <h1 class="fw-bold mb-2 stext-uppercase">Your Score is <%= totalScore %> out of
+                                                15.
+                                        </h1>
+                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">
+                                        </p>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                            style="font-size: 25px;">Recommendations</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
         </section>
     </body>
 
