@@ -301,6 +301,26 @@ app.post('/mmse8', (req, res) => {
     ];
 
     let totalScore =
+        (req.session.mmse1Score) +
+        (req.session.mmse2Score) +
+        (req.session.mmse4Score) +
+        (req.session.mmse5Score) +
+        (req.session.mmse6Score);
+    console.log(totalScore);
+    totalScore += 9;
+
+    res.render('score', { totalScore: totalScore });
+});
+
+app.post('/recommendations', (req, res) => {
+
+    const { cost } = req.body;
+
+    const scoringSystem = [
+        { question: 'cost', correctAnswer: '100 cents', score: 1 },
+    ];
+
+    let totalScore =
         parseInt(req.session.mmse1Score) +
         parseInt(req.session.mmse2Score) +
         parseInt(req.session.mmse4Score) +
@@ -311,6 +331,7 @@ app.post('/mmse8', (req, res) => {
 
     res.render('score', { totalScore: totalScore });
 });
+
 
 app.post('/signup', async (req, res) => {
     const username = req.body.username;
