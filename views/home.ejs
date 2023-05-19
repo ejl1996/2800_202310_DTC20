@@ -73,16 +73,30 @@
             }
 
             #cognitive {
-                position: relative;
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                border: 3px solid rgba(255, 255, 255, 3);
+                border-radius: 50%;
+                border-top-color: #fff;
                 background-color: pink;
-                animation-name: jump;
-                animation-duration: 1s;
-                animation-iteration-count: infinite;
-                color: white;
-                padding: 0.5em 1.5em;
+                animation: spin 1s ease-in-out infinite;
+                -webkit-animation: spin 1s ease-in-out infinite;
+                color: blue;
                 text-decoration: none;
                 text-transform: uppercase;
             }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
 
             #cognitive:hover {
                 background-color: pink;
@@ -132,7 +146,7 @@
                                     <br>
                                     <br>
                                     <p class="text-white-50 mb-5" style="color: black; font-size: 15px"><a
-                                            href="https://shorturl.at/LNP36" id="cognitive">Click Here!</a>
+                                            href="https://shorturl.at/LNP36" id="cognitive"><br>Click <br>Here!</a>
                                     </p>
                                 </div>
                             </div>
