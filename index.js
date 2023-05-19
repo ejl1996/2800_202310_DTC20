@@ -577,8 +577,7 @@ app.get('/password', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    const recommendation = req.session.recommendation;
-    res.render('home', { recommendation: recommendation });
+    res.render('home');
 });
 
 app.get('/profile', (req, res) => {
