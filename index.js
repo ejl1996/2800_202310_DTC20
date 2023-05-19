@@ -1,4 +1,4 @@
-//This code was modified from Emma Lee's COMP 2537 Assignment 2 
+//This code was modified from Emma Lee's COMP 2537 Assignment 2.
 
 require("./utils.js");
 
