@@ -39,12 +39,11 @@ MongoClient.connect(mongoURL, (err, client) => {
         console.error('Error connecting to MongoDB:', err);
         return;
     }
-
-    const database = client.db(mongodb_database);
 });
 
 
 const userCollection = database.db(mongodb_database).collection('users');
+//const database = client.db(mongodb_database);
 
 app.set('view engine', 'ejs');
 
