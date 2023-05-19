@@ -330,10 +330,11 @@ app.post('/recommendation', (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
-    const number = req.body.number;
+    const { username, email, password, number } = req.body;
+    // const username = req.body.username;
+    // const email = req.body.email;
+    // const password = req.body.password;
+    // const number = req.body.number;
 
     // validate the input style for username, email and password using Joi
     const schema = Joi.object({
@@ -347,23 +348,31 @@ app.post('/signup', async (req, res) => {
     const validationResult = schema.validate({ username, email, password, number });
     if (validationResult.error != null) {
         console.log(validationResult.error);
-        res.redirect('/signup');
-        return;
+        // Render the sign-up form with error messages
+        return res.render('signup', { error: validationResult.error.details[0].message });
     }
 
-    //password ecryption 
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    try {
+        // Password encryption
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    //insert user into database 
-    await userCollection.insertOne({
-        username: username,
-        email: email,
-        password: hashedPassword,
-        number: number,
-    });
-    //const result = user.findOne
-    res.redirect('login');
+        // Insert user into the database
+        await userCollection.insertOne({
+            username: username,
+            email: email,
+            password: hashedPassword,
+            number: number,
+        });
+
+        res.redirect('/login');
+
+    } catch (error) {
+        console.error(error);
+        // Handle the error appropriately, e.g., render an error page or redirect to a specific route
+        res.redirect('/login');
+    }
 });
+
 
 //submit certain field of information only to the mongoDB
 app.post('/submitUser', async (req, res) => {
