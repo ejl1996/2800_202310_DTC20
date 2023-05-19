@@ -89,7 +89,7 @@ function sessionValidation(req, res, next) {
     }
 }
 
-
+//login post route
 app.post('/login', async (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
@@ -135,7 +135,7 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-
+//post route for MMSE questions starting from page 1
 app.post('/mmse1', (req, res) => {
     // Extract the question data from the request body
     const { year, country } = req.body;
@@ -330,6 +330,8 @@ app.post('/recommendation', (req, res) => {
 
 app.post('/signup', async (req, res) => {
     const { username, email, password, number } = req.body;
+    console.log(username);
+    console.log(email);
     // const username = req.body.username;
     // const email = req.body.email;
     // const password = req.body.password;
@@ -354,14 +356,21 @@ app.post('/signup', async (req, res) => {
     try {
         // Password encryption
         const hashedPassword = await bcrypt.hash(password, saltRounds);
+        //console.log(hashedPassword);
 
         // Insert user into the database
-        await userCollection.insertOne({
+        const result = await userCollection.insertOne({
             username: username,
             email: email,
             password: hashedPassword,
             number: number,
         });
+        //console.log(result);
+
+        const x = await userCollection.findOne({ "username": username })
+        console.log(x);
+        const y = await userCollection.findOne({ "email": email })
+        console.log(y);
 
         res.redirect('/login');
 
