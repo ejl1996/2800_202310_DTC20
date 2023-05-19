@@ -71,6 +71,47 @@
                 width: 50px;
                 right: 0;
             }
+
+            #cognitive {
+                position: relative;
+                background-color: pink;
+                animation-name: jump;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                color: white;
+                padding: 0.5em 1.5em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            #cognitive:hover {
+                background-color: pink;
+                cursor: pointer;
+            }
+
+            #cognitive:active {
+                box-shadow: none;
+                top: 5px;
+            }
+
+            .jump-animation {
+                position: relative;
+                animation: jump 0.5s ease-in-out infinite;
+            }
+
+            @keyframes jump {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-20px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
         </style>
     </head>
 
@@ -85,11 +126,13 @@
                                 <div class=" mb-md-5 mt-md-4 pb-5" style="background-color:plum;
                 height: 80%; border-radius: 25px;">
                                     <br>
-                                    <h1 style="text-align: left; color: black;">&nbsp;&nbsp;&nbsp;Recommendation from
-                                        &nbsp;&nbsp;&nbsp;the previous session: &nbsp;&nbsp;&nbsp;&nbsp;</h1>
-                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">You
-                                        <%= recommendation %>
-                                            for dementia.
+                                    <h1 style="text-align: left; color: black;">&nbsp;&nbsp;&nbsp;Tips to Take Control
+                                        &nbsp;&nbsp;&nbsp;Of Your Cognitive Health: &nbsp;&nbsp;&nbsp;&nbsp;</h1>
+                                    <br>
+                                    <br>
+
+                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px"><a
+                                            href="https://shorturl.at/LNP36" id="cognitive">Click Here!</a>
                                     </p>
                                 </div>
                             </div>

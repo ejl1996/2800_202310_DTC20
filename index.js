@@ -1,4 +1,4 @@
-//This code was modified from Emma Lee's COMP 2537 Assignment 2 
+//This code was modified from Emma Lee's COMP 2537 Assignment 2.
 
 require("./utils.js");
 
@@ -53,7 +53,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('./public'));
 
-// initially was /session, now /test in mongoURL
+// initially was session, now /test in mongoURL
 var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
     // mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
@@ -68,8 +68,7 @@ app.use(session({
     store: mongoStore, //default is memory store 
     saveUninitialized: false,
     resave: true
-}
-));
+}));
 
 //AUTHENTICATION
 function isValidSession(req) {
@@ -577,8 +576,7 @@ app.get('/password', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    const recommendation = req.session.recommendation;
-    res.render('home', { recommendation: recommendation });
+    res.render('home');
 });
 
 app.get('/profile', (req, res) => {
