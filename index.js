@@ -47,7 +47,7 @@ const node_session_secret = process.env.NODE_SESSION_SECRET;
 
 var { database } = include('databaseConnection');
 
-// Display message if error in connection 
+// Display message if there is error in connection 
 MongoClient.connect(mongoURL, (err, client) => {
     if (err) {
         console.error('Error connecting to MongoDB:', err);
@@ -58,12 +58,13 @@ MongoClient.connect(mongoURL, (err, client) => {
 // Set userCollection to mongodb collection 
 const userCollection = database.db(mongodb_database).collection('users');
 
-// 
+// Set view engine to EJS
 app.set('view engine', 'ejs');
 
-//req.body need to parse (app.post) ex. req.body.username
+// Req.body required to parse (app.post) ex. req.body.username
 app.use(express.urlencoded({ extended: false }));
 
+// Set static files to public folder 
 app.use(express.static('./public'));
 
 // Initially was session, now /test in mongoURL
@@ -75,7 +76,7 @@ var mongoStore = MongoStore.create({
     }
 })
 
-// Handle cookies. Ex. req.session.cookies. **would have to parse cookies ourselves otherwise.  
+// Handle cookies. Ex. req.session.cookies (would have to parse cookies otherwise).  
 app.use(session({
     secret: node_session_secret,
     store: mongoStore, //default is memory store 
@@ -83,7 +84,7 @@ app.use(session({
     resave: true
 }));
 
-// AUTHENTICATION
+// Session authentication 
 function isValidSession(req) {
     if (req.session.authenticated) {
         return true;
@@ -177,6 +178,7 @@ app.post('/mmse1', (req, res) => {
     res.render('mmse2');
 });
 
+// Post route for mmse2 
 app.post('/mmse2', (req, res) => {
     const { image, weekday } = req.body;
 
@@ -198,6 +200,7 @@ app.post('/mmse2', (req, res) => {
     res.render('mmse3');
 });
 
+// Post route for mmse3 
 app.post('/mmse3', (req, res) => {
     const { ball, subject } = req.body;
 
@@ -219,6 +222,7 @@ app.post('/mmse3', (req, res) => {
     res.render('mmse4');
 });
 
+// Post route for mmse4 
 app.post('/mmse4', (req, res) => {
     const { ethnic, algebra } = req.body;
 
@@ -240,6 +244,7 @@ app.post('/mmse4', (req, res) => {
     res.render('mmse5');
 });
 
+// Post route for mmse5 
 app.post('/mmse5', (req, res) => {
     const { spelling, order } = req.body;
 
@@ -261,6 +266,7 @@ app.post('/mmse5', (req, res) => {
     res.render('mmse6');
 });
 
+// Post route for mmse46
 app.post('/mmse6', (req, res) => {
     const { multiples, math } = req.body;
 
@@ -282,6 +288,7 @@ app.post('/mmse6', (req, res) => {
     res.render('mmse7');
 });
 
+// Post route for mmse7 
 app.post('/mmse7', (req, res) => {
     const { date, recipe } = req.body;
 
@@ -303,6 +310,7 @@ app.post('/mmse7', (req, res) => {
     res.render('mmse8');
 });
 
+// Post route for mmse8 
 app.post('/mmse8', (req, res) => {
 
     const { cost } = req.body;
@@ -325,7 +333,7 @@ app.post('/mmse8', (req, res) => {
     res.render('score', { totalScore: totalScore });
 });
 
-// Post route for recommendation based on total score
+// Post route for recommendation based on totalScore
 // Score reference points calculated from Kaggle: data_demented.js and data_nondemented.js
 app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
@@ -343,6 +351,7 @@ app.post('/recommendation', (req, res) => {
     res.render('recommendation', { recommendation: recommendation });
 });
 
+// Post route for /signup using JOI validation 
 app.post('/signup', async (req, res) => {
     const { username, email, password, number } = req.body;
     console.log(username);
@@ -390,46 +399,6 @@ app.post('/signup', async (req, res) => {
         // Handle the error appropriately, e.g., render an error page or redirect to a specific route
         res.redirect('/login');
     }
-});
-
-
-// Submit certain field of information only to the mongoDB
-app.post('/submitUser', async (req, res) => {
-    var name = req.body.username;
-    var email = req.body.email;
-    var password = req.body.password;
-
-    if (password == "" || name == "") {
-        res.redirect("/login");
-        return;
-    }
-
-    const schema = Joi.object(
-        {
-            name: Joi.string().regex(/^[a-zA-Z ]+$/).max(20).required(),
-            email: Joi.string().email().max(50).required(),
-            password: Joi.string().max(20).required()
-        }
-    );
-
-    const validationResult = schema.validate({ name, email, password });
-
-    if (validationResult.error != null) {
-        console.log("Validation error: ", validationResult.error.details[0].message);
-        res.redirect("/signUp?invalid=true");
-        return;
-    }
-
-    var hashedPassword = await bcrypt.hashSync(password, saltRounds);
-
-    await userCollection.insertOne({ name: name, email: email, password: hashedPassword });
-
-    req.session.authenticated = true;
-    req.session.email = email;
-    req.session.cookie.maxAge = expireTime;
-    req.session.name = name;
-
-    res.redirect('/home');
 });
 
 // Post route for updating password in mongodb 
@@ -480,12 +449,11 @@ app.post('/updatenumber', async (req, res) => {
     try {
         const userCollection = await database.db(mongodb_database).collection('users'); // Use the correct database connection
         console.log("Collection:", userCollection);
-        /////THIS LINE
+
         const filter = { username: req.body.username };
         console.log("Filter:", filter);
 
         const user = await userCollection.findOne(filter);
-        //res.render('profile', { user });
         console.log("User:", user);
 
         if (!user) {
@@ -505,7 +473,7 @@ app.post('/updatenumber', async (req, res) => {
         if (result.modifiedCount === 1) {
             console.log('Successfully updated number.');
             res.render("home.ejs");
-            //res.status(200).json({ message: 'Number updated successfully' });
+
         } else {
             console.log('No document matched the filter.');
             res.status(404).json({ message: 'User not found' });
