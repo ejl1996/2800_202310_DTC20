@@ -39,6 +39,37 @@
             .pill {
                 width: 100%;
             }
+
+            #support {
+                display: inline-block;
+                width: 100px;
+                height: 150px;
+                /* Adjust the height to make it rectangular */
+                border: 3px solid rgba(255, 255, 255, 3);
+                border-radius: 5px;
+                /* Adjust the border radius for rectangular corners */
+                background-color: pink;
+                animation: dance 1s ease-in-out infinite;
+                -webkit-animation: dance 1s ease-in-out infinite;
+                color: purple;
+                font: Georgia;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            @keyframes dance {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                }
+
+                50% {
+                    transform: rotate(15deg) scale(1.2);
+                }
+
+                100% {
+                    transform: rotate(-15deg) scale(1);
+                }
+            }
         </style>
     </head>
 
@@ -65,9 +96,10 @@
                                         <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
                                             manage and prevent dementia by the Alzheimer Society of Canada:</p>
                                         <br>
-                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">
-                                            https://alzheimer.ca/en/help-support</p>
-
+                                        <p class="text-white-50 mb-5" style="color: black; font-size: 15px">
+                                            <a href="https://alzheimer.ca/en/help-support" id="support">Click for
+                                                <br>Resources!</a>
+                                        </p>
                                         <br>
                                         <br>
                                         <br>
