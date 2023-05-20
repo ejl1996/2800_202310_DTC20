@@ -1,31 +1,44 @@
-//This code was modified from Emma Lee's COMP 2537 Assignment 2.
+// This code was modified from Emma Lee's COMP 2537 Assignment 2.
 
+// Import required modules
 require("./utils.js");
-
-const url = require('url');
-
 require('dotenv').config();
+
+// Import express
 const express = require('express');
+// Import express-session                 
 const session = require('express-session');
+// Import ObjectId from connect-mongo   
 const ObjectId = require('mongodb').ObjectId;
+// Import connect-mongo       
 const MongoStore = require('connect-mongo');
+// Import mongodb    
 const { MongoClient } = require('mongodb');
+// Create an express application       
+const app = express();
+// Import bcrypt                         
 const bcrypt = require('bcrypt');
+// Set saltRounds to 12              
 const saltRounds = 12;
+// Import url 
+const url = require('url');
+// Import JOI 
+const Joi = require("joi");
+// Set localhost to 4000
 const port = process.env.PORT || 4000;
 
-const app = express();
+// Set expiration time for session to 1 hour 
+const expireTime = 1 * 60 * 60 * 1000;
 
-const Joi = require("joi");
-const expireTime = 60 * 60 * 1000;
-
-//secret information section 
+// Secret Information Section 
 const mongodb_host = process.env.MONGODB_HOST;
 const mongodb_user = process.env.MONGODB_USER;
 const mongodb_password = process.env.MONGODB_PASSWORD;
 const mongodb_database = process.env.MONGODB_DATABASE;
 const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
+// End Secret Information Section 
 
+// Our MongoURL
 const mongoURL = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`;
 
 console.log(mongodb_password)
@@ -34,6 +47,7 @@ const node_session_secret = process.env.NODE_SESSION_SECRET;
 
 var { database } = include('databaseConnection');
 
+// Display message if error in connection 
 MongoClient.connect(mongoURL, (err, client) => {
     if (err) {
         console.error('Error connecting to MongoDB:', err);
@@ -41,10 +55,10 @@ MongoClient.connect(mongoURL, (err, client) => {
     }
 });
 
-
+// Set userCollection to mongodb collection 
 const userCollection = database.db(mongodb_database).collection('users');
-//const database = client.db(mongodb_database);
 
+// 
 app.set('view engine', 'ejs');
 
 //req.body need to parse (app.post) ex. req.body.username
@@ -52,7 +66,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('./public'));
 
-// initially was session, now /test in mongoURL
+// Initially was session, now /test in mongoURL
 var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
     // mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/test`,
@@ -61,7 +75,7 @@ var mongoStore = MongoStore.create({
     }
 })
 
-//handles cookies. Ex. req.session.cookies. **would have to parse cookies ourselves otherwise.  
+// Handle cookies. Ex. req.session.cookies. **would have to parse cookies ourselves otherwise.  
 app.use(session({
     secret: node_session_secret,
     store: mongoStore, //default is memory store 
@@ -69,7 +83,7 @@ app.use(session({
     resave: true
 }));
 
-//AUTHENTICATION
+// AUTHENTICATION
 function isValidSession(req) {
     if (req.session.authenticated) {
         return true;
@@ -77,19 +91,19 @@ function isValidSession(req) {
     return false;
 }
 
-//session validation
+// Session validation
 function sessionValidation(req, res, next) {
-    //if valid session call next action
+    // If valid session call next action
     if (isValidSession(req)) {
         next();
     }
-    //otherwise don't render and redirect to login
+    // Otherwise don't render and redirect to login
     else {
         res.redirect("login.ejs");
     }
 }
 
-//login post route
+// Login post route
 app.post('/login', async (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
@@ -135,7 +149,7 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-//post route for MMSE questions starting from page 1
+// Post route for MMSE questions starting from page 1 to 8 
 app.post('/mmse1', (req, res) => {
     // Extract the question data from the request body
     const { year, country } = req.body;
@@ -311,7 +325,8 @@ app.post('/mmse8', (req, res) => {
     res.render('score', { totalScore: totalScore });
 });
 
-//score reference points calculated from Kaggle: data_demented.js and data_nondemented.js
+// Post route for recommendation based on total score
+// Score reference points calculated from Kaggle: data_demented.js and data_nondemented.js
 app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
 
@@ -332,10 +347,6 @@ app.post('/signup', async (req, res) => {
     const { username, email, password, number } = req.body;
     console.log(username);
     console.log(email);
-    // const username = req.body.username;
-    // const email = req.body.email;
-    // const password = req.body.password;
-    // const number = req.body.number;
 
     // validate the input style for username, email and password using Joi
     const schema = Joi.object({
@@ -382,7 +393,7 @@ app.post('/signup', async (req, res) => {
 });
 
 
-//submit certain field of information only to the mongoDB
+// Submit certain field of information only to the mongoDB
 app.post('/submitUser', async (req, res) => {
     var name = req.body.username;
     var email = req.body.email;
@@ -421,7 +432,7 @@ app.post('/submitUser', async (req, res) => {
     res.redirect('/home');
 });
 
-
+// Post route for updating password in mongodb 
 app.post('/updatepassword', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
@@ -463,7 +474,7 @@ app.post('/updatepassword', async (req, res) => {
     }
 });
 
-
+// Post route for updating number in mongodb
 app.post('/updatenumber', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
