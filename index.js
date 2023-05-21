@@ -168,18 +168,25 @@ const filenames = [
     'mmse10.ejs',
 ];
 
+// // Initialize the session variables for question scores
+// req.session.totalScore = 0;
+// req.session.mmseScores = {};
+
 // Fisher-Yates shuffle implementation
 // Obtained with help from ChatGPT
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
-    return array;
+    return shuffledArray;
 }
+
 
 // Shuffle the array of file names
 const shuffledFilenames = shuffle(filenames);
+// console.log(shuffledFilenames);
 
 // Store the visited pages
 const visitedPages = new Set();
@@ -197,16 +204,16 @@ function calculateScore(answers) {
 // Get different MMSE pages
 // Obtained with help from ChatGPT
 app.get('/mmse/:index', (req, res) => {
-    const index = parseInt(req.params.index);
+    let index = parseInt(req.params.index);
+    const filename = shuffledFilenames[index];
     console.log(index);
 
-    if (index < 0 || index >= shuffledFilenames.length) {
+    if (index < 0 || index >= shuffledFilenames.length || filename === undefined) {
         res.status(404).send('Page not found');
     } else if (visitedPages.has(index)) {
         // If the page has already been visited, redirect to the score page or any other desired page
         res.redirect('/score');
     } else {
-        const filename = shuffledFilenames[index];
         console.log(filename);
         visitedPages.add(index);
         res.render(filename.split('.')[0], { index: index });
@@ -244,10 +251,13 @@ app.post('/mmse/:index', (req, res) => {
 
             if (unvisitedPage !== undefined) {
                 const unvisitedFilename = shuffledFilenames[unvisitedPage];
+                // console.log(unvisitedFilename)
                 visitedPages.add(unvisitedPage);
                 res.render(unvisitedFilename.split('.')[0], { index: unvisitedPage });
             } else {
                 // All pages have been visited, calculate the total score
+                // console.log("req.session.mme1Score" + req.session.mmse1Score)
+                // console.log("req.session.totalScore" + req.session.totalScore)
                 req.session.totalScore =
                     (req.session.mmse1Score || 0) +
                     (req.session.mmse2Score || 0) +
