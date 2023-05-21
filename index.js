@@ -163,6 +163,8 @@ const filenames = [
     'mmse6.ejs',
     'mmse7.ejs',
     'mmse8.ejs',
+    'mmse9.ejs',
+    'mmse10.ejs',
 ];
 
 // Fisher-Yates shuffle implementation
@@ -177,21 +179,28 @@ function shuffle(array) {
 // Shuffle the array of file names
 const shuffledFilenames = shuffle(filenames);
 
+// Store the visited pages
+const visitedPages = new Set();
+
 // Get different MMSE pages
 app.get('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
     console.log(index);
-    const filename = shuffledFilenames[index];
-    console.log(filename);
 
     if (index < 0 || index >= shuffledFilenames.length) {
         res.status(404).send('Page not found');
+    } else if (visitedPages.has(index)) {
+        // If the page has already been visited, redirect to the score page or any other desired page
+        res.redirect('/score');
     } else {
+        const filename = shuffledFilenames[index];
+        console.log(filename);
+        visitedPages.add(index);
         res.render(filename.split('.')[0], { index: index });
     }
 });
 
-// Post route for MMSE questions starting from page 1 to 8
+// Post route for MMSE questions starting from page 1 to 10
 app.post('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
     console.log(index);
