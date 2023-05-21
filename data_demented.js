@@ -54,8 +54,8 @@ const averageMMSE = sumMMSE / countDemented;
 console.log('Demented MMSE Scores:', dementedMMSEScores);
 //[23, 28, 22, 28, 27, 27, 27, 24, 30, 29, 30, 29, 29, 29, 30, 27, 27, 27, 21, 16, 22]
 console.log('Average MMSE for Demented:', averageMMSE);
-//26.61904761904762
-//divide by two = 13.30952380
-//set 13 for at risk of dementia 
+//26.61904761904762 out of 30
+//equivalent value out of 20:  17.7
+//set 17 for at risk of dementia 
 
-//set 14 as may be demented
+//set 18 as may be demented

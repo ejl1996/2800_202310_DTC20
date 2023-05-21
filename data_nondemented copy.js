@@ -55,7 +55,7 @@ console.log('Non-demented MMSE Scores:', nonDementedMMSEScores);
 //[27, 30, 28, 29, 30, 29, 29, 30, 29, 30]
 console.log('Average MMSE for Non-demented:', averageMMSE);
 //28.933333333333334
-//14.46666666666
-//set 15 as not demented 
+//equivalent value out of 20: 19.2888
+//set 19 as not demented
 
-//set 14 as may be demented
+//set 18 as may be demented

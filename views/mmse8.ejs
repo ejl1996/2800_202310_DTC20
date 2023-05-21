@@ -45,7 +45,7 @@
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse8" method="post">
-            <p class="fw-bold">15. An apple is 40 cents, banana 60 cents, and grapefruit is 80 cents. How much is a
+            <p class="fw-bold">An apple is 40 cents, banana 60 cents, and grapefruit is 80 cents. How much is a
                 pear?</p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample25" value="90 cents">
@@ -65,10 +65,26 @@
                     120 cents
                 </label>
             </div>
+            <p class="fw-bold">Which sentence is gramatically incorrect?</p>
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample28" value="140 cents">
-                <label class="form-check-label" for="radioExample28">
-                    140 cents
+                <input class="form-check-input" type="radio" name="exampleForm14" id="radioExample21"
+                    value="Mix dry ingredients.">
+                <label class="form-check-label" for="radioExample21">
+                    I'm going to the cinema tomorrow.
+                </label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm14" id="radioExample22"
+                    value="Spoon batter onto skillet or griddle.">
+                <label class="form-check-label" for="radioExample22">
+                    I went to the store tomorrow.
+                </label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm14" id="radioExample23"
+                    value="Serve immediately or keep warm in oven.">
+                <label class="form-check-label" for="radioExample23">
+                    I will be seeing a friend today.
                 </label>
             </div>
             <div class="buttondiv">
