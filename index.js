@@ -219,10 +219,65 @@ app.post('/mmse/:index', (req, res) => {
         } else {
             req.session.index = 0;
 
-            // Generate a random index for a new MMSE page
-            const randomIndex = Math.floor(Math.random() * shuffledFilenames.length);
-            const randomFilename = shuffledFilenames[randomIndex];
-            res.render(randomFilename.split('.')[0], { index: randomIndex });
+            // Find an unvisited MMSE page
+            let unvisitedPage;
+            for (let i = 0; i < shuffledFilenames.length; i++) {
+                if (!visitedPages.has(i)) {
+                    unvisitedPage = i;
+                    break;
+                }
+            }
+
+            if (unvisitedPage !== undefined) {
+                const unvisitedFilename = shuffledFilenames[unvisitedPage];
+                visitedPages.add(unvisitedPage);
+                res.render(unvisitedFilename.split('.')[0], { index: unvisitedPage });
+            } else {
+                // All pages have been visited, calculate the total score
+                let totalScore =
+                    (req.session.mmse1Score || 0) +
+                    (req.session.mmse2Score || 0) +
+                    (req.session.mmse4Score || 0) +
+                    (req.session.mmse5Score || 0) +
+                    (req.session.mmse6Score || 0) +
+                    (req.session.mmse9Score || 0);
+
+                console.log(totalScore);
+
+                // Add additional scores based on the scoring system
+                const scoringSystem = [
+                    { question: 'year', correctAnswer: '2023', score: 1 },
+                    { question: 'country', correctAnswer: 'Canada', score: 1 },
+                    { question: 'image', correctAnswer: 'Wristwatch', score: 1 },
+                    { question: 'weekday', correctAnswer: 'Saturday', score: 1 },
+                    { question: 'ball', correctAnswer: 'Basketball', score: 1 },
+                    { question: 'subject', correctAnswer: 'Bracelet', score: 1 },
+                    { question: 'ethnic', correctAnswer: 'French', score: 1 },
+                    { question: 'algebra', correctAnswer: '20', score: 1 },
+                    { question: 'spelling', correctAnswer: 'zucchini', score: 1 },
+                    { question: 'order', correctAnswer: 'pin, computer, house, Jupiter', score: 1 },
+                    { question: 'multiples', correctAnswer: '15, 30, 55, 70', score: 1 },
+                    { question: 'math', correctAnswer: '100', score: 1 },
+                    { question: 'date', correctAnswer: 'There are 12 months in a year.', score: 1 },
+                    { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 },
+                    { question: 'cost', correctAnswer: '100 cents', score: 1 },
+                    { question: 'grammar', correctAnswer: 'I went to the store tomorrow.', score: 1 },
+                    { question: 'smoke', correctAnswer: 'No', score: 1 },
+                    { question: 'exercise', correctAnswer: 'Yes', score: 1 },
+                    { question: 'diabetes', correctAnswer: 'No', score: 1 },
+                    { question: 'income', correctAnswer: 'Yes', score: 1 },
+                ];
+
+                for (const question of scoringSystem) {
+                    const answer = req.body[question.question];
+                    if (answer === question.correctAnswer) {
+                        totalScore += question.score;
+                    }
+                }
+
+                // Render the score page or any other desired page
+                res.render('score', { totalScore: totalScore });
+            }
         }
     }
 });
