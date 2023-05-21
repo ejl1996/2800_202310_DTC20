@@ -266,7 +266,7 @@ app.post('/mmse5', (req, res) => {
     res.render('mmse6');
 });
 
-// Post route for mmse46
+// Post route for mmse6
 app.post('/mmse6', (req, res) => {
     const { multiples, math } = req.body;
 
@@ -379,7 +379,8 @@ app.post('/mmse10', (req, res) => {
 });
 
 // Post route for recommendation based on totalScore
-// Score reference points calculated from Kaggle: data_demented.js and data_nondemented.js
+// Score reference points calculated from Kaggle: data_demented.js and data_nondemented.js. 
+// Screening (mmse9.ejs and mmse10.ejs) scores obtained from data_demented.js, data_nondemented.js, and 
 app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
 
@@ -430,7 +431,6 @@ app.post('/signup', async (req, res) => {
             password: hashedPassword,
             number: number,
         });
-        //console.log(result);
 
         const x = await userCollection.findOne({ "username": username })
         console.log(x);
