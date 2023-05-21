@@ -168,9 +168,34 @@ const filenames = [
     'mmse10.ejs',
 ];
 
-// // Initialize the session variables for question scores
-// req.session.totalScore = 0;
-// req.session.mmseScores = {};
+const scoringSystem = [
+    { question: 'year', answer: '2023', score: 1 },
+    { question: 'country', answer: 'Canada', score: 1 },
+    { question: 'image', answer: 'Wristwatch', score: 1 },
+    { question: 'weekday', answer: 'Saturday', score: 1 },
+    { question: 'ball', answer: 'Basketball', score: 1 },
+    { question: 'subject', answer: 'Bracelet', score: 1 },
+    { question: 'ethnic', answer: 'French', score: 1 },
+    { question: 'algebra', answer: '20', score: 1 },
+    { question: 'spelling', answer: 'zucchini', score: 1 },
+    { question: 'order', answer: 'pin, computer, house, Jupiter', score: 1 },
+    { question: 'multiples', answer: '15, 30, 55, 70', score: 1 },
+    { question: 'math', answer: '100', score: 1 },
+    { question: 'date', answer: 'There are 12 months in a year.', score: 1 },
+    { question: 'recipe', answer: 'Drive out of parking lot.', score: 1 },
+    { question: 'cost', answer: '100 cents', score: 1 },
+    { question: 'grammar', answer: 'I went to the store tomorrow.', score: 1 },
+    { question: 'smoke', answer: 'No', score: 1 },
+    { question: 'exercise', answer: 'Yes', score: 1 },
+    { question: 'diabetes', answer: 'No', score: 1 },
+    { question: 'income', answer: 'Yes', score: 1 },
+];
+
+// Initialize the session variables for question scores
+app.get('/mmse', (req, res) => {
+    req.session.totalScore = 0;
+    req.session.mmseScores = {};
+});
 
 // Fisher-Yates shuffle implementation
 // Obtained with help from ChatGPT
@@ -183,31 +208,16 @@ function shuffle(array) {
     return shuffledArray;
 }
 
-
 // Shuffle the array of file names
 const shuffledFilenames = shuffle(filenames);
-// console.log(shuffledFilenames);
 
 // Store the visited pages
 const visitedPages = new Set();
 
-function calculateScore(answers, scoringSystem) {
-    let score = 0;
-    for (const question of scoringSystem) {
-        const answer = answers[question.question];
-        if (answer === question.answer) {
-            score += question.score;
-        }
-    }
-    return score;
-}
-
 // Get different MMSE pages
-// Obtained with help from ChatGPT
 app.get('/mmse/:index', (req, res) => {
     let index = parseInt(req.params.index);
     const filename = shuffledFilenames[index];
-    console.log(index);
 
     if (index < 0 || index >= shuffledFilenames.length || filename === undefined) {
         res.status(404).send('Page not found');
@@ -215,14 +225,13 @@ app.get('/mmse/:index', (req, res) => {
         // If the page has already been visited, redirect to the score page or any other desired page
         res.redirect('/score');
     } else {
-        // console.log(filename);
         visitedPages.add(index);
         res.render(filename.split('.')[0], { index: index });
     }
 });
 
 // Post route for MMSE questions starting from page 1 to 10
-// Obtained with help from ChatGPT
+// Post route for MMSE questions starting from page 1 to 10
 app.post('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
 
@@ -232,134 +241,59 @@ app.post('/mmse/:index', (req, res) => {
         // Handle form data stuff
         console.log(req.body);
 
+        // Create a score variable for the current MMSE page in the session if it doesn't exist
+        const scoreKey = `mmse${index}Score`;
+        if (!req.session.mmseScores) {
+            req.session.mmseScores = {};
+        }
+        if (!req.session.mmseScores[scoreKey]) {
+            req.session.mmseScores[scoreKey] = 0;
+        }
+
+        // Define the scoring system
+        const scoringSystem = [
+            { question: 'year', answer: '2023', score: 1 },
+            // Add all the other questions here
+        ];
+
+        // Calculate the score for the current page
+        for (const question of scoringSystem) {
+            const answer = req.body[question.question];
+            if (answer === question.answer) {
+                req.session.mmseScores[scoreKey] += question.score;
+            }
+        }
+
         // Increment index and store it in the session
         req.session.index = (req.session.index || index) + 1;
 
-        if (req.session.index < shuffledFilenames.length) {
-            // Redirect to the next page
-            res.redirect('/mmse/' + req.session.index);
+        // Find an unvisited MMSE page
+        let unvisitedPage;
+        for (let i = 0; i < shuffledFilenames.length; i++) {
+            if (!visitedPages.has(i)) {
+                unvisitedPage = i;
+                break;
+            }
+        }
+
+        if (unvisitedPage !== undefined) {
+            const unvisitedFilename = shuffledFilenames[unvisitedPage];
+            visitedPages.add(unvisitedPage);
+            res.render(unvisitedFilename.split('.')[0], {
+                index: unvisitedPage,
+                questions: scoringSystem
+            });
         } else {
-            req.session.index = 0;
-
-            // Find an unvisited MMSE page
-            let unvisitedPage;
+            // All pages have been visited, calculate the total score
+            req.session.totalScore = 0;
             for (let i = 0; i < shuffledFilenames.length; i++) {
-                if (!visitedPages.has(i)) {
-                    unvisitedPage = i;
-                    break;
-                }
+                const scoreKey = `mmse${i}Score`;
+                req.session.totalScore += req.session.mmseScores[scoreKey] || 0;
             }
 
-            if (unvisitedPage !== undefined) {
-                const unvisitedFilename = shuffledFilenames[unvisitedPage];
-                visitedPages.add(unvisitedPage);
-
-
-                // Define all the questions
-                const questions = [
-                    { question: 'year', answer: '2023', score: 1 },
-                    { question: 'country', answer: 'Canada', score: 1 },
-                    { question: 'image', answer: 'Wristwatch', score: 1 },
-                    { question: 'weekday', answer: 'Saturday', score: 1 },
-                    { question: 'ball', answer: 'Basketball', score: 1 },
-                    { question: 'subject', answer: 'Bracelet', score: 1 },
-                    { question: 'ethnic', answer: 'French', score: 1 },
-                    { question: 'algebra', answer: '20', score: 1 },
-                    { question: 'spelling', answer: 'zucchini', score: 1 },
-                    { question: 'order', answer: 'pin, computer, house, Jupiter', score: 1 },
-                    { question: 'multiples', answer: '15, 30, 55, 70', score: 1 },
-                    { question: 'math', answer: '100', score: 1 },
-                    { question: 'date', answer: 'There are 12 months in a year.', score: 1 },
-                    { question: 'recipe', answer: 'Drive out of parking lot.', score: 1 },
-                    { question: 'cost', answer: '100 cents', score: 1 },
-                    { question: 'grammar', answer: 'I went to the store tomorrow.', score: 1 },
-                    { question: 'smoke', answer: 'No', score: 1 },
-                    { question: 'exercise', answer: 'Yes', score: 1 },
-                    { question: 'diabetes', answer: 'No', score: 1 },
-                    { question: 'income', answer: 'Yes', score: 1 },
-                ];
-
-
-                // Pass the questions and other variables to the EJS file
-                const year = req.body.year;
-                const country = req.body.country;
-                const image = req.body.image;
-                const weekday = req.body.weekday;
-                const ball = req.body.ball;
-                const subject = req.body.subject;
-                const ethnic = req.body.ethnic;
-                const algebra = req.body.algebra;
-                const spelling = req.body.spelling;
-                const order = req.body.order;
-                const multiples = req.body.multiples;
-                const math = req.body.math;
-                const date = req.body.date;
-                const recipe = req.body.recipe;
-                const cost = req.body.cost;
-                const grammar = req.body.grammar;
-                const smoke = req.body.smoke;
-                const exercise = req.body.exercise;
-                const diabetes = req.body.diabetes;
-                const income = req.body.income;
-
-                res.render(unvisitedFilename.split('.')[0], { index: unvisitedPage, year: year, country: country, image: image, weekday: weekday, ball: ball, subject: subject, ethnic: ethnic, algebra: algebra, spelling: spelling, order: order, multiples: multiples, math: math, date: date, recipe: recipe, cost: cost, grammar: grammar, smoke: smoke, exercise: exercise, diabetes: diabetes, income: income, questions: questions });
-            } else {
-                // All pages have been visited, calculate the total score
-                req.session.totalScore =
-                    (req.session.mmse1Score || 0) +
-                    (req.session.mmse2Score || 0) +
-                    (req.session.mmse3Score || 0) +
-                    (req.session.mmse4Score || 0) +
-                    (req.session.mmse5Score || 0) +
-                    (req.session.mmse6Score || 0) +
-                    (req.session.mmse7Score || 0) +
-                    (req.session.mmse8Score || 0) +
-                    (req.session.mmse9Score || 0) +
-                    (req.session.mmse10Score || 0);
-
-                console.log(req.session.totalScore);
-
-                // Define the scoring system
-                const scoringSystem = [
-                    { question: 'year', answer: '2023', score: 1 },
-                    { question: 'country', answer: 'Canada', score: 1 },
-                    { question: 'image', answer: 'Wristwatch', score: 1 },
-                    { question: 'weekday', answer: 'Saturday', score: 1 },
-                    { question: 'ball', answer: 'Basketball', score: 1 },
-                    { question: 'subject', answer: 'Bracelet', score: 1 },
-                    { question: 'ethnic', answer: 'French', score: 1 },
-                    { question: 'algebra', answer: '20', score: 1 },
-                    { question: 'spelling', answer: 'zucchini', score: 1 },
-                    { question: 'order', answer: 'pin, computer, house, Jupiter', score: 1 },
-                    { question: 'multiples', answer: '15, 30, 55, 70', score: 1 },
-                    { question: 'math', answer: '100', score: 1 },
-                    { question: 'date', answer: 'There are 12 months in a year.', score: 1 },
-                    { question: 'recipe', answer: 'Drive out of parking lot.', score: 1 },
-                    { question: 'cost', answer: '100 cents', score: 1 },
-                    { question: 'grammar', answer: 'I went to the store tomorrow.', score: 1 },
-                    { question: 'smoke', answer: 'No', score: 1 },
-                    { question: 'exercise', answer: 'Yes', score: 1 },
-                    { question: 'diabetes', answer: 'No', score: 1 },
-                    { question: 'income', answer: 'Yes', score: 1 },
-                ];
-
-                // Calculate the total score
-                let totalScore = 0;
-
-                for (const question of scoringSystem) {
-                    const answer = req.body[question.question];
-                    if (answer === question.answer) {
-                        totalScore += question.score;
-                    }
-                }
-
-                // Store the total score in the session
-                req.session.totalScore = totalScore;
-
-                // Render the score page or any other desired page
-                res.render('score', { totalScore: totalScore });
-
-            }
+            console.log(req.session.totalScore);
+            // Render the score page or any other desired page
+            res.render('score', { totalScore: req.session.totalScore });
         }
     }
 });
@@ -552,43 +486,43 @@ app.get('/email', (req, res) => {
 });
 
 app.get('/mmse1', (req, res) => {
-    res.render('mmse1', { year: '2023', country: 'Canada' });
+    res.render('mmse1');
 });
 
 app.get('/mmse2', (req, res) => {
-    res.render('mmse2', { image: 'Wristwatch', weekday: 'Saturday' });
+    res.render('mmse2');
 });
 
 app.get('/mmse3', (req, res) => {
-    res.render('mmse3', { ball: 'Basketball', subject: 'Bracelet' });
+    res.render('mmse3');
 });
 
 app.get('/mmse4', (req, res) => {
-    res.render('mmse4', { ethnic: 'French', algebra: '20' });
+    res.render('mmse4');
 });
 
 app.get('/mmse5', (req, res) => {
-    res.render('mmse5', { spelling: 'zucchini', order: 'pin, computer, house, Jupiter' });
+    res.render('mmse5');
 });
 
 app.get('/mmse6', (req, res) => {
-    res.render('mmse6', { multiples: '15, 30, 55, 70', math: '100' });
+    res.render('mmse6');
 });
 
 app.get('/mmse7', (req, res) => {
-    res.render('mmse7', { date: 'There are 12 months in a year.', recipe: 'Drive out of parking lot.' });
+    res.render('mmse7');
 });
 
 app.get('/mmse8', (req, res) => {
-    res.render('mmse8', { cost: '100 cents', grammar: 'I went to the store tomorrow.' });
+    res.render('mmse8');
 });
 
 app.get('/mmse9', (req, res) => {
-    res.render('mmse9', { smoke: 'No', exercise: 'Yes' });
+    res.render('mmse9');
 });
 
 app.get('/mmse10', (req, res) => {
-    res.render('mmse10', { diabetes: 'No', income: 'Yes' });
+    res.render('mmse10');
 });
 
 app.get('/score', (req, res) => {

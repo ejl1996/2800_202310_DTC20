@@ -46,7 +46,8 @@
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse/:index" method="post">
-            <p class="fw-bold">Which of the following is not an ethnic group? <% ethnic %></p>
+            <p class="fw-bold">Which of the following is not an ethnic group?
+            </p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="ethnic" id="radioEthnic1" value="Canadian">
                 <label class="form-check-label" for="radioEthnic1">Canadian</label>
@@ -66,7 +67,7 @@
 
             <br>
 
-            <p class="fw-bold">What is (5 + 5) x 2? <% algebra %></p>
+            <p class="fw-bold">What is (5 + 5) x 2?</p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="math" id="radioMath1" value="10">
                 <label class="form-check-label" for="radioMath1">10</label>
