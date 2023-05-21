@@ -182,6 +182,16 @@ const shuffledFilenames = shuffle(filenames);
 // Store the visited pages
 const visitedPages = new Set();
 
+function calculateScore(answers) {
+    let score = 0;
+    for (const answer of Object.values(answers)) {
+        if (answer === 'correct') {
+            score += 1;
+        }
+    }
+    return score;
+}
+
 // Get different MMSE pages
 app.get('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
@@ -203,7 +213,7 @@ app.get('/mmse/:index', (req, res) => {
 // Post route for MMSE questions starting from page 1 to 10
 app.post('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
-    console.log(index);
+
     if (index < 0 || index >= shuffledFilenames.length) {
         res.status(404).send('Page not found');
     } else {
@@ -234,15 +244,19 @@ app.post('/mmse/:index', (req, res) => {
                 res.render(unvisitedFilename.split('.')[0], { index: unvisitedPage });
             } else {
                 // All pages have been visited, calculate the total score
-                let totalScore =
+                req.session.totalScore =
                     (req.session.mmse1Score || 0) +
                     (req.session.mmse2Score || 0) +
+                    (req.session.mmse3Score || 0) +
                     (req.session.mmse4Score || 0) +
                     (req.session.mmse5Score || 0) +
                     (req.session.mmse6Score || 0) +
-                    (req.session.mmse9Score || 0);
+                    (req.session.mmse7Score || 0) +
+                    (req.session.mmse8Score || 0) +
+                    (req.session.mmse9Score || 0) +
+                    (req.session.mmse10Score || 0);
 
-                console.log(totalScore);
+                console.log(req.session.totalScore);
 
                 // Add additional scores based on the scoring system
                 const scoringSystem = [
@@ -271,12 +285,12 @@ app.post('/mmse/:index', (req, res) => {
                 for (const question of scoringSystem) {
                     const answer = req.body[question.question];
                     if (answer === question.correctAnswer) {
-                        totalScore += question.score;
+                        req.session.totalScore += question.score;
                     }
                 }
 
                 // Render the score page or any other desired page
-                res.render('score', { totalScore: totalScore });
+                res.render('score', { totalScore: req.session.totalScore });
             }
         }
     }
