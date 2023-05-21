@@ -607,6 +607,10 @@ app.get('/submitthanks', (req, res) => {
     res.redirect('/submitthanks');
 });
 
+app.get("*", (req, res) => {
+    res.status(404).render("404.ejs");
+});
+
 app.listen(port, () => {
     console.log("Node application listening on port " + port);
 });
