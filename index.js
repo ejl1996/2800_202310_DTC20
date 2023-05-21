@@ -312,11 +312,55 @@ app.post('/mmse7', (req, res) => {
 
 // Post route for mmse8 
 app.post('/mmse8', (req, res) => {
-
-    const { cost } = req.body;
+    const { cost, grammar } = req.body;
 
     const scoringSystem = [
         { question: 'cost', correctAnswer: '100 cents', score: 1 },
+        { question: 'grammar', correctAnswer: 'I went to the store tomorrow.', score: 1 },
+    ];
+
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    req.session.mmse8Score = score;
+    console.log(req.session.mmse8Score)
+
+    res.render('mmse9');
+});
+
+// Post route for mmse9
+app.post('/mmse9', (req, res) => {
+    const { smoke, exercise } = req.body;
+
+    const scoringSystem = [
+        { question: 'smoke', correctAnswer: 'No', score: 1 },
+        { question: 'exercise', correctAnswer: 'Yes', score: 1 },
+    ];
+
+    let score = 0;
+    scoringSystem.forEach(item => {
+        if (req.body[item.question] === item.correctAnswer) {
+            score += item.score;
+        }
+    });
+
+    req.session.mmse9Score = score;
+    console.log(req.session.mmse9Score)
+
+    res.render('mmse10');
+});
+
+// Post route for mmse10 
+app.post('/mmse10', (req, res) => {
+    const { diabetes, income } = req.body;
+
+    const scoringSystem = [
+        { question: 'diabetes', correctAnswer: 'No', score: 1 },
+        { question: 'income', correctAnswer: 'Yes', score: 1 },
     ];
 
     let totalScore =
@@ -324,9 +368,10 @@ app.post('/mmse8', (req, res) => {
         (req.session.mmse2Score) +
         (req.session.mmse4Score) +
         (req.session.mmse5Score) +
-        (req.session.mmse6Score);
+        (req.session.mmse6Score) +
+        (req.session.mmse9Score);
     console.log(totalScore);
-    totalScore += 9;
+    totalScore += 14;
 
     req.session.totalScore = totalScore;
 
@@ -339,9 +384,9 @@ app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
 
     let recommendation;
-    if (totalScore <= 13) {
+    if (totalScore <= 17) {
         recommendation = "are at risk";
-    } else if (totalScore === 14) {
+    } else if (totalScore === 18) {
         recommendation = "may be at risk";
     } else {
         recommendation = "are not at risk";
