@@ -16,6 +16,10 @@ const MongoStore = require('connect-mongo');
 const { MongoClient } = require('mongodb');
 // Create an express application       
 const app = express();
+// Import body-parser middleware package and make it accessible in req.body
+const bodyParser = require('body-parser');
+// Parse incoming request bodies with URL-encoded payloads
+app.use(bodyParser.urlencoded({ extended: false }));
 // Import bcrypt                         
 const bcrypt = require('bcrypt');
 // Set saltRounds to 12              
@@ -150,232 +154,59 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-// Post route for MMSE questions starting from page 1 to 8 
-app.post('/mmse1', (req, res) => {
-    // Extract the question data from the request body
-    const { year, country } = req.body;
+const filenames = [
+    'mmse1.ejs',
+    'mmse2.ejs',
+    'mmse3.ejs',
+    'mmse4.ejs',
+    'mmse5.ejs',
+    'mmse6.ejs',
+    'mmse7.ejs',
+    'mmse8.ejs',
+];
 
-    // Scoring system for mmse1
-    const scoringSystem = [
-        { question: 'year', correctAnswer: '2023', score: 1 },
-        { question: 'country', correctAnswer: 'Canada', score: 1 },
-    ];
+// Fisher-Yates shuffle implementation
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
+// Shuffle the array of file names
+const shuffledFilenames = shuffle(filenames);
 
-    // Calculate the score for mmse1
-    let score = 0;
-    scoringSystem.forEach(item => {
+// Route for MMSE questions
+app.all('/mmse/:index', (req, res) => {
+    const index = parseInt(req.params.index);
+    console.log(index);
+    const filename = shuffledFilenames[index];
+    console.log(filename);
 
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
+    if (index < 0 || index >= shuffledFilenames.length) {
+        res.status(404).send('Page not found');
+    } else {
+        if (req.method === 'GET') {
+            // Render the MMSE page for the specified index
+            res.render(filename.split('.')[0], { index: index });
+        } else if (req.method === 'POST') {
+            // Handle form data stuff
+            console.log(req.body);
+
+            // Increment index and store it in the session
+            req.session.index = (req.session.index || index) + 1;
+
+            if (req.session.index < shuffledFilenames.length) {
+                // Redirect to a random MMSE page
+                const randomIndex = Math.floor(Math.random() * shuffledFilenames.length);
+                res.redirect('/mmse/' + randomIndex);
+            } else {
+                req.session.index = 0;
+                res.redirect('/score');
+            }
         }
-    });
-
-    // Store the score for mmse1 in session
-    req.session.mmse1Score = score;
-    console.log(req.session.mmse1Score)
-
-    res.render('mmse2');
-});
-
-// Post route for mmse2 
-app.post('/mmse2', (req, res) => {
-    const { image, weekday } = req.body;
-
-    const scoringSystem = [
-        { question: 'image', correctAnswer: 'Wristwatch', score: 1 },
-        { question: 'weekday', correctAnswer: 'Saturday', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse2Score = score;
-    console.log(req.session.mmse2Score)
-
-    res.render('mmse3');
-});
-
-// Post route for mmse3 
-app.post('/mmse3', (req, res) => {
-    const { ball, subject } = req.body;
-
-    const scoringSystem = [
-        { question: 'ball', correctAnswer: 'Basketball', score: 1 },
-        { question: 'subject', correctAnswer: 'Bracelet', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse3Score = score;
-    console.log(req.session.mmse3Score)
-
-    res.render('mmse4');
-});
-
-// Post route for mmse4 
-app.post('/mmse4', (req, res) => {
-    const { ethnic, algebra } = req.body;
-
-    const scoringSystem = [
-        { question: 'ethnic', correctAnswer: 'French', score: 1 },
-        { question: 'algebra', correctAnswer: '20', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse4Score = score;
-    console.log(req.session.mmse4Score)
-
-    res.render('mmse5');
-});
-
-// Post route for mmse5 
-app.post('/mmse5', (req, res) => {
-    const { spelling, order } = req.body;
-
-    const scoringSystem = [
-        { question: 'spelling', correctAnswer: 'zucchini', score: 1 },
-        { question: 'order', correctAnswer: 'pin, computer, house, Jupiter', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse5Score = score;
-    console.log(req.session.mmse5Score)
-
-    res.render('mmse6');
-});
-
-// Post route for mmse6
-app.post('/mmse6', (req, res) => {
-    const { multiples, math } = req.body;
-
-    const scoringSystem = [
-        { question: 'multiples', correctAnswer: '15, 30, 55, 70', score: 1 },
-        { question: 'math', correctAnswer: '100', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse6Score = score;
-    console.log(req.session.mmse6Score)
-
-    res.render('mmse7');
-});
-
-// Post route for mmse7 
-app.post('/mmse7', (req, res) => {
-    const { date, recipe } = req.body;
-
-    const scoringSystem = [
-        { question: 'date', correctAnswer: 'There are 12 months in a year.', score: 1 },
-        { question: 'recipe', correctAnswer: 'Drive out of parking lot.', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse7Score = score;
-    console.log(req.session.mmse7Score)
-
-    res.render('mmse8');
-});
-
-// Post route for mmse8 
-app.post('/mmse8', (req, res) => {
-    const { cost, grammar } = req.body;
-
-    const scoringSystem = [
-        { question: 'cost', correctAnswer: '100 cents', score: 1 },
-        { question: 'grammar', correctAnswer: 'I went to the store tomorrow.', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse8Score = score;
-    console.log(req.session.mmse8Score)
-
-    res.render('mmse9');
-});
-
-// Post route for mmse9
-app.post('/mmse9', (req, res) => {
-    const { smoke, exercise } = req.body;
-
-    const scoringSystem = [
-        { question: 'smoke', correctAnswer: 'No', score: 1 },
-        { question: 'exercise', correctAnswer: 'Yes', score: 1 },
-    ];
-
-    let score = 0;
-    scoringSystem.forEach(item => {
-        if (req.body[item.question] === item.correctAnswer) {
-            score += item.score;
-        }
-    });
-
-    req.session.mmse9Score = score;
-    console.log(req.session.mmse9Score)
-
-    res.render('mmse10');
-});
-
-// Post route for mmse10 
-app.post('/mmse10', (req, res) => {
-    const { diabetes, income } = req.body;
-
-    const scoringSystem = [
-        { question: 'diabetes', correctAnswer: 'No', score: 1 },
-        { question: 'income', correctAnswer: 'Yes', score: 1 },
-    ];
-
-    let totalScore =
-        (req.session.mmse1Score) +
-        (req.session.mmse2Score) +
-        (req.session.mmse4Score) +
-        (req.session.mmse5Score) +
-        (req.session.mmse6Score) +
-        (req.session.mmse9Score);
-    console.log(totalScore);
-    totalScore += 14;
-
-    req.session.totalScore = totalScore;
-
-    res.render('score', { totalScore: totalScore });
+    }
 });
 
 // Post route for recommendation based on totalScore

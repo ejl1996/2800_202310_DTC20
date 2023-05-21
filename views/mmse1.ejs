@@ -44,7 +44,7 @@
         <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
-        <form class="bg-white px-4" action="/mmse1" method="post">
+        <form class="bg-white px-4" action="/mmse/:index" method="post">
             <p class="fw-bold">What year is it?</p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="year" id="radioYear1" value="2022">
