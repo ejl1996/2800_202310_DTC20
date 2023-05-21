@@ -154,6 +154,7 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+// Define file names. 
 const filenames = [
     'mmse1.ejs',
     'mmse2.ejs',
@@ -168,6 +169,7 @@ const filenames = [
 ];
 
 // Fisher-Yates shuffle implementation
+// Obtained with help from ChatGPT
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -193,6 +195,7 @@ function calculateScore(answers) {
 }
 
 // Get different MMSE pages
+// Obtained with help from ChatGPT
 app.get('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
     console.log(index);
@@ -211,6 +214,7 @@ app.get('/mmse/:index', (req, res) => {
 });
 
 // Post route for MMSE questions starting from page 1 to 10
+// Obtained with help from ChatGPT
 app.post('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
 
