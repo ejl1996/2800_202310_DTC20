@@ -45,7 +45,8 @@
         <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
         <!-- performs app.post so that the user's answers can be stored in the database -->
         <form class="bg-white px-4" action="/mmse/:index" method="post">
-            <p class="fw-bold">What year is it?</p>
+            <p class="fw-bold">What year is it? <%= year %>
+            </p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="year" id="radioYear1" value="2022">
                 <label class="form-check-label" for="radioYear1">2022</label>
@@ -63,7 +64,8 @@
                 <label class="form-check-label" for="radioYear4">2025</label>
             </div>
 
-            <p class="fw-bold">Which of the following is a country in North America?</p>
+            <p class="fw-bold">Which of the following is a country in North America? <%= country %>
+            </p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="country" id="radioCountry1" value="Austria">
                 <label class="form-check-label" for="radioCountry1">Austria</label>

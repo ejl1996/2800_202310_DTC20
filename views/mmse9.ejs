@@ -45,7 +45,8 @@
         <div class="riskfactorquestion light-green-background">
             <h4 class="text-center mb-4">Screening questionnaire </h4>
             <form class="bg-white px-4" action="/mmse/:index" method="post">
-                <p class="fw-bold">Do you smoke? </p>
+                <p class="fw-bold">Do you smoke? <% smoke %>
+                </p>
                 <div class="form-check mb-2">
                     <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample25"
                         value="90 cents">
@@ -60,7 +61,8 @@
                         No
                     </label>
                 </div>
-                <p class="fw-bold">Do you exercise?</p>
+                <p class="fw-bold">Do you exercise? <% exercise %>
+                </p>
                 <div class="form-check mb-2">
                     <input class="form-check-input" type="radio" name="exampleForm14" id="radioExample21"
                         value="Mix dry ingredients.">
