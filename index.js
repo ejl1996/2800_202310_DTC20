@@ -177,8 +177,8 @@ function shuffle(array) {
 // Shuffle the array of file names
 const shuffledFilenames = shuffle(filenames);
 
-// Route for MMSE questions
-app.all('/mmse/:index', (req, res) => {
+// Get different MMSE pages
+app.get('/mmse/:index', (req, res) => {
     const index = parseInt(req.params.index);
     console.log(index);
     const filename = shuffledFilenames[index];
@@ -187,24 +187,33 @@ app.all('/mmse/:index', (req, res) => {
     if (index < 0 || index >= shuffledFilenames.length) {
         res.status(404).send('Page not found');
     } else {
-        if (req.method === 'GET') {
-            // Render the MMSE page for the specified index
-            res.render(filename.split('.')[0], { index: index });
-        } else if (req.method === 'POST') {
-            // Handle form data stuff
-            console.log(req.body);
+        res.render(filename.split('.')[0], { index: index });
+    }
+});
 
-            // Increment index and store it in the session
-            req.session.index = (req.session.index || index) + 1;
+// Post route for MMSE questions starting from page 1 to 8
+app.post('/mmse/:index', (req, res) => {
+    const index = parseInt(req.params.index);
+    console.log(index);
+    if (index < 0 || index >= shuffledFilenames.length) {
+        res.status(404).send('Page not found');
+    } else {
+        // Handle form data stuff
+        console.log(req.body);
 
-            if (req.session.index < shuffledFilenames.length) {
-                // Redirect to a random MMSE page
-                const randomIndex = Math.floor(Math.random() * shuffledFilenames.length);
-                res.redirect('/mmse/' + randomIndex);
-            } else {
-                req.session.index = 0;
-                res.redirect('/score');
-            }
+        // Increment index and store it in the session
+        req.session.index = (req.session.index || index) + 1;
+
+        if (req.session.index < shuffledFilenames.length) {
+            // Redirect to the next page
+            res.redirect('/mmse/' + req.session.index);
+        } else {
+            req.session.index = 0;
+
+            // Generate a random index for a new MMSE page
+            const randomIndex = Math.floor(Math.random() * shuffledFilenames.length);
+            const randomFilename = shuffledFilenames[randomIndex];
+            res.render(randomFilename.split('.')[0], { index: randomIndex });
         }
     }
 });
