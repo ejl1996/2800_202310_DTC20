@@ -1,23 +1,24 @@
 <%- include("templates/header", {headerMessage: "Welcome" }) %>
     <!-- This code was edited and modified from Emma Lee's COMP 2537 Assignment 2. -->
+
     <body>
         <div class="signupsetting">
             <div class="text-center">
                 <!-- Perform the sign up app.post method so that the user's information can be stored in the database -->
                 <form class="form-signup" action="/signup" method="post" onsubmit="return validation();">
-                    <h1 class="h3 mb-3 font-weight-normal" style="color:  plum">Sign Up</h1>
+                    <h1 class="h3 mb-3 font-weight-normal" style="color: plum">Sign Up</h1>
                     <!-- Users are required to enter their username, email address, password, and phone number to sign up for an account. -->
-                    <input name="username" type="text" placeholder="Username">
+                    <input name="username" type="text" placeholder="Username" required>
                     <br>
-                    <input name="email" type="email" placeholder="Email address">
+                    <input name="email" type="email" placeholder="Email address" required>
                     <br>
-                    <input name="password" type="password" placeholder="Password">
+                    <input name="password" type="password" placeholder="Password" required>
                     <br>
-                    <input name="number" type="number" placeholder="Phone number">
+                    <input name="number" type="number" placeholder="Phone number" required>
                     <br>
                     <br>
-                    <button class="btn btn-outline-light btn-lg px-5" type="submit" style="font-size: 25px; background-color:
-                                    plum;">Submit</button>
+                    <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                        style="font-size: 25px; background-color: plum;">Submit</button>
                 </form>
             </div>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
