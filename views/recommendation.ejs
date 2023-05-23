@@ -56,6 +56,31 @@
                 text-transform: uppercase;
             }
 
+            #zooming-text {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 2rem;
+                animation: zoom 2s infinite alternate;
+                background: linear-gradient(45deg, #ff00b8, #2e2eb8);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            @keyframes zoom {
+                0% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.2);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
             @keyframes dance {
                 0% {
                     transform: rotate(0deg) scale(1);
@@ -83,15 +108,9 @@
                                 <div class="card-body p-5 text-center">
 
                                     <div class="mb-md-5 mt-md-4 pb-5">
-
                                         <h1 class="fw-bold mb-2 text-uppercase">Results:</h1>
-                                        <p class="text-white-50 mb-5"
-                                            style="color: black; font-size: 30px; font: Garamond;">You
-                                            <%= recommendation %>
-                                                for dementia.
-                                        </p>
-
                                         <br>
+                                        <p id="zooming-text">You <%= recommendation %> for dementia.</p>
                                         <br>
                                         <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
                                             manage and prevent dementia by the Alzheimer Society of Canada:</p>
@@ -105,9 +124,6 @@
                                                 <br>for
                                                 <br>Resources!<br></a>
                                         </p>
-                                        <br>
-                                        <br>
-                                        <br>
                                         <br>
                                         <br>
                                         <br>
