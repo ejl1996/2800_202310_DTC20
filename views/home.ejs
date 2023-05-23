@@ -72,7 +72,12 @@
                 right: 0;
             }
 
-            #cognitive {
+            .animated-link {
+                display: inline-block;
+                font-size: 15px;
+                color: black;
+                text-decoration: none;
+                animation: rainbow 5s linear infinite;
                 display: inline-block;
                 width: 100px;
                 height: 100px;
@@ -80,20 +85,42 @@
                 border-radius: 50%;
                 border-top-color: #fff;
                 background-color: pink;
-                animation: spin 1s ease-in-out infinite;
-                -webkit-animation: spin 1s ease-in-out infinite;
                 color: blue;
                 text-decoration: none;
                 text-transform: uppercase;
             }
 
-            @keyframes spin {
+            @keyframes rainbow {
                 0% {
-                    transform: rotate(0deg);
+                    color: #ff0000;
+                }
+
+                14% {
+                    color: #ff7f00;
+                }
+
+                29% {
+                    color: #ffff00;
+                }
+
+                43% {
+                    color: #00ff00;
+                }
+
+                57% {
+                    color: #0000ff;
+                }
+
+                71% {
+                    color: #4b0082;
+                }
+
+                86% {
+                    color: #8f00ff;
                 }
 
                 100% {
-                    transform: rotate(360deg);
+                    color: #ff0000;
                 }
             }
 
@@ -146,7 +173,9 @@
                                     <br>
                                     <br>
                                     <p class="text-white-50 mb-5" style="color: black; font-size: 15px"><a
-                                            href="https://shorturl.at/LNP36" id="cognitive"><br>Click <br>Here!</a>
+                                            href="https://shorturl.at/LNP36" id="cognitive" class="animated-link">
+                                            <br>Click<br>Here!
+                                        </a>
                                     </p>
                                 </div>
                             </div>
