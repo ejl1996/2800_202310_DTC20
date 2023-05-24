@@ -43,6 +43,8 @@
                     var email = document.getElementsByName("email")[0].value;
                     var password = document.getElementsByName("password")[0].value;
                     var number = document.getElementsByName("number")[0].value;
+                    var phoneNumberInput = document.getElementsByName("number")[0];
+                    var phoneNumber = phoneNumberInput.value;
 
                     // Check if user has fields missing
                     var missingFields = [];
@@ -67,7 +69,18 @@
                         return false;
                     }
 
+                    if (phoneNumber < 0) {
+                        displayErrorMessage("Phone number cannot be negative.");
+                        return false; // Prevent form submission
+                    }
+
                     return true;
+                }
+
+                function displayErrorMessage(message) {
+                    var errorMessageElement = document.getElementById("errorMessage");
+                    errorMessageElement.innerHTML = message;
+                    $("#myModal").modal("show");
                 }
             </script>
 
