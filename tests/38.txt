@@ -1,0 +1,7 @@
+Do you need to worry about divide-by-zero errors?
+
+Inputs:
+NA. 
+
+Output: 
+Our app doesn't allow for mathematical calculations from the user. 
