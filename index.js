@@ -596,6 +596,14 @@ app.get('/mmse8', (req, res) => {
     res.render('mmse8');
 });
 
+app.get('/mmse9', (req, res) => {
+    res.render('mmse9');
+});
+
+app.get('/mmse10', (req, res) => {
+    res.render('mmse10');
+});
+
 app.get('/score', (req, res) => {
     res.render('score');
 });
