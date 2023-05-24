@@ -1,0 +1,8 @@
+If the user can delete things, should the delete functionality ask for confirmation? 
+*Instead of delete, let user be able to revise functionality. 
+
+Inputs:
+Go to revision page, ask for user's confirmation before revising password or phone number. 
+
+Output: 
+A confirmation modal pops-up to confirm changes.

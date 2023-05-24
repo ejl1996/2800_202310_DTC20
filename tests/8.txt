@@ -1,0 +1,7 @@
+Are mandatory fields indicated by an asterisk (or something like that)? Are they validated?
+
+Inputs:
+Visit login page, sign-up page, and password/number revision pages. 
+
+Output: 
+All required fields have an asterix or say "required". 

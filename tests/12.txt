@@ -1,0 +1,7 @@
+Dropdown fields have the first entry as blank or text like “Select”?
+
+Inputs:
+NA
+
+Output: 
+Our app doesn't have any dropdown fields (NA)
