@@ -4,4 +4,4 @@ Inputs:
 Go to sign-up section: attempt to sign-up with alphabetical characters instead of numerical characters for phone number. 
 
 Output: 
-A pop-up message comes up, stating user to "Enter a number". 
+A pop-up message comes up, alerting user to "Enter a number". 

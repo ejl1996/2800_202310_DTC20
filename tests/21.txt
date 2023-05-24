@@ -4,4 +4,4 @@ Inputs:
 Go to sign-up section: attempt to sign-up with username or password that is longer than 20 characters. 
 
 Output: 
-The sign-up submit button doesn't allow submission and form is cleared. 
+The sign-up submit button doesn't allow for submission and form is cleared. 
