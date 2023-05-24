@@ -22,7 +22,8 @@
                             <div class="card-body p-5 text-center">
 
                                 <div class="mb-md-5 mt-md-4 pb-5">
-                                    <form class="number" action="/updatenumber" method="post">
+                                    <form class="number" action="/updatenumber" method="post"
+                                        onsubmit="return validateForm()">
 
                                         <h1 class="fw-bold mb-2 text-uppercase">Change my number</h1>
                                         <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Please enter
@@ -32,20 +33,42 @@
 
                                         <div class="form-outline form-white mb-4">
                                             <input type="username" id="username" name="username" placeholder="Username"
-                                                class="form-control form-control-lg" value="<%=user.username %>" />
+                                                class="form-control form-control-lg" value="<%=user.username %>"
+                                                required />
                                             <label class="form-label" for="number" style="font-size: 25px;"></label>
+                                            <span class="text-danger">* Required</span>
                                         </div>
                                         <div class="form-outline form-white mb-4">
                                             <input type="number" id="number" name="number" placeholder="Phone Number"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" required />
                                             <label class="form-label" for="number" style="font-size: 25px;"></label>
+                                            <span class="text-danger">* Required</span>
                                         </div>
+
                                         <br>
                                         <br>
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit"
                                             onclick="return confirm('Are you sure you want to update your number?');"
                                             style="font-size: 25px; color:black;">Update</button>
                                     </form>
+
+                                    <script>
+                                        function validateForm() {
+                                            var username = document.getElementById("username").value;
+                                            var number = document.getElementById("number").value;
+
+                                            if (username.trim() === '' || number.trim() === '') {
+                                                alert("Please fill out all the required fields.");
+                                                return false;
+                                            }
+
+                                            if (number < 0) {
+                                                alert("Phone number cannot be negative.");
+                                                return false;
+                                            }
+                                        }
+                                    </script>
+
                                 </div>
 
                             </div>

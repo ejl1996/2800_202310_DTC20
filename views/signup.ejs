@@ -7,14 +7,18 @@
                 <!-- Perform the sign up app.post method so that the user's information can be stored in the database -->
                 <form class="form-signup" action="/signup" method="post" onsubmit="return validation();">
                     <h1 class="h3 mb-3 font-weight-normal" style="color: plum">Sign Up</h1>
-                    <!-- Users must fill-out username, email address, password, and phone number to sign up for an account. -->
+                    <!-- Users must fill out username, email address, password, and phone number to sign up for an account. -->
                     <input name="username" type="text" placeholder="Username" required>
+                    <span class="text-danger">*</span>
                     <br>
                     <input name="email" type="email" placeholder="Email address" required>
+                    <span class="text-danger">*</span>
                     <br>
                     <input name="password" type="password" placeholder="Password" required>
+                    <span class="text-danger">*</span>
                     <br>
                     <input name="number" type="number" placeholder="Phone number" required>
+                    <span class="text-danger">*</span>
                     <br>
                     <br>
                     <button class="btn btn-outline-light btn-lg px-5" type="submit"
