@@ -1,0 +1,7 @@
+Are you trimming white space from user input?
+
+Inputs:
+Sign-up user and fill all relevant fields.  
+
+Output: 
+Whitespace is trimmed from user input on MongoDB. 

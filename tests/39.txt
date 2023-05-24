@@ -1,0 +1,7 @@
+Are you trimming white space from user input?
+
+Inputs:
+Revise user information such as password or number. 
+
+Output: 
+Whitespace is trimmed from user input on MongoDB. 
