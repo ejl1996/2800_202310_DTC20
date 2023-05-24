@@ -4,4 +4,4 @@ Inputs:
 Load every page, try to answer questions, log in, log out, revise password/number, and create a new profile.  
 
 Output: 
-Request action responds promptly and waiting time is acceptable.  
+Waiting time is acceptable. 

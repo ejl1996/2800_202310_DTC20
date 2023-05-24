@@ -1,8 +1,8 @@
 Ensure your font size(s), style(s) and colour(s) for headlines, descriptions, labels, etc., is consistent.
 
 Inputs:
-Visited and reviewed all pages for consistent size, style, and color. 
-Checked for clean layout in mobile view. 
+Visit and review all pages for consistent size, style, and color. 
+
 
 Output: 
 Font, font size, color palette are consistent, buttons display and work properly.  

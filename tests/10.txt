@@ -4,4 +4,4 @@ Inputs:
 Similar messages when user logs out or revises password/number 
 
 Output: 
-A confirmation modal pops-up or user is directed to new page.
+A confirmation modal pops-up or user is directed to a new page.

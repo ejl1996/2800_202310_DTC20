@@ -1,7 +1,7 @@
 Are validation error messages easy to read and understand? Are they in a consistent position, colour, and style?
 
 Inputs:
-Try to login with invalid username or password. Try to login with empty on the username or password. 
+Try to login with invalid username or password. 
 
 Output: 
-An error message called "fill out this field" comes up. 
+An error message called "fill out this field" is displayed. 
