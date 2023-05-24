@@ -1,0 +1,9 @@
+Check text on all pages for spelling and grammatical errors.
+
+Inputs:
+Loaded every page (particularly paid close attention to mmse1.ejs to mmse10.ejs) - checked all pages for correct spelling/grammar. 
+Tried to cancel inputs or put in wrong input values - ensured that warning messages do not have spelling/grammar errors. 
+Logged out of sections - ensured that logout page does not have spelling or grammar errors. 
+
+Output: 
+All pages have good spelling and are free from grammatical errors. 

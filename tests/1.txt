@@ -1,0 +1,27 @@
+Application crashes or unavailable pages should be redirected to an interesting error page.
+
+Inputs:
+https://nice-sarong-clam.cyclic.app/doesnotexist 
+https://nice-sarong-clam.cyclic.app/home/doesnotexist 
+https://nice-sarong-clam.cyclic.app/login/doesnotexist 
+https://nice-sarong-clam.cyclic.app/mmse1/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse2/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse3/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse4/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse5/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse6/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse7/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse8/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse9/doesnotexist
+https://nice-sarong-clam.cyclic.app/mmse10/doesnotexist
+https://nice-sarong-clam.cyclic.app/recommendation/doesnotexist  
+https://nice-sarong-clam.cyclic.app/revise/doesnotexist
+https://nice-sarong-clam.cyclic.app/profile/doesnotexist 
+https://nice-sarong-clam.cyclic.app/score/doesnotexist
+https://nice-sarong-clam.cyclic.app/signup/doesnotexist 
+https://nice-sarong-clam.cyclic.app/password/doesnotexist
+https://nice-sarong-clam.cyclic.app/number/doesnotexist 
+https://nice-sarong-clam.cyclic.app/logout/doesnotexist 
+
+Output: 
+All pages redirected to 404 page. 
