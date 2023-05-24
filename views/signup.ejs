@@ -1,5 +1,5 @@
 <%- include("templates/header", {headerMessage: "Welcome" }) %>
-    <!-- This code was edited and modified from Emma Lee's COMP 2537 Assignment 2. -->
+    <!-- This code was modified from Emma Lee's COMP 2537 Assignment 2. -->
 
     <body>
         <div class="signupsetting">
@@ -7,7 +7,7 @@
                 <!-- Perform the sign up app.post method so that the user's information can be stored in the database -->
                 <form class="form-signup" action="/signup" method="post" onsubmit="return validation();">
                     <h1 class="h3 mb-3 font-weight-normal" style="color: plum">Sign Up</h1>
-                    <!-- Users are required to enter their username, email address, password, and phone number to sign up for an account. -->
+                    <!-- Users must fill-out username, email address, password, and phone number to sign up for an account. -->
                     <input name="username" type="text" placeholder="Username" required>
                     <br>
                     <input name="email" type="email" placeholder="Email address" required>
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <!-- Using array to store the missing fields, and then join them with a comma and space to form a string. Written with assistance from chatGPT -->
+            <!-- Written with assistance from ChatGPT -->
             <script>
                 function validation() {
                     var username = document.getElementsByName("username")[0].value;
@@ -44,7 +44,7 @@
                     var password = document.getElementsByName("password")[0].value;
                     var number = document.getElementsByName("number")[0].value;
 
-                    // check if the user miss any of the fields
+                    // Check if user has fields missing
                     var missingFields = [];
 
                     if (!username) {
@@ -60,7 +60,7 @@
                         missingFields.push("Phone");
                     }
 
-                    // if user miss any of the fields, the error message will show up.
+                    // Generate error message from missing field 
                     if (missingFields.length > 0) {
                         $("#errorMessage").html("Please provide " + missingFields.join(", ") + ".");
                         $("#myModal").modal("show");

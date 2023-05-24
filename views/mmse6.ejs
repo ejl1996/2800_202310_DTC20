@@ -1,4 +1,4 @@
-<%- include("templates/header", {headerMessage: "MMSE Questionnaire" }) %>
+<%- include("templates/header", {headerMessage: "MMSE" }) %>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -40,10 +40,9 @@
     </head>
 
     <body>
-
-        <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
-        <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
-        <!-- performs app.post so that the user's answers can be stored in the database -->
+        <!--This code was found from https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with modifications made by Emma Lee -->
+        <!---MMSE questions obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
+        <!-- More details: https://docs.google.com/document/d/1ISjQYTIjzLfVuO0gXleGGD7JBfv7vluva0KhFq04PMo/edit?skip_itp2_check=true -->
         <form class="bg-white px-4" action="/mmse6" method="post">
             <p class="fw-bold">Which choice does not contain multiples of each other?:</p>
             <div class="form-check mb-2">

@@ -1,4 +1,4 @@
-
+// Imported alzheimer.csv data from Kaggle: https://www.kaggle.com/datasets/brsdincer/alzheimer-features
 const data = `Group,M/F,Age,EDUC,SES,MMSE,CDR,eTIV,nWBV,ASF
 Nondemented,M,87,14,2,27,0,1987,0.696,0.883
 Nondemented,M,88,14,2,30,0,2004,0.681,0.876
@@ -28,6 +28,8 @@ Nondemented,F,85,12,4,29,0,1225,0.71,1.433
 Demented,M,76,16,3,21,0.5,1602,0.697,1.096
 Demented,M,77,16,3,16,1,1590,0.693,1.108
 Demented,M,79,16,3,22,1,1600,0.68,1.1`;
+
+// Calculation of averageMMSE score of non-demented users completed with help from ChatGPT
 const rows = data.split('\n');
 const headers = rows[0].split(',');
 

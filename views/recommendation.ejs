@@ -9,8 +9,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-
         KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <title></title>
+        <title>Recommendations</title>
         <style>
+            /* styling completed by Emma Lee using suggestions from ChatGPT */
             .text-center mb-4 {
                 color: plum;
             }
@@ -63,8 +64,8 @@
                 animation: zoom 2s infinite alternate;
                 background: linear-gradient(45deg, #ff00b8, #2e2eb8);
                 background-size: 200% 200%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+                /* -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent; */
             }
 
             @keyframes zoom {
@@ -98,44 +99,45 @@
     </head>
 
     <body>
-        <!-- Questions from PubMed, NCBI and Alzheimer's Association page. More details: https://docs.google.com/document/d/1OxY4iJ6J5bMsL8MlZ4JZrPZkv2_HqtU5h7j6wU8ggk8/edit?usp=sharing -->
+        <!-- Recommendation obtained from https://alzheimer.ca/en/help-support -->
         <section class="vh-100 gradient-custom">
-            <form class="bg-white px-4" action="/recommendations" method="post">
-                <div class="container py-5 h-100">
-                    <div class=" row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                            <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
-                                <div class="card-body p-5 text-center">
+            <div class="container py-5 h-100">
+                <div class=" row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card bg text-white" style="border-radius: 1rem; background-color: plum;">
+                            <div class="card-body p-5 text-center">
 
-                                    <div class="mb-md-5 mt-md-4 pb-5">
-                                        <h1 class="fw-bold mb-2 text-uppercase">Results:</h1>
-                                        <br>
-                                        <p id="zooming-text">You <%= recommendation %> for dementia.</p>
-                                        <br>
-                                        <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
-                                            manage and prevent dementia by the Alzheimer Society of Canada:</p>
-                                        <br>
-                                        <p class="text-white-50 mb-5"
-                                            style="color: black; font-size: 15px;
+                                <div class="mb-md-5 mt-md-4 pb-5">
+                                    <h1 class="fw-bold mb-2 text-uppercase">Results:</h1>
+                                    <br>
+                                    <p id="zooming-text">You <%= recommendation %> for dementia.</p>
+                                    <br>
+                                    <p class="text-white-50 mb-5" style="color: black; font-size: 30px">Resources to
+                                        manage and prevent dementia by the Alzheimer Society of Canada:</p>
+                                    <br>
+                                    <p class="text-white-50 mb-5"
+                                        style="color: black; font-size: 15px;
                                             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
-                                            ;>
-                                            <a href="https://alzheimer.ca/en/help-support" id="support"><br>
-                                                Click
-                                                <br>for
-                                                <br>Resources!<br></a>
-                                        </p>
-                                        <br>
-                                        <br>
-                                        <br>
+                                        ;>
+                                        <a href="https://alzheimer.ca/en/help-support" id="support"><br>
+                                            Click
+                                            <br>for
+                                            <br>Resources!<br></a>
+                                    </p>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <form class="home" action="/home" method="get">
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                            style="font-size: 25px;"><a href="/home"
-                                                style="font-size: 20px; color:white;">Go
-                                                Back Home</a></button>
-                                    </div>
+                                            style="font-size: 25px; background-color: plum;">
+                                            Return Home
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
         </section>
     </body>
 

@@ -1,3 +1,5 @@
+// Imported alzheimer.csv data from Kaggle: https://www.kaggle.com/datasets/brsdincer/alzheimer-features
+
 Group,M/F,Age,EDUC,SES,MMSE,CDR,eTIV,nWBV,ASF
 Nondemented,M,87,14,2,27,0,1987,0.696,0.883
 Nondemented,M,88,14,2,30,0,2004,0.681,0.876
