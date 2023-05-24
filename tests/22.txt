@@ -1,0 +1,7 @@
+Remember to check all input fields for special characters.
+
+Inputs:
+Go to sign-up section: attempt to sign-up with alphabetical characters instead of numerical characters for phone number. 
+
+Output: 
+A pop-up message comes up, stating user to "Enter a number". 
