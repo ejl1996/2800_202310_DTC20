@@ -1,0 +1,7 @@
+Are all numeric values formatted properly in the score sheet? 
+
+Inputs:
+Go to score page: look at total score and ensure correct value is displaed. 
+
+Output: 
+Correct score displayed after user takes the MMSE questionnaire. 
