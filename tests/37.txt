@@ -1,0 +1,7 @@
+Should a user be able to submit the same page twice by pressing the submit button twice?
+
+Inputs:
+Click on submit button after putting in relevant information on sign-up page. 
+
+Output: 
+The user can't click submit twice since the user is redirected to the login page. 
