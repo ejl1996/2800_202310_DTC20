@@ -1,0 +1,7 @@
+Check all pages for broken links.
+
+Inputs:
+Click on all links on all pages. 
+
+Output: 
+The site directs to the correct and intended page.   

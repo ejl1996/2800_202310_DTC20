@@ -1,0 +1,9 @@
+Check all pages for broken images.
+
+Inputs:
+Login, see home page, and all pages. 
+Ensure that images are placed in "public" folder.  
+Visit mmse2.ejs, mmse3.ejs, and header.ejs to ensure that all images are displayed correctly. 
+
+Output: 
+All images are displayed correctly and without error.   
