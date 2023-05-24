@@ -1,0 +1,7 @@
+Check amount fields with decimal number values.
+
+Inputs:
+NA
+
+Output: 
+Our app doesn't have amount fields (NA) 

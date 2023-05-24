@@ -1,0 +1,7 @@
+Check for negative numbers if allowed for numeric fields.
+
+Inputs:
+Input negative values into phone number tab. 
+
+Output: 
+There is a pop-up message indicating "Phone number cannot be negative."  

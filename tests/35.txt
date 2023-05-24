@@ -1,0 +1,7 @@
+Test all buttons available on all pages.
+
+Inputs:
+Click on Login, Sign-Up, Submit, Re-Login, Questionnaire Time!, Log Out, Go Back Home buttons on app pages. 
+
+Output: 
+Get redirected to the correct page, display correct user info on MongoDB, and display relevant comments when necessary.  
