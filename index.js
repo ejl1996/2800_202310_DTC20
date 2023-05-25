@@ -362,7 +362,7 @@ app.post('/mmse10', (req, res) => {
         (req.session.mmse6Score) +
         (req.session.mmse9Score);
     console.log(totalScore);
-    totalScore += 14;
+    totalScore += 13;
 
     req.session.totalScore = totalScore;
 
