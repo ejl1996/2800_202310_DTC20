@@ -1,0 +1,7 @@
+Check if proper field labels and values are used in error messages.
+
+Inputs:
+Proper field labels and values are used in error messages. 
+
+Output: 
+Error messages are concise, specific, and clearly explain the issue.
