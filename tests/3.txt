@@ -5,4 +5,4 @@ Visit and review all pages for consistent size, style, and color.
 
 
 Output: 
-Font, font size, color palette are consistent, buttons display and work properly.  
+Font, font size, and color palette are consistent, buttons display, and work properly.  
