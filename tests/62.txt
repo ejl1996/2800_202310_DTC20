@@ -1,0 +1,7 @@
+Check database query execution time (especially with multiple users testing at once!).
+
+Inputs:
+Test database query execution time (with multiple users testing at once). 
+
+Output: 
+Database query execution time is adequate. 

@@ -8,17 +8,23 @@
                 <form class="form-signup" action="/signup" method="post" onsubmit="return validation();">
                     <h1 class="h3 mb-3 font-weight-normal" style="color: plum">Sign Up</h1>
                     <!-- Users must fill out username, email address, password, and phone number to sign up for an account. -->
-                    <input name="username" type="text" placeholder="Username" required>
+                    <input name="username" type="text" placeholder="Username" maxlength="20" required>
                     <span class="text-danger">*</span>
                     <br>
+                    <small class="form-text text-muted">Maximum 20 characters</small>
+
                     <input name="email" type="email" placeholder="Email address" required>
                     <span class="text-danger">*</span>
-                    <br>
-                    <input name="password" type="password" placeholder="Password" required>
+                    <small class="form-text text-muted">Email addresses only</small>
+
+                    <input name="password" type="password" placeholder="Password" maxlength="20" required>
                     <span class="text-danger">*</span>
                     <br>
+                    <small class="form-text text-muted">Maximum 20 characters</small>
+
                     <input name="number" type="number" placeholder="Phone number" required>
                     <span class="text-danger">*</span>
+                    <small class="form-text text-muted">Numbers only</small>
                     <br>
                     <br>
                     <button class="btn btn-outline-light btn-lg px-5" type="submit"
@@ -39,61 +45,63 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Written with assistance from ChatGPT -->
-            <script>
-                function validation() {
-                    var username = document.getElementsByName("username")[0].value;
-                    var email = document.getElementsByName("email")[0].value;
-                    var password = document.getElementsByName("password")[0].value;
-                    var number = document.getElementsByName("number")[0].value;
-                    var phoneNumberInput = document.getElementsByName("number")[0];
-                    var phoneNumber = phoneNumberInput.value;
 
-                    // Check if user has fields missing
-                    var missingFields = [];
+        <!-- Written with assistance from ChatGPT -->
+        <script>
+            function validation() {
+                var username = document.getElementsByName("username")[0].value;
+                var email = document.getElementsByName("email")[0].value;
+                var password = document.getElementsByName("password")[0].value;
+                var number = document.getElementsByName("number")[0].value;
+                var phoneNumberInput = document.getElementsByName("number")[0];
+                var phoneNumber = phoneNumberInput.value;
 
-                    if (!username) {
-                        missingFields.push("Username");
-                    }
-                    if (!email) {
-                        missingFields.push("Email");
-                    }
-                    if (!password) {
-                        missingFields.push("Password");
-                    }
-                    if (!number) {
-                        missingFields.push("Phone");
-                    }
+                // Check if user has fields missing
+                var missingFields = [];
 
-                    // Generate error message from missing field 
-                    if (missingFields.length > 0) {
-                        $("#errorMessage").html("Please provide " + missingFields.join(", ") + ".");
-                        $("#myModal").modal("show");
-                        return false;
-                    }
-
-                    if (phoneNumber < 0) {
-                        displayErrorMessage("Phone number cannot be negative.");
-                        return false; // Prevent form submission
-                    }
-
-                    return true;
+                if (!username) {
+                    missingFields.push("Username");
+                }
+                if (!email) {
+                    missingFields.push("Email");
+                }
+                if (!password) {
+                    missingFields.push("Password");
+                }
+                if (!number) {
+                    missingFields.push("Phone");
                 }
 
-                function displayErrorMessage(message) {
-                    var errorMessageElement = document.getElementById("errorMessage");
-                    errorMessageElement.innerHTML = message;
+                // Generate error message from missing field 
+                if (missingFields.length > 0) {
+                    $("#errorMessage").html("Please provide " + missingFields.join(", ") + ".");
                     $("#myModal").modal("show");
+                    return false;
                 }
-            </script>
 
-            <!-- Bootstrap CSS -->
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-            <!-- jQuery library -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <!-- Popper JS -->
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                if (phoneNumber < 0) {
+                    displayErrorMessage("Phone number cannot be negative.");
+                    return false; // Prevent form submission
+                }
+
+                return true;
+            }
+
+            function displayErrorMessage(message) {
+                var errorMessageElement = document.getElementById("errorMessage");
+                errorMessageElement.innerHTML = message;
+                $("#myModal").modal("show");
+            }
+        </script>
+
+        <!-- Bootstrap CSS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <!-- jQuery library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         </div>
     </body>
 

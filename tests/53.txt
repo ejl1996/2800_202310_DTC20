@@ -1,0 +1,7 @@
+Does your app need field-specific and/or page-level help messages?
+
+Inputs:
+Examine sign-up page to determine if it has field-specific messages.
+
+Output: 
+Sign-up page indicates what type of characters and maximum number of characters are required. 

@@ -1,0 +1,7 @@
+Do you have or need an hourglass or other app busy icon?
+
+Inputs:
+NA.   
+
+Output: 
+Our app doesn't need an hourglass icon as posting or rendering information from pages do not require much time.    

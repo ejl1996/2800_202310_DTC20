@@ -1,0 +1,7 @@
+Default radio button options should be pre-selected on page load.
+
+Inputs:
+NA. 
+
+Output: 
+Our app chose not to have this feature as we wanted all responses from the users to be non-biased and we didn't want to affect their choices. 

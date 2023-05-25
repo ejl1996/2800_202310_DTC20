@@ -1,0 +1,7 @@
+Ensure appropriate fields are highlighted in case of errors.
+
+Inputs:
+Miss one of four field values on sign-up page. 
+
+Output: 
+Fields are highlighted with missing field values and an error pop-up is displayed. 
