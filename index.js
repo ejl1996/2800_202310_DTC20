@@ -29,7 +29,6 @@ const port = process.env.PORT || 4000;
 
 // Set expiration time for session to 1 hour 
 const expireTime = 1 * 60 * 60 * 1000;
-
 // Secret Information Section 
 const mongodb_host = process.env.MONGODB_HOST;
 const mongodb_user = process.env.MONGODB_USER;
