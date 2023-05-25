@@ -141,6 +141,7 @@ app.post('/login', async (req, res) => {
 });
 
 // Post route for MMSE questions starting from page 1 to 8 
+
 // Post route for mmse1
 app.post('/mmse1', (req, res) => {
     // Extract the question data from the request body
@@ -370,7 +371,7 @@ app.post('/mmse10', (req, res) => {
 });
 
 // Post route for recommendation page based on totalScore
-// Score reference points calculated from Kaggle: please view JS files, data_demented.js and data_nondemented.js
+// Score reference points calculated from Kaggle: please view the JS files, data_demented.js and data_nondemented.js
 app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
 
@@ -421,7 +422,6 @@ app.post('/signup', async (req, res) => {
             password: hashedPassword,
             number: number,
         });
-        //console.log(result);
 
         const x = await userCollection.findOne({ "username": username })
         console.log(x);
@@ -432,7 +432,6 @@ app.post('/signup', async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        // Handle the error appropriately, e.g., render an error page or redirect to a specific route
         res.redirect('/login');
     }
 });
@@ -479,7 +478,7 @@ app.post('/updatepassword', async (req, res) => {
     }
 });
 
-// Post route for updating number in MongoDB 
+// Post route for updating phone number in MongoDB 
 app.post('/updatenumber', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
