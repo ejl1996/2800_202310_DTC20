@@ -1,0 +1,7 @@
+All fields on the page, i.e., text boxes, radiooptions, dropdown lists, should be aligned properly.
+
+Inputs:
+Examine proper alignment of Login and Sign-Up page text boxes. 
+
+Output: 
+All text boxes are properly aligned.  

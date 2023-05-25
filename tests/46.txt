@@ -1,0 +1,7 @@
+Disabled fields should be grayed out and users should not be able to set a focus on these fields. 
+
+Inputs:
+NA.   
+
+Output: 
+Our app doesn't have disabled fields. 
