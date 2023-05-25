@@ -4,4 +4,4 @@ Inputs:
 NA.   
 
 Output: 
-Check if page text is left (or consistently) justified. 
+Page text is left (or consistently) justified. 

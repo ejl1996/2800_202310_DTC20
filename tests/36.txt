@@ -4,4 +4,4 @@ Inputs:
 Click on submit button after rendering each MMSE page. 
 
 Output: 
-The user can't click submit twice for the same MMSE page since user is redirected to next MMSE page. 
+The user can't click submit twice for the same MMSE page since user is redirected to the next MMSE page. 
