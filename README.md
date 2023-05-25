@@ -22,7 +22,6 @@ Our team, BrainWorld, is developing an application to help people who are concer
 │   │   │   │   │   │   ├── srv_polling.ts
 │   │   │   │   │   │   ├── topology.ts
 │   │   │   │   │   │   └── topology_description.ts
-
 │   │   │   │   │   ├── sessions.ts
 │   │   │   │   │   ├── sort.ts
 │   │   │   │   │   ├── transactions.ts
@@ -72,7 +71,6 @@ Our team, BrainWorld, is developing an application to help people who are concer
 │   │       ├── utility.d.ts
 │   │       ├── validation.d.ts
 │   │       └── virtuals.d.ts
-
 │   ├── mpath
 │   │   ├── History.md
 │   │   ├── LICENSE
@@ -86,7 +84,6 @@ Our team, BrainWorld, is developing an application to help people who are concer
 │   │   └── test
 │   │       ├── index.js
 │   │       └── stringToParts.js
-
 │   ├── mquery
 │   │   ├── History.md
 │   │   ├── LICENSE
@@ -102,7 +99,6 @@ Our team, BrainWorld, is developing an application to help people who are concer
 │   │   │   ├── permissions.js
 │   │   │   └── utils.js
 │   │   └── package.json
-
 │   ├── ms
 │   │   ├── index.js
 │   │   ├── license.md
