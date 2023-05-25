@@ -467,7 +467,6 @@ app.post('/updatepassword', async (req, res) => {
         if (result.modifiedCount === 1) {
             console.log('Successfully updated password.');
             res.render("home.ejs");
-            //res.status(200).json({ message: 'Password updated successfully' });
         } else {
             console.log('No document matched the filter.');
             res.status(404).json({ message: 'User not found' });
