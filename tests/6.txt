@@ -1,0 +1,7 @@
+If your app sends automated emails, check email header and footer for app logo, privacy policy, attribution, etc.
+
+Inputs:
+Scroll to the top of every page in web display. 
+
+Output: 
+Every page has a header that shows the company logo.    

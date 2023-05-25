@@ -1,0 +1,7 @@
+Test numeric input fields with non-numeric input values – does a proper validation message appear?
+
+Inputs:
+Input alphabetical characters into phone number tab. 
+
+Output: 
+Error message should be displayed "Enter a number."   

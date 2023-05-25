@@ -18,6 +18,7 @@
     </head>
 
     <body>
+        <!--This code was obtained from https://getbootstrap.com/docs/4.0/utilities/flex/ with modifications made by Emma Lee -->
         <section class="vh-100 gradient-custom">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -27,29 +28,33 @@
 
                                 <div class="mb-md-5 mt-md-4 pb-5">
                                     <h1 id="account">User Account</h1>
-                                    <br>
+
                                     <div class="profile">
-                                        <span style="font-size: 2em; color: #f5f5f5;">
+                                        <span style="font-size: 4em; color: #f5f5f5;">
                                             <i class="fa fa-user-circle"></i>
                                         </span>
                                     </div>
                                     <br>
-                                    <p>Username: <%= user.username %>
+                                    <p style="font-size: 1em;">Username: <%= user.username %>
                                     </p>
-                                    <p>Email: <%= user.email %>
+                                    <p style="font-size: 1em;">Email: <%= user.email %>
                                     </p>
-                                    <p>Password: *********</p>
-                                    <p>Number: <%= user.number %>
+                                    <p style="font-size: 1em;">Password: *********</p>
+                                    <p style="font-size: 1em;">Number: <%= user.number %>
                                     </p>
                                     <br>
-                                    <br>
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                        style="font-size: 25px; background-color: plum;">
-                                        <a href="/home" style="color:black;">Home</a></button>
-                                    <form class="log" action="/logoutuser" method="get">
+                                    <form class="home" action="/home" method="get">
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit"
                                             style="font-size: 25px; background-color: plum;">
-                                            <a href="/logout" style="color:black;">Logout</a></button>
+                                            Home
+                                        </button>
+                                    </form>
+                                    <br>
+                                    <form class="logout" action="/logout" method="get">
+                                        <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                            style="font-size: 25px; background-color: plum;">
+                                            Logout
+                                        </button>
                                     </form>
 
                                 </div>

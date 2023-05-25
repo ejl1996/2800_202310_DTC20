@@ -1,0 +1,7 @@
+Check if app load time is within acceptable range. Every group member should use the app at the same time. Give it a workout!
+
+Inputs:
+Load every page, try to answer questions, log in, log out, revise password/number, and create a new profile.  
+
+Output: 
+Waiting time is acceptable. 

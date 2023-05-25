@@ -1,0 +1,7 @@
+Enough space should be provided between field labels, columns, rows, error messages, etc., is your app is easy to read.
+
+Inputs:
+Examine all pages for proper readability of field labels, div/form organization, and error messages. 
+
+Output: 
+All pages have proper readability and alignment.

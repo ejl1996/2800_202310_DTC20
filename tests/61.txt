@@ -1,0 +1,7 @@
+Check performance of database stored procedures and triggers – is it sufficiently fast?
+
+Inputs:
+Test performance of database stored procedures and triggers. 
+
+Output: 
+Performance is fast. 

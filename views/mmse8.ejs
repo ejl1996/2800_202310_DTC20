@@ -1,4 +1,4 @@
-<%- include("templates/header", {headerMessage: "MMSE Questionnaire" }) %>
+<%- include("templates/header", {headerMessage: "MMSE" }) %>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -40,12 +40,11 @@
     </head>
 
     <body>
-
-        <!--This code was on https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with adjustments and modifications made by Emma Lee -->
-        <!---MMSE Questionnaires obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
-        <!-- performs app.post so that the user's answers can be stored in the database -->
+        <!--This code was found from https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/ with modifications made by Emma Lee -->
+        <!---MMSE questions obtained from https://cgatoolkit.ca/Uploads/ContentDocuments/MMSE.pdf and https://strokengine.ca/en/assessments/mini-mental-state-examination-mmse/-->
+        <!-- More details: https://docs.google.com/document/d/1ISjQYTIjzLfVuO0gXleGGD7JBfv7vluva0KhFq04PMo/edit?skip_itp2_check=true -->
         <form class="bg-white px-4" action="/mmse8" method="post">
-            <p class="fw-bold">An apple is 40 cents, banana 60 cents, and grapefruit is 80 cents. How much is a
+            <p class="fw-bold">An apple is 40 cents, banana is 60 cents, and grapefruit is 80 cents. How much is a
                 pear?</p>
             <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="exampleForm15" id="radioExample25" value="90 cents">
@@ -87,6 +86,7 @@
                     I will be seeing a friend today.
                 </label>
             </div>
+            <br>
             <div class="buttondiv">
                 <button class="btn btn-outline-light btn-lg px-5" type="submit"
                     style="font-size: 25px; background-color: plum;">Submit</button>

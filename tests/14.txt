@@ -1,0 +1,7 @@
+Select/Deselect All options should be provided if your app supports record add/delete/update functionality for MMSE 
+
+Inputs:
+Answer MMSE questions and be able to select options. 
+
+Output: 
+User is able to select and answer questions. 

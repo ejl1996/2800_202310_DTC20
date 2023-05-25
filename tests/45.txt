@@ -1,0 +1,7 @@
+Should you disable the scroll bar?
+
+Inputs:
+Examine all pages and determine whether the scroll bar should be disabled.  
+
+Output: 
+Several pages such as the home page can be viewed on a mobile screen only if the scroll bar is implemented. 

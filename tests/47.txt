@@ -1,0 +1,7 @@
+Users should not be able to type in drop down select lists.
+
+Inputs:
+NA.   
+
+Output: 
+Our app doesn't have dropdown select lists. 

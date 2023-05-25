@@ -1,0 +1,7 @@
+Are all numeric values formatted properly in the MMSE questionnaire? 
+
+Inputs:
+Go to MMSE questionaire pages: ensure correct numerical values are displayed. 
+
+Output: 
+Correct numerical values in MMSE questionnaire displayed.  

@@ -1,0 +1,7 @@
+Ensure dropdown list options are legible and are not truncated due to field size limits.
+
+Inputs:
+NA.  
+
+Output: 
+Our app doesn't have dropdown list options. 

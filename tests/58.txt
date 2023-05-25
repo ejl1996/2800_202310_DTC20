@@ -1,0 +1,7 @@
+Is page text left (or consistently) justified?
+
+Inputs:
+NA.   
+
+Output: 
+Check if page text is left (or consistently) justified. 

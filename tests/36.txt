@@ -1,0 +1,7 @@
+Should a user be able to submit the same page twice by pressing the submit button twice?
+
+Inputs:
+Click on submit button after rendering each MMSE page. 
+
+Output: 
+The user can't click submit twice for the same MMSE page since user is redirected to next MMSE page. 

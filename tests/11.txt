@@ -1,0 +1,7 @@
+Are tooltips text helpful and meaningful?
+
+Inputs:
+NA
+
+Output: 
+Our app doesn't have any tooltips text (NA)

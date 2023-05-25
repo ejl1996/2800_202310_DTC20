@@ -1,0 +1,7 @@
+Check text on all pages for spelling and grammatical errors.
+
+Inputs:
+Load every page, try to cancel, and log out to see warning messages. 
+
+Output: 
+All pages have good spelling and are free from grammatical errors. 

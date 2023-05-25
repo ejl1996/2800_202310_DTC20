@@ -1,0 +1,7 @@
+If so, can the user submit the form again by correcting the errors?
+
+Inputs:
+Examine if user can submit the form again by correcting the error on relevant pages.
+
+Output: 
+The user can submit the form by correcting the error; if an error has been made, the app does not let you submit the form. 

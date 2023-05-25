@@ -1,0 +1,7 @@
+Check the response time for any action under light, normal, and heavy load conditions.
+
+Inputs:
+Test response time of app under light, normal, and heavy load conditions.  
+
+Output: 
+App response time is good under light, normal, and heavy conditions. 

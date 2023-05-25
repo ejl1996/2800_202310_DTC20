@@ -1,0 +1,7 @@
+Confirmation messages should be displayed before performing any update or delete operation.
+
+Inputs:
+Update user's password or phone number.   
+
+Output: 
+A confirmation message is displayed before user information is updated. 

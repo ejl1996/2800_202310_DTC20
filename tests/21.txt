@@ -1,0 +1,7 @@
+Do input fields check for max/min field values? How do you ensure that input values greater than specified max limit, etc., are not accepted or stored in the database?
+
+Inputs:
+Go to sign-up section: attempt to sign-up with username or password that is longer than 20 characters. 
+
+Output: 
+The sign-up submit button doesn't allow for submission and form is cleared. 

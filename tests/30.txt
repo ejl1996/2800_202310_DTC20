@@ -1,0 +1,7 @@
+Validate markup for all web pages (validate HTML and CSS for syntax errors) make sure it is compliant with the standards.
+
+Inputs:
+Run EJS files under: https://validator.w3.org/#validate_by_input 
+
+Output: 
+Error messages should be displayed if code could be modified and make necessary changes.  

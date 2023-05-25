@@ -1,0 +1,7 @@
+Dropdown field values should be displayed in some meaningful sort order.
+
+Inputs:
+NA. 
+
+Output: 
+Our app doesn't have dropdown field values.

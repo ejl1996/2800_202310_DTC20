@@ -1,0 +1,7 @@
+Does your app have a reset button to set default values for all fields in your form(s)?
+
+Inputs:
+Go to revision page: revise password and phone number. 
+
+Output: 
+Username has been set as default (currently logged in) user's username. 

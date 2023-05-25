@@ -1,0 +1,7 @@
+Check if app load time is manageable with slow connections.
+
+Inputs:
+NA.   
+
+Output: 
+App load time is manageable with slow connections. 

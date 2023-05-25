@@ -1,0 +1,7 @@
+Are all numeric values formatted properly in the profile section where the phone number is displayed? 
+
+Inputs:
+Go to profile section: ensure correct phone number values are displayed. 
+
+Output: 
+Correct phone number is displayed in accounts page. 

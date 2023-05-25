@@ -140,17 +140,8 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
-    console.log(req.url);
-    console.log(url.parse(req.url));
-    res.render("login");
-});
-
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-
 // Post route for MMSE questions starting from page 1 to 8 
+// Post route for mmse1
 app.post('/mmse1', (req, res) => {
     // Extract the question data from the request body
     const { year, country } = req.body;
@@ -266,7 +257,7 @@ app.post('/mmse5', (req, res) => {
     res.render('mmse6');
 });
 
-// Post route for mmse46
+// Post route for mmse6
 app.post('/mmse6', (req, res) => {
     const { multiples, math } = req.body;
 
@@ -378,8 +369,8 @@ app.post('/mmse10', (req, res) => {
     res.render('score', { totalScore: totalScore });
 });
 
-// Post route for recommendation based on totalScore
-// Score reference points calculated from Kaggle: data_demented.js and data_nondemented.js
+// Post route for recommendation page based on totalScore
+// Score reference points calculated from Kaggle: please view JS files, data_demented.js and data_nondemented.js
 app.post('/recommendation', (req, res) => {
     const totalScore = req.session.totalScore; //total score from session 
 
@@ -396,7 +387,7 @@ app.post('/recommendation', (req, res) => {
     res.render('recommendation', { recommendation: recommendation });
 });
 
-// Post route for /signup using JOI validation 
+// Post route for signup page using JOI validation 
 app.post('/signup', async (req, res) => {
     const { username, email, password, number } = req.body;
     console.log(username);
@@ -446,7 +437,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-// Post route for updating password in mongodb 
+// Post route for updating password in MongoDB 
 app.post('/updatepassword', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
@@ -488,7 +479,7 @@ app.post('/updatepassword', async (req, res) => {
     }
 });
 
-// Post route for updating number in mongodb
+// Post route for updating number in MongoDB 
 app.post('/updatenumber', async (req, res) => {
     console.log("Need this to show up or this route is not being hit.");
     try {
@@ -529,17 +520,6 @@ app.post('/updatenumber', async (req, res) => {
     }
 });
 
-
-app.get('/fetchProfile', sessionValidation, async (req, res) => {
-    try {
-        const user = await userCollection.findOne({ username: req.session.username }, { projection: { name: 1, username: 1, email: 1, number: 1 } });
-        res.json({ user });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
-
 app.get('/profile', sessionValidation, async (req, res) => {
     try {
         const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
@@ -548,6 +528,46 @@ app.get('/profile', sessionValidation, async (req, res) => {
         console.error(err);
         res.status(500).json({ message: 'Error...!' });
     }
+});
+
+app.get('/', (req, res) => {
+    //log the URL requested by the client to the console.
+    //console.log(req.url);
+    //parse the requested URL into its individual components (i.e. protocol, hostname) 
+    //console.log(url.parse(req.url));
+    res.render("login");
+});
+
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+app.get('/email', (req, res) => {
+    res.render('email');
+});
+
+app.get('/score', (req, res) => {
+    res.render('score');
+});
+
+app.get('/revise', (req, res) => {
+    res.render('revise');
+});
+
+app.get('/signup', (req, res) => {
+    res.render('signup');
+});
+
+app.get('/home', (req, res) => {
+    res.render('home');
+});
+
+app.get('/profile', (req, res) => {
+    res.render('profile');
+});
+
+app.get('/questions', (req, res) => {
+    res.render('questions');
 });
 
 app.get('/password', async (req, res) => {
@@ -560,8 +580,19 @@ app.get('/password', async (req, res) => {
     }
 });
 
-app.get('/email', (req, res) => {
-    res.render('email');
+app.get('/number', async (req, res) => {
+    try {
+        const user = await userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
+        res.render('number', { user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error...!' });
+    }
+});
+
+app.get('/recommendation', (req, res) => {
+    const recommendation = req.session.recommendation;
+    res.render('recommendation', { recommendation: recommendation });
 });
 
 app.get('/mmse1', (req, res) => {
@@ -596,60 +627,17 @@ app.get('/mmse8', (req, res) => {
     res.render('mmse8');
 });
 
-app.get('/score', (req, res) => {
-    res.render('score');
+app.get('/mmse9', (req, res) => {
+    res.render('mmse9');
 });
 
-app.get('/revise', (req, res) => {
-    res.render('revise');
-});
-
-app.get('/signup', (req, res) => {
-    res.render('signup');
-});
-
-app.get('/thankyou', (req, res) => {
-    res.render('thankyou');
-});
-
-app.get('/password', (req, res) => {
-    res.render('password', { user });
-});
-
-app.get('/home', (req, res) => {
-    res.render('home');
-});
-
-app.get('/profile', (req, res) => {
-    res.render('profile');
-});
-
-app.get('/questions', (req, res) => {
-    res.render('questions');
-});
-
-app.get('/number', (req, res) => {
-    const user = userCollection.findOne({ username: req.session.username }, { projection: { username: 1, email: 1, number: 1 } });
-    res.render('number', { user });
-});
-
-app.get('/recommendation', (req, res) => {
-    const recommendation = req.session.recommendation;
-    res.render('recommendation', { recommendation: recommendation });
+app.get('/mmse10', (req, res) => {
+    res.render('mmse10');
 });
 
 app.get('/logout', (req, res) => {
+    req.session.destroy();
     res.render('logout');
-});
-
-app.get('/logoutuser', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
-
-app.get('/submitthanks', (req, res) => {
-    req.session.destroy();
-    res.redirect('/submitthanks');
 });
 
 app.get("*", (req, res) => {

@@ -1,0 +1,7 @@
+Numeric values should be right justified unless specified otherwise.
+
+Inputs:
+NA. 
+
+Output: 
+Our app doesn't have numeric values that need to be right justified. 

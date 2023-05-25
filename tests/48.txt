@@ -1,0 +1,7 @@
+Does it make sense for information filled in by users to remain intact when there is an error message on page submit?
+
+Inputs:
+Examine if user information is intact when there is an error message and determine whether that is convenient for users. 
+
+Output: 
+Yes, it is more convenient for users because they don't have to re-enter all their information and this also preserves user-entered data, demonstrating that their input is valued and respected.  

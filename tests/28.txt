@@ -1,0 +1,7 @@
+Try to adhere to standard, simple conventions for naming resources, fields, etc.
+
+Inputs:
+Go to input field sections and examine field names. 
+
+Output: 
+All fields have simple naming conventions. 

@@ -1,0 +1,7 @@
+Does your app timeout? When? Why? How can you avoid this?
+
+Inputs:
+Login to app and leave session running for more than an hour. 
+
+Output: 
+Session expires after an hour.  

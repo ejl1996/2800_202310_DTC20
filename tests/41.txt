@@ -1,0 +1,7 @@
+All fields on the page, i.e., text boxes, radiooptions, dropdown lists, should be aligned properly.
+
+Inputs:
+Examine proper alignment of MMSE Questionnaire and screening question radiooptions.    
+
+Output: 
+All radiooptions are properly aligned. 

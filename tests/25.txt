@@ -1,0 +1,7 @@
+Remember that input field label names should be standard.
+
+Inputs:
+Go to sign-up page and look at field label names. 
+
+Output: 
+Field names are indicated. 
