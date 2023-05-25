@@ -1,7 +1,7 @@
 Check if downloadable files are pointing to correct file paths.
 
 Inputs:
-NA
+NA.
 
 Output: 
-Our app doesn't have downloadable files (NA)
+Our app doesn't have downloadable files (NA).

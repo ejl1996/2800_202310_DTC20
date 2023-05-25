@@ -4,4 +4,4 @@ Inputs:
 Test performance of database stored procedures and triggers. 
 
 Output: 
-Performance is fast. 
+Performance is sufficiently fast. 

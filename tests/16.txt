@@ -1,7 +1,7 @@
 Are amount values displayed with correct currency symbols?
 
 Inputs:
-NA
+NA. 
 
 Output: 
-Our app doesn't have correct currency symbols (NA)
+Our app doesn't have correct currency symbols (NA). 

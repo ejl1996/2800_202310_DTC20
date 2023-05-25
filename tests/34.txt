@@ -1,7 +1,7 @@
 Check amount fields with decimal number values.
 
 Inputs:
-NA
+NA.
 
 Output: 
-Our app doesn't have amount fields (NA) 
+Our app doesn't have amount fields (NA). 
