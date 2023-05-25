@@ -1,7 +1,7 @@
 // This code was modified from Emma Lee's COMP 2537 Assignment 2.
 
 // Import required modules
-require("./utils.js");
+require("./scripts/utils.js");
 require('dotenv').config();
 
 // Import express
