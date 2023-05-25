@@ -3,7 +3,7 @@
 2. Project Description (One Sentence Pitch): 
 Our team, BrainWorld, is developing an application to help people who are concerned with preserving their cognitive health by providing personalized recommendations, MMSE questionnaires, and screening questions.
 
-3. Project Technologies used: 
+3. Project Technologies: 
 -Frontend: EJS, CSS, and JavaScript. 
 -Backend: JavaScript and MongoDB. 
 -Database: Alzheimer Features For Analysis from Kaggle (usability score: 10). Data converted into a CSV text file to organize it into a tabular format. 
@@ -1020,18 +1020,19 @@ Our team, BrainWorld, is developing an application to help people who are concer
 -On terminal command line, the user must type "npm install" in order to install the required dependencies to the local node_modules folder. 
 -On terminal command line, the user must type in "npm install --global nodemon" in order to install nodemon on the system path. 
 -On terminal command line, the user must type in "nodemon index.js" in order to run the project. 
+-The user must open a browser and type in localhost:4000 in order to run the program on their computer
 
 6. How to use the product (Features): 
 -Open the app.
 -Login with one of the credentials provided on passwords.txt. 
--Click "Questionnaire Time" button once logged into the app's home page. 
+-Click the "Questionnaire Time" button once logged into the app's home page. 
 -Go through the questions by choosing answers that you think are the most correct. 
 -At the end of the questionnaire, view the total score. 
--Click "Recommendations" button at the bottom of the score page. 
--Read the "Results" page and click "CLICK FOR RESOURCE" to view resources. 
--Read the resources from the Alzheimer Society of Canada.
+-Click the "Recommendations" button at the bottom of the score page. 
+-Read the "Results" page and click "CLICK FOR RESOURCES!" to view resources. 
+-Read about the resources offered by the Alzheimer Society of Canada.
 -Return back to the app by clicking the backspace button on your browser. 
--Click "Return Home" button once back on the app's page. 
+-Click the "Return Home" button once back on the app's page. 
 -Once back on the home page, click the "Log Out" button to end the session. 
 
 7. Include Credits, References, and Licenses: 
@@ -1054,13 +1055,13 @@ https://alzheimer.ca/en/help-support
 
 8. How did you use AI? Tell us exactly what AI services and products you used and how you used them. Be very specific:
     1. Did you use AI to help create your app? If so, how? Be specific: 
-    Yes, I used ChatGPT as the AI generative tool to ask questions and receive relevant recommendations. Also, when I encountered problems during the process of creating the app, I would ask questions on how to debug the code on ChatGPT. 
+    Yes, I used ChatGPT as the AI generative tool to ask questions and receive relevant recommendations. Also, when I encountered problems during the process of creating the app, I would ask questions on it to learn how to modify and debug my code. I felt like I learned a lot from this process because I learned new coding approaches, but also gained a better understanding of why an app may crash or malfunction. 
     2. Did you use AI to create data sets or clean data sets? If so, how? Be specific: 
-    Yes, I used a Kaggle Dataset called Alzheimer Features For Analysis and ensured that it had a good usability score of 10. 
+    Yes, I used a Kaggle dataset called Alzheimer Features For Analysis that had a usability score of 10. I downloaded this dataset from Kaggle and then saved it in a .csv file. This way, the data was organzed in a tabular format and I could run JavaScript calculations to determine the average MMSE score of demented vs. non-demented users. 
     3. Does your app use AI? If so, how? Be specific: 
     -The app does not use AI. 
     4. Did you encounter any limitations? What were they, and how did you overcome them? Be specific.: 
-    I encountered limitations on being able to add more features in the time-constrained 5-week sprint. I wanted to deploy more features such as being able to shuffle the questions, but was unable to complete this feature on time. I felt like that if I had a few more days, I would have been able to solve it because the questions were shuffling fine, but the score tabulation feature wasn't working. I overcame this problem by saving the code that had the shuffling feature, but deploying my final project without this code in order to have a working product without bugs for presentation week. 
+    I encountered limitations on being able to add more features in the time-constrained 5-week sprint. I wanted to deploy more features such as being able to shuffle the questions, but was unable to complete this feature on time. I felt like that if I had a few more days, I may have been able to solve this because the questions were shuffling fine, but the score tabulation feature wasn't working properly. I overcame this problem by saving the code that had the shuffling feature on the dev branch, modifying my project on the dev_final branch, and finally, pulling the bug-free code from dev_final into the main branch for presentation week. 
 
 9. Contact Information: 
 BrainWorld, elee318@my.bcit.ca, GitHub username: ejl1996 
