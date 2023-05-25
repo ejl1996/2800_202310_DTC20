@@ -1059,7 +1059,7 @@ https://alzheimer.ca/en/help-support
     2. Did you use AI to create data sets or clean data sets? If so, how? Be specific: 
     Yes, I used a Kaggle dataset called Alzheimer Features For Analysis that had a usability score of 10. I downloaded this dataset from Kaggle and then saved it in a .csv file. This way, the data was organzed in a tabular format and I could run JavaScript calculations to determine the average MMSE score of demented vs. non-demented users. 
     3. Does your app use AI? If so, how? Be specific: 
-    -The app does not use AI. 
+    The app does not use AI. 
     4. Did you encounter any limitations? What were they, and how did you overcome them? Be specific.: 
     I encountered limitations on being able to add more features in the time-constrained 5-week sprint. I wanted to deploy more features such as being able to shuffle the questions, but was unable to complete this feature on time. I felt like that if I had a few more days, I may have been able to solve this because the questions were shuffling fine, but the score tabulation feature wasn't working properly. I overcame this problem by saving the code that had the shuffling feature on the dev branch, modifying my project on the dev_final branch, and finally, pulling the bug-free code from dev_final into the main branch for presentation week. 
 
